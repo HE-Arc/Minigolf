@@ -1,3 +1,5 @@
+# SwipeD
+
 ## In a nutshell
 SwipeD est une application Android qui a pour but de faire prendre conscience à l'utilisateur de la distance qu'il swipe sur son smartphone.
 
