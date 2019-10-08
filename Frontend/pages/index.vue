@@ -56,7 +56,10 @@ import VuetifyLogo from '~/components/VuetifyLogo.vue'
 export default {
   components: { Logo, VuetifyLogo },
   mounted() {
-    console.log("ICI")
+    this.$axios.get("swipes")
+      .then(res => {
+        console.log(res.data);
+    })
   }
 }
 </script>
