@@ -7,6 +7,9 @@ SwipeD est une application Android qui a pour but de faire prendre conscience à
 * Application [Android](https://www.intra.jrosk.ch/projets/SwipeD/)
 * Application Web [ici](https://github.com/HE-Arc/SwipeD/wiki/Cahier-des-charges-Backend#backend) et [là](https://github.com/HE-Arc/SwipeD/wiki/Cahier-des-charges-Frontend#application-web)
 
+## Git flow
+
+* Feature Branch: Chaque nouvelle feature a sa propre branche et est merge sur la branche de developpement (dev) à la complétion de son objectif. La branche dev n'est merge avec le master que lors de la complétion d'objectifs majeurs.
 
 ## Docker
 
