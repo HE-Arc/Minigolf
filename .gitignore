@@ -2,6 +2,8 @@
 # Created by https://www.gitignore.io/api/laravel,webstorm,phpstorm,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=laravel,webstorm,phpstorm,visualstudiocode
 
+
+
 ### Laravel ###
 /vendor/
 node_modules/
@@ -179,3 +181,11 @@ fabric.properties
 # Markdown Navigator plugin
 
 # End of https://www.gitignore.io/api/laravel,webstorm,phpstorm,visualstudiocode
+
+Frontend/node_modules/
+Frontend/.nuxt/
+Frontend/.idea/
+Frontend/.editorconfig/
+
+Backend/.editorconfig/
+Backend/.idea/
