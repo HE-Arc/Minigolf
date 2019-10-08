@@ -2,7 +2,11 @@
 
 ## In a nutshell
 
-SwipeD est une application Android qui a pour but de faire prendre conscience à l'utilisateur de la distance qu'il swipe sur son smartphone. Le projet est découpé en deux parties distinctes, une concernant l'application Android et une seconde concernant un backend ainsi qu'une application web qui agrège les données des utilisateurs de l'application pour dresser différentes statistiques.
+SwipeD est une application Android qui a pour but de faire prendre conscience à l'utilisateur de la distance qu'il swipe sur son smartphone. Le projet est découpé en deux parties distinctes:
+
+* Application [Android](https://www.intra.jrosk.ch/projets/SwipeD/)
+* Application Web [ici](https://github.com/HE-Arc/SwipeD/wiki/Cahier-des-charges-Backend#backend) et [là](https://github.com/HE-Arc/SwipeD/wiki/Cahier-des-charges-Frontend#application-web)
+
 
 ## Docker
 
@@ -10,9 +14,10 @@ Prérequis:
 * docker
 * docker-compose
 
-1. Cloner le repo
-2. `cd` dans le folder backend
-3. `docker-compose up -d`
+Après le clone du repo, pour lancer le projet:
+
+1. `cd SwipeD/backend`
+2. `docker-compose up -d`
 
 à la suite, `$ docker ps` devrait afficher qqch de semblable à:
 
@@ -23,8 +28,8 @@ CONTAINER ID        IMAGE                  COMMAND                  CREATED     
 afc0fbfc2c64        mysql:5.7.22           "docker-entrypoint.s…"   8 minutes ago       Up 4 minutes        0.0.0.0:3306->3306/tcp                       db
 ```
 
-4. `docker-compose exec app nano .env`
-5. Dans le bloc qui commence par `DB_CONNECTION` faire les changements suivants:
+3. `docker-compose exec app nano .env`
+4. Dans le bloc qui commence par `DB_CONNECTION` faire les changements suivants:
 
 ```env
 DB_CONNECTION=mysql
@@ -35,30 +40,13 @@ DB_USERNAME=root
 DB_PASSWORD=me demander le mdp (Sol)
 ```
 
-6. Enregistrer quiter
-7. `docker-compose exec app php artisan key:generate`
-8. `docker-compose exec app php artisan config:cache`
-9. test: `http://localhost:8080`
-10. `docker-compose exec db bash`
-11. `mysql -u root -p`
-12. `show databases;` devrait afficher:
+5. `docker-compose exec app php artisan key:generate`
+6. `docker-compose exec app php artisan config:cache`
+7. test: `http://localhost:8080`
+8. `docker-compose exec db bash`
+9.  `docker-compose exec app php artisan migrate`
+10. `docker-compose exec app php artisan db:seed`
+11. test: `http://localhost:8080/api/swipes`
 
-```shell
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| swiped             |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-5 rows in set (0.00 sec)
-```
 
-13. `EXIT`
-14. `exit`
-15. `docker-compose exec app php artisan migrate`
-16. `docker-compose exec app php artisan db:seed`
-17. test: `http://localhost:8080/api/swipes`
-
+* [Liste de commandes utiles](https://github.com/HE-Arc/SwipeD/wiki/Dockerization#commandes-utiles)
