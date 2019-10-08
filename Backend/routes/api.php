@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('swipe', 'SwipeController');
+Route::resource('swipes', 'SwipeController');
 
 //Api Auth
 Auth::guard('api')->user(); // instance of the logged user
