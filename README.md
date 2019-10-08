@@ -2,7 +2,7 @@
 
 ## In a nutshell
 
-SwipeD est une application Android qui a pour but de faire prendre conscience à l'utilisateur de la distance qu'il swipe sur son smartphone.
+SwipeD est une application Android qui a pour but de faire prendre conscience à l'utilisateur de la distance qu'il swipe sur son smartphone. Le projet est découpé en deux parties distinctes, une concernant l'application Android et une seconde concernant un backend ainsi qu'une application web qui agrège les données des utilisateurs de l'application pour dresser différentes statistiques.
 
 ## Docker
 
