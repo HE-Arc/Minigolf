@@ -1,31 +1,64 @@
 # SwipeD
 
 ## In a nutshell
+
 SwipeD est une application Android qui a pour but de faire prendre conscience à l'utilisateur de la distance qu'il swipe sur son smartphone.
 
-## Préambule
-Ce projet serait un projet commun aux cours d'Android et de Web. Les lignes qui suivent sont le fruit de nos recherches préliminaires concernant le faisabilité de ce projet.
+## Docker
 
-## Android
-Un service tournant en background et utilisant [GestureOverlayView](https://www.techotopia.com/index.php/Implementing_Android_Custom_Gesture_Recognition_with_Android_Studio#The_GestureOverlayView_Class) ainsi que `onTouchEvent` pour calculer et sommer la distance que l'utilisateur swipe depuis l'activation de l'application. 
+Prérequis:
+* docker
+* docker-compose
 
-Pour permettre à l'utilisateur de prendre conscience de ce que représente cette valeur, nous avons imaginé un système de gamification:
+1. Cloner le repo
+2. `cd` dans le folder backend
+3. `docker-compose up -d`
 
-Idéalement, l'utilisateur devrait activer l'application à partir de son domicile afin de le localiser et à l'aide de [PlacesAPI](https://developers.google.com/places/web-service/intro) trouver des points d'interet tel que l'église du village, la gare, la grande ville la plus proche, la capitale de son pays, ... Ces points d'interets seraient donc des repères lui étant familiers. À l'aide d'une notification, l'application l'averti lorsqu'il atteint une distance équivalante en swipant sur son écran. Cette notification pourrait ressembler à "Félicitation, vous avez atteint $A$ ce qui représente $n$km de swipe. Plus que $m$km avant d'atteindre $B$.
+à la suite, `$ docker ps` devrait afficher qqch de semblable à:
 
-En plus de ces notifications, à tout moment l'utilisateur peut ouvrir l'application et consulter des données plus détaillées:
-* Overall
-* Today
-* Last week
-* Charts
-* Carte reliant les points d'interets avec un overaly de ce qui a déja été fait
-* ...
+```shell
+CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                                        NAMES
+2064f40f04cc        nginx:alpine           "nginx -g 'daemon of…"   3 minutes ago       Up 3 minutes        0.0.0.0:443->443/tcp, 0.0.0.0:8080->80/tcp   webserver
+2aa482d2c53e        digitalocean.com/php   "docker-php-entrypoi…"   8 minutes ago       Up 8 minutes        9000/tcp                                     app
+afc0fbfc2c64        mysql:5.7.22           "docker-entrypoint.s…"   8 minutes ago       Up 4 minutes        0.0.0.0:3306->3306/tcp                       db
+```
 
-## Web
-Un backend centralise les informations de tous les utilisateurs de l'application et expose une API que l'application Android ainsi qu'une application Web consomment.
+4. `docker-compose exec app nano .env`
+5. Dans le bloc qui commence par `DB_CONNECTION` faire les changements suivants:
 
-L'application web permet aux utilisateurs de consulter plusieurs classements "Région, pays, (amis)" ainsi que des charts plus globales tel que:
-* Total swipé par les gens de ma région
-* Total swipé par pays
-* Heure de la journée la plus/moins swipée
-* ...
+```env
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=swiped
+DB_USERNAME=root
+DB_PASSWORD=me demander le mdp (Sol)
+```
+
+6. Enregistrer quiter
+7. `docker-compose exec app php artisan key:generate`
+8. `docker-compose exec app php artisan config:cache`
+9. test: `http://localhost:8080`
+10. `docker-compose exec db bash`
+11. `mysql -u root -p`
+12. `show databases;` devrait afficher:
+
+```shell
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| swiped             |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+```
+
+13. `EXIT`
+14. `exit`
+15. `docker-compose exec app php artisan migrate`
+16. `docker-compose exec app php artisan db:seed`
+17. test: `http://localhost:8080/api/swipes`
+
