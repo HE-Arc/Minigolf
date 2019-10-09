@@ -1,14 +1,6 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
+  <v-layout column justify-center align-center>
+    <v-flex xs12 sm8 md6>
       <div class="text-center">
         <logo />
         <vuetify-logo />
@@ -19,28 +11,18 @@
         </v-card-title>
         <v-card-text>
           <p>Work in progress</p>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-          >
+          <hr class="my-3" />
+          <a href="https://nuxtjs.org/" target="_blank">
             Nuxt Documentation
           </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-          >
+          <br />
+          <a href="https://github.com/nuxt/nuxt.js" target="_blank">
             Nuxt GitHub
           </a>
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
+          <v-btn color="primary" nuxt to="/inspire">
             Continue
           </v-btn>
         </v-card-actions>
@@ -56,9 +38,8 @@ import VuetifyLogo from '~/components/VuetifyLogo.vue'
 export default {
   components: { Logo, VuetifyLogo },
   mounted() {
-    this.$axios.get("swipes")
-      .then(res => {
-        console.log(res.data);
+    this.$axios.get('swipes').then(res => {
+      console.log(res.data)
     })
   }
 }
