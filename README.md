@@ -44,13 +44,20 @@ CONTAINER ID        IMAGE                  COMMAND                  CREATED     
 afc0fbfc2c64        mysql:5.7.22           "docker-entrypoint.s…"   8 minutes ago       Up 4 minutes        0.0.0.0:3306->3306/tcp                       db
 ```
 
-5. `docker-compose exec app php artisan key:generate` (si probleme de permissions ajouter `--user=root` après `exec`)
+5. `docker-compose exec app php artisan key:generate`
 6. `docker-compose exec app php artisan config:cache`
 7. test: `http://localhost:8080` derait afficher le portail Laravel
 8. `docker-compose exec db bash`
 9.  `docker-compose exec app php artisan migrate`
 10. `docker-compose exec app php artisan db:seed`
 11. test: `http://localhost:8080/api/swipes`
+
+**ATTENTION** Assurer que dans le Dockerfile, pour les commandes:
+* `RUN groupadd -g 1000 www`
+* `RUN useradd -u 1000 -ms /bin/bash -g www www`
+
+La valeur `1000` (UID) correspond à la valeur que retourne la commande `id $USER` sur l'host.
+
 
 
 * [Liste de commandes utiles](https://github.com/HE-Arc/SwipeD/wiki/Dockerization#commandes-utiles)
