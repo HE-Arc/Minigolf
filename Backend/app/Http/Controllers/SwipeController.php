@@ -13,6 +13,9 @@ class SwipeController extends Controller
         $this->middleware('auth')->except('index');
     }
 
+    public function testjs(){
+        return view('testjs');
+    }
     public function index()
     {
         return Swipe::all();

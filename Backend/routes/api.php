@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 Route::resource('swipes', 'SwipeController');
 
+Route::view('/testjs', 'testjs');
+
 //Api Auth
 Auth::guard('api')->user(); // instance of the logged user
 Auth::guard('api')->check(); // if a user is authenticated
