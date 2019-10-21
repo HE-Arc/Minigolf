@@ -58,6 +58,13 @@ afc0fbfc2c64        mysql:5.7.22           "docker-entrypoint.s…"   8 minutes 
 
 La valeur `1000` (UID) correspond à la valeur que retourne la commande `id $USER` sur l'host.
 
-
-
 * [Liste de commandes utiles](https://github.com/HE-Arc/SwipeD/wiki/Dockerization#commandes-utiles)
+
+## Frontend
+
+* Dans le folder frontend:
+  * `mv .env_example .env`
+  * `npm i`
+  * `npm run dev` pour lancer le serveur local 
+    * tourne sur http://localhost:3000
+
