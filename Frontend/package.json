@@ -1,7 +1,7 @@
 {
-  "name": "swiped",
+  "name": "swiped-nuxt-test",
   "version": "1.0.0",
-  "description": "How many km did you swiped today?",
+  "description": "swiped-frontend",
   "author": "roscas",
   "private": true,
   "scripts": {
@@ -13,12 +13,14 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.1",
-    "nuxt": "^2.0.0"
+    "node-sass": "^4.13.0",
+    "nuxt": "^2.0.0",
+    "sass-loader": "^8.0.0",
+    "vuetify": "^2.0.0"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.0.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4"
+    "@mdi/font": "^4.5.95",
+    "@web-types/vue": "^2.5.0-3",
+    "@web-types/vuetify": "^2.0.15-1"
   }
 }

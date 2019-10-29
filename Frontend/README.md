@@ -1,6 +1,6 @@
-# swiped
+# swiped-nuxt-test
 
-> How many km did you swiped today?
+> swiped-frontend
 
 ## Build Setup
 
