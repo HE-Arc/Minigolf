@@ -1,13 +1,11 @@
 <template>
   <v-app id="app">
     <v-content>
-      <!-- Provides the application the proper gutter -->
+      <Logo class="main-logo" width="160" fontsize="4"/>
+      <app-bar/>
       <v-container class="main-container" fluid>
-        <!--                  align-content="start"-->
-        <v-row align="start" justify="center">
+        <v-row class="temp-test" align="start" justify="center">
           <v-col xs="12" sm="11" md="10" lg="7">
-            <!--            <Logo class="logo" width="280"/>-->
-            <!--              <bread-crumb class="bread-crumb" />-->
             <nuxt />
           </v-col>
         </v-row>
@@ -17,17 +15,13 @@
 </template>
 
 <script>
-// import AppBar from "../components/navbar/AppBar";
-// import Logo from "../components/Logo";
-// import Footer from "../components/footer/Footer";
-// import BreadCrumb from "../components/widgets/BreadCrumb";
+import AppBar from '../components/navbar/AppBar';
+import Logo from '../components/Logo';
 
 export default {
   components: {
-    // BreadCrumb,
-    // Footer,
-    // Logo,
-    // AppBar
+    Logo,
+    AppBar,
   },
   data: () => ({}),
   computed: {},
@@ -39,6 +33,16 @@ export default {
 <style lang="scss">
 .container {
   min-height: 0 !important;
+}
+
+.main-logo {
+  position: absolute;
+  margin-left: 5vw;
+}
+
+.temp-test{
+  margin-top: 200px;
+  height: 2000px;
 }
 
 .bread-crumb {
