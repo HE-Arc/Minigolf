@@ -29,7 +29,11 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ["~/plugins/axios.js", "~/plugins/vuetify.js"],
+  plugins: [
+    "~/plugins/axios.js",
+    "~/plugins/vuetify.js",
+    "~/plugins/vue-scrollto.js",
+  ],
   axios: {
     // proxyHeaders: false
     baseURL: process.env.API_HOST

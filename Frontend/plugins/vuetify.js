@@ -9,6 +9,9 @@ Vue.use(Vuetify);
 export default ctx => {
   const vuetify = new Vuetify({
     theme: {
+      // options: {
+      //   customProperties: true,
+      // },
       dark: false,
        themes: {
          dark: {
@@ -18,8 +21,19 @@ export default ctx => {
            info: colors.teal.lighten1,
            warning: colors.amber.base,
            error: colors.deepOrange.accent4,
-           success: colors.green.accent4
-         }
+           success: colors.green.accent4,
+           background: '#303030',
+         },
+         light: {
+           primary: colors.deepPurple.lighten2,
+           accent: colors.deepPurple.accent3,
+           secondary: colors.amber.darken3,
+           info: colors.teal.lighten1,
+           warning: colors.amber.base,
+           error: colors.deepOrange.accent4,
+           success: colors.green.accent4,
+           background: '#fff',
+         },
         }
       },
   });

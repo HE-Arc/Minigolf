@@ -1,32 +1,46 @@
 <template>
-  <v-app id="app">
+  <v-app
+    id="app"
+    :style="appStyle"
+  >
     <v-content>
-      <Logo class="main-logo" width="160" fontsize="4"/>
-      <app-bar/>
-      <v-container class="main-container" fluid>
-        <v-row class="temp-test" align="start" justify="center">
+      <div class="logo-container">
+        <Logo class="main-logo" />
+      </div>
+      <app-bar />
+      <v-container fluid>
+        <v-row class="main-row" align="start" justify="center">
           <v-col xs="12" sm="11" md="10" lg="7">
             <nuxt />
           </v-col>
         </v-row>
       </v-container>
     </v-content>
+    
+    <Footer class="footer" />
   </v-app>
 </template>
 
 <script>
-import AppBar from '../components/navbar/AppBar';
-import Logo from '../components/Logo';
+import AppBar from "../components/navbar/AppBar";
+import Logo from "../components/Logo";
+import Footer from '../components/Footer';
 
 export default {
   components: {
+    Footer,
     Logo,
-    AppBar,
+    AppBar
   },
   data: () => ({}),
-  computed: {},
-  methods: {},
-  mounted() {}
+  computed: {
+    appStyle() {
+      return {
+        'background-color': this.$vuetify.theme.currentTheme.background,
+        '--primary-color': this.$vuetify.theme.currentTheme.primary
+      };
+    }
+  },
 };
 </script>
 
@@ -35,20 +49,22 @@ export default {
   min-height: 0 !important;
 }
 
-.main-logo {
+.logo-container {
+  margin-top: 40px;
+  /*margin-bottom: 10px;*/
   position: absolute;
   margin-left: 5vw;
 }
 
-.temp-test{
+.main-row {
   margin-top: 200px;
   height: 2000px;
 }
 
-.bread-crumb {
-  margin-top: -10px;
-  margin-bottom: 20px;
-}
+/*.bread-crumb {*/
+/*  margin-top: -10px;*/
+/*  margin-bottom: 20px;*/
+/*}*/
 
 .footer {
   z-index: 0 !important;
