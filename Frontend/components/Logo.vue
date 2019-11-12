@@ -46,7 +46,6 @@ export default {
     margin: 0;
     display: flex;
     align-items: center;
-    background-color: #fff;
   
     .icon {
       /*font-size: 2em;*/

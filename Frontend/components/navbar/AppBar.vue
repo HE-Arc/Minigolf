@@ -12,9 +12,9 @@
 
       <Categories class="categories" />
 
-      <v-app-bar-nav-icon class="mobile-button" @click.stop="$emit('drawer')" />
-
       <darkmode-switch class="dark-mode-switch" />
+      
+      <v-app-bar-nav-icon class="mobile-button" @click.stop="$emit('drawer')" />
     </div>
   </v-app-bar>
 </template>
@@ -87,15 +87,18 @@ export default {
 
   .mobile-button {
     display: none;
-    position: absolute;
+    /*position: absolute;*/
+    /*position: relative;*/
+    /*margin-left: auto;*/
     right: 10px;
-    top: 5px;
+    margin-left: 10px;
     @media screen and (max-width: $tablet) {
       display: flex;
     }
   }
 
   .dark-mode-switch {
+    margin-left: auto;
     @media screen and (max-width: $tablet) {
     }
   }
