@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import Modal from "../components/base-components/Modal";
-import Dialog from "../components/base-components/Dialog";
+import Modal from "../components/modal/Modal";
+import Dialog from "../components/modal/Dialog";
 export default {
   components: { Dialog, Modal },
   data: () => ({
