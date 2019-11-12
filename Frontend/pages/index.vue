@@ -19,7 +19,9 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer />
-
+            <v-btn color="primary" @click.stop="() => (dialog = true)">
+              Dialog test
+            </v-btn>
             <v-btn color="primary" @click.stop="() => (modal = true)">
               Modal test
             </v-btn>
@@ -30,32 +32,40 @@
         </v-card>
       </v-col>
     </v-row>
-
-    <base-modal
+    <Dialog warning :modal="dialog" @close="dialog = false">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur ex
+        expedita fugit vero? Aperiam beatae commodi dolores eos fuga fugiat
+        laudantium non optio quam quisquam, sit sunt totam ullam veritatis!
+      </p>
+    </Dialog>
+    <Modal
       :modal="modal"
       @close="modal = false"
-      width="650"
-      headline="A Modal"
-      type="edit"
+      title="A Modal"
+      subtitle="It's subtitle"
     >
-      <template v-slot:body>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
-          aperiam cumque eaque, eos esse est fuga illo molestiae nam odit qui
-          quia quo quod repudiandae sed soluta ullam unde voluptates.
-        </p>
-      </template>
-    </base-modal>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam
+        cumque eaque, eos esse est fuga illo molestiae nam odit qui quia quo
+        quod repudiandae sed soluta ullam unde voluptates.
+      </p>
+    </Modal>
   </v-container>
 </template>
 
 <script>
-import BaseModal from "../components/base-components/BaseModal";
+import Modal from "../components/base-components/Modal";
+import Dialog from "../components/base-components/Dialog";
 export default {
-  components: { BaseModal },
+  components: { Dialog, Modal },
   data: () => ({
-    modal: false
-  })
+    modal: false,
+    dialog: false
+  }),
+  mounted() {
+    console.log(this.$store.state.swipes.data);
+  }
 };
 </script>
 
