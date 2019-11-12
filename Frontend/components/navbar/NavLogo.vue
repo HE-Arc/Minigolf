@@ -8,17 +8,11 @@
 import Logo from "../Logo";
 
 export default {
+  name: "NavLogo",
   components: { Logo },
   props: {
     show: { type: Boolean }
   },
-  name: "NavLogo",
-
-  watch: {
-    show(newValue, oldValue) {
-      console.log(newValue);
-    }
-  }
 };
 </script>
 

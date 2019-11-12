@@ -12,7 +12,11 @@ export default {
   data: () => ({
     toggle: false,
   }),
-
+  watch: {
+    toggle(value) {
+      this.$vuetify.theme.dark = value;
+    },
+  },
 };
 </script>
 

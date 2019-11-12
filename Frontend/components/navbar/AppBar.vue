@@ -8,20 +8,13 @@
     short
   >
     <div class="nav-elements">
-    
-<!--      <div class="nav-logo">-->
-<!--        <transition name="fade">-->
-<!--          <Logo class="nav-logo" v-show="sticky" nav />-->
-<!--        </transition>-->
-<!--      </div>-->
-      
-      <nav-logo class="nav-logo" :show="sticky"/>
+      <nav-logo class="nav-logo" :show="sticky" />
 
       <Categories class="categories" />
 
       <v-app-bar-nav-icon class="mobile-button" @click.stop="$emit('drawer')" />
 
-      <Darkmode class="dark-mode-switch" />
+      <darkmode-switch class="dark-mode-switch" />
     </div>
   </v-app-bar>
 </template>
@@ -29,12 +22,12 @@
 <script>
 import Logo from "../Logo";
 import Categories from "./Categories";
-import Darkmode from "./Darkmode";
-import NavLogo from './NavLogo';
+import DarkmodeSwitch from "./DarkmodeSwitch";
+import NavLogo from "./NavLogo";
 
 export default {
   name: "AppBar",
-  components: { NavLogo, Darkmode, Categories, Logo },
+  components: { NavLogo, DarkmodeSwitch, Categories, Logo },
   props: {
     drawer: { type: Boolean }
   },
@@ -73,19 +66,15 @@ export default {
 
 .navbar {
   z-index: 2;
-  /*display: flex;*/
-  /*width: 100%;*/
 }
 
 .nav-elements {
   width: 100%;
   display: flex;
   align-items: center;
-  /*align-items: center;*/
 
   .nav-logo {
     position: absolute;
-    top: 4px;
     @media screen and (max-width: $medium) {
     }
   }
@@ -107,8 +96,6 @@ export default {
   }
 
   .dark-mode-switch {
-    /*display: flex;*/
-    transform: scale(0.85);
     @media screen and (max-width: $tablet) {
     }
   }
