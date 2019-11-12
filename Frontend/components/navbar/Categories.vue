@@ -1,5 +1,5 @@
 <template>
-  <v-row align="start" justify="center">
+  <v-row class="categories" align="start" justify="center">
     <v-col class="categories" xs="12" sm="8" lg="7">
       <v-btn
         v-for="(link, i) in links"
@@ -33,4 +33,6 @@ export default {
 
 <style lang="scss" scoped>
 
+  .categories {
+  }
 </style>
