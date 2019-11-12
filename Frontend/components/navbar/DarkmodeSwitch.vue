@@ -1,8 +1,13 @@
 <template>
-  <div class="darkmode-wrapper">
-    <v-icon>mdi-theme-light-dark</v-icon>
-    <v-switch class="ml-3" hide-details v-model="toggle"></v-switch>
-  </div>
+  <v-tooltip top>
+    <template v-slot:activator="{ on }">
+      <div v-on="on" class="darkmode-wrapper">
+        <v-icon @click="() => toggle = !toggle">mdi-theme-light-dark</v-icon>
+        <v-switch class="ml-3" v-model="toggle" hide-details/>
+      </div>
+    </template>
+    <span>Toggle darkmode</span>
+  </v-tooltip>
 </template>
 
 <script>
@@ -20,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .darkmode-wrapper {
-    display: flex;
-  }
+.darkmode-wrapper {
+  display: flex;
+}
 </style>

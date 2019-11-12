@@ -1,44 +1,47 @@
 <template>
-<div>
-  <nuxt-link to="/" class="link-wrapper">
-    <div class="logo">
-      <v-icon class="icon" :style="iconStyle">mdi-fingerprint</v-icon>
-      <span class="text" :style="textStyle">SwipeD</span>
-    </div>
-  </nuxt-link>
-</div>
+  <div class="logo-wrapper">
+    <nuxt-link to="/" class="link">
+      <div class="logo">
+        <v-icon class="icon" :style="iconStyle">mdi-fingerprint</v-icon>
+        <span class="text" :style="textStyle">SwipeD</span>
+      </div>
+    </nuxt-link>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Logo',
+  name: "Logo",
   components: {},
   props: {
-    nav: { type: Boolean },
+    nav: { type: Boolean }
   },
   data: () => ({
-    offsetTop: 0,
+    offsetTop: 0
   }),
   computed: {
     textStyle() {
       return {
-        'font-size': (this.nav ? '24' : '44') + 'px',
-        'color': this.$vuetify.theme.currentTheme.primary
-      }
+        "font-size": (this.nav ? "24" : "44") + "px",
+        color: this.$vuetify.theme.currentTheme.primary
+      };
     },
     iconStyle() {
       return {
-        'font-size': (this.nav ? '34': '64') + 'px',
-      }
+        "font-size": (this.nav ? "34" : "64") + "px"
+      };
     }
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-  @import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Work+Sans&display=swap");
 
-  .link-wrapper {
+.logo-wrapper {
+  text-decoration: none;
+
+  .link {
     text-decoration: none;
   }
 
@@ -46,16 +49,14 @@ export default {
     margin: 0;
     display: flex;
     align-items: center;
-  
+
     .icon {
-      /*font-size: 2em;*/
     }
-  
+
     .text {
-      /*margin-top: 2px;*/
       font-family: "Work Sans", sans-serif;
       font-weight: bold;
     }
   }
-
+}
 </style>
