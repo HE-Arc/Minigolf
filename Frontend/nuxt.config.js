@@ -33,6 +33,7 @@ export default {
     "~/plugins/axios.js",
     "~/plugins/vuetify.js",
     "~/plugins/vue-scrollto.js",
+    "~/plugins/notifications.js",
     { src: '~/plugins/vue-shortkey.js', mode: 'client' },
   ],
   axios: {
@@ -46,7 +47,10 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ["@nuxtjs/axios"],
+  modules: [
+    "@nuxtjs/axios",
+    "nuxt-izitoast",
+  ],
   /*
    ** Build configuration
    */

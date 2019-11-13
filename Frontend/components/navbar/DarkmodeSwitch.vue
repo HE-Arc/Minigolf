@@ -19,8 +19,15 @@ export default {
   watch: {
     toggle(value) {
       this.$vuetify.theme.dark = value;
+      this.notify()
     }
-  }
+  },
+  methods: {
+    notify() {
+      let message = `Darkmod ${this.$vuetify.theme.dark ? 'on' : 'off'}`;
+      this.$notifications("info", message);
+    },
+  },
 };
 </script>
 
