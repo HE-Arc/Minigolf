@@ -1,12 +1,18 @@
 <template>
-  <v-dialog v-model="modal" :width="width" persistent @click:outside="close">
+  <v-dialog
+          persistent
+          v-model="modal"
+          :width="width"
+          v-shortkey="['esc']"
+          @shortkey.native="$emit('close')"
+          @click:outside="!confirmation ? close : null">
     <v-card class="pa-4">
       <v-list>
         <v-list-item>
           <slot name="header"></slot>
 
           <v-list-item-avatar v-if="!confirmation" class="close-button">
-            <v-btn @click="close()" text small>
+            <v-btn text small @click="close()">
               <v-icon color="pink">mdi-close</v-icon>
             </v-btn>
           </v-list-item-avatar>
@@ -35,7 +41,7 @@ export default {
   computed: {},
   methods: {
     close() {
-      if (!this.confirmation) this.$emit("close");
+      this.$emit("close");
     }
   }
 };

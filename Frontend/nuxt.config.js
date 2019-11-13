@@ -33,6 +33,7 @@ export default {
     "~/plugins/axios.js",
     "~/plugins/vuetify.js",
     "~/plugins/vue-scrollto.js",
+    { src: '~/plugins/vue-shortkey.js', mode: 'client' },
   ],
   axios: {
     // proxyHeaders: false

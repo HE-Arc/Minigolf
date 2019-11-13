@@ -17,7 +17,14 @@
     <template v-slot:actions>
       <v-row justify="center">
         <v-col cols="3">
-          <v-btn color="green darken-1" @click="confirm" text block>
+          <v-btn
+            text
+            block
+            color="green darken-1"
+            v-shortkey="['enter']"
+            @shortkey.native="confirm"
+            @click="confirm"
+          >
             <v-icon left class="mb-1">mdi-check</v-icon>
             OK
           </v-btn>
@@ -71,6 +78,7 @@ export default {
     },
     confirm() {
       console.log("Ok");
+      this.$emit("close");
     }
   }
 };
