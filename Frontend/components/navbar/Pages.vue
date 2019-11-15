@@ -1,6 +1,6 @@
 <template>
-  <v-row class="categories" align="start" justify="center">
-    <v-col class="categories" xs="12" sm="8" lg="7">
+  <v-row class="pages" align="start" justify="center">
+    <v-col class="pages" xs="12" sm="8" lg="7">
       <v-btn
         v-for="(link, i) in links"
         class="font-weight-regular"
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "Categories",
+  name: "Pages",
   data: () => ({
     links: [
       { name: "Laderboard", to: "" },
@@ -33,6 +33,6 @@ export default {
 
 <style lang="scss" scoped>
 
-  .categories {
+  .pages {
   }
 </style>

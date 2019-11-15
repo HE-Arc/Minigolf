@@ -7,13 +7,15 @@
       <app-bar />
       <v-container fluid>
         <v-row class="main-row" align="start" justify="center">
-          <v-col xs="12" sm="11" md="10" lg="7">
+          <v-col cols="12" xs="12" sm="11" md="10" lg="7">
+            <Breadcrumb class="ml-4" />
+          </v-col>
+          <v-col cols="12" xs="12" sm="11" md="10" lg="7">
             <nuxt />
           </v-col>
         </v-row>
       </v-container>
     </v-content>
-
     <Footer class="footer" />
   </v-app>
 </template>
@@ -22,9 +24,11 @@
 import AppBar from "../components/navbar/AppBar";
 import Logo from "../components/Logo";
 import Footer from "../components/Footer";
+import Breadcrumb from "../components/Breadcrumb";
 
 export default {
   components: {
+    Breadcrumb,
     Footer,
     Logo,
     AppBar
@@ -63,9 +67,4 @@ export default {
   width: 100%;
   font-size: 100px;
 }
-
-/*.bread-crumb {*/
-/*  margin-top: -10px;*/
-/*  margin-bottom: 20px;*/
-/*}*/
 </style>

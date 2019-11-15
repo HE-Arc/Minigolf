@@ -1,5 +1,5 @@
 <template>
-  <base-modal :modal="modal" :width="width" @close="close">
+  <base-modal :modal="modal" :width="width" @close="$emit('close')">
     <template v-slot:header>
       <v-list-item-content>
         <v-list-item-title>

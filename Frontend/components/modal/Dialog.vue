@@ -74,11 +74,11 @@ export default {
   },
   methods: {
     close() {
-      this.$notifications("error", "Action canceled");
+      this.$notifications("warning");
       this.$emit("close");
     },
     confirm() {
-      this.$notifications("success", "Action confirmed");
+      this.$notifications("success");
       this.$emit("close");
     }
   }
