@@ -1,5 +1,5 @@
 export default {
-  swipes: "swipes",
+  swipes: "users",
   cities: "cities",
   countries: "countries",
 }

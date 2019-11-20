@@ -66,7 +66,7 @@ export default {
     dialog: false
   }),
   mounted() {
-    // console.log(this.$store.state.swipes.data);
+    console.log(this.$store.state.swipes.data);
   }
 };
 </script>
