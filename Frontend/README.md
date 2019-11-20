@@ -20,3 +20,15 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Pages
+
+* Landing
+* Minigolfs (compatibles avec l'app)
+* Mes résultats (on user logged)
+* Admin (on admin loggedin)
+    * CRUD minigolf
+
+
+
+
