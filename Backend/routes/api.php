@@ -14,8 +14,8 @@ use Illuminate\Http\Request;
 */
 
 Route::resource('swipes', 'SwipeController');
+Route::resource('users', 'UserController');
 
-Route::view('/testjs', 'testjs');
 
 //Api Auth
 Auth::guard('api')->user(); // instance of the logged user
