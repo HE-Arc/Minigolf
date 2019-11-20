@@ -14,17 +14,17 @@ export default ({ app }, inject) => {
       // let obj = { position: position, displayMode: "once", message: message };
       switch (type) {
         case "success":
-          // obj.title = "Succès";
+          obj.message = message ? message : "Action confirmed";
           app.$notify.success(obj);
           break;
         case "warning":
+          obj.message = message ? message : "Action canceled";
           // obj.title = "Attention";
           app.$notify.warning(obj);
           break;
         case "error":
-          obj.message = message ? message : "Une erreur est survenue";
+          obj.message = message ? message : "An error occurred";
           app.$notify.error(obj);
-          console.log("Error");
           break;
         case "info":
           // obj.title = "Info";

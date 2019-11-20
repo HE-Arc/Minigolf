@@ -25,8 +25,8 @@
             <v-btn color="primary" @click.stop="() => (modal = true)">
               Modal test
             </v-btn>
-            <v-btn color="primary" nuxt to="/inspire">
-              Continue
+            <v-btn color="primary" nuxt to="/users">
+              Users
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -57,14 +57,16 @@
 <script>
 import Modal from "../components/modal/Modal";
 import Dialog from "../components/modal/Dialog";
+
 export default {
+  name: "Home",
   components: { Dialog, Modal },
   data: () => ({
     modal: false,
     dialog: false
   }),
   mounted() {
-    console.log(this.$store.state.swipes.data);
+    // console.log(this.$store.state.swipes.data);
   }
 };
 </script>

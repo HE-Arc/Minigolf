@@ -9,11 +9,8 @@
   >
     <div class="nav-elements">
       <nav-logo class="nav-logo" :show="sticky" />
-
-      <Categories class="categories" />
-
+      <Pages class="pages" />
       <darkmode-switch class="dark-mode-switch" />
-      
       <v-app-bar-nav-icon class="mobile-button" @click.stop="$emit('drawer')" />
     </div>
   </v-app-bar>
@@ -21,13 +18,13 @@
 
 <script>
 import Logo from "../Logo";
-import Categories from "./Categories";
+import Pages from "./Pages";
 import DarkmodeSwitch from "./DarkmodeSwitch";
 import NavLogo from "./NavLogo";
 
 export default {
   name: "AppBar",
-  components: { NavLogo, DarkmodeSwitch, Categories, Logo },
+  components: { NavLogo, DarkmodeSwitch, Pages, Logo },
   props: {
     drawer: { type: Boolean }
   },
@@ -79,7 +76,7 @@ export default {
     }
   }
 
-  .categories {
+  .pages {
     @media screen and (max-width: $tablet) {
       display: none;
     }
