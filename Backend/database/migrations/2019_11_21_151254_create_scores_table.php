@@ -18,6 +18,7 @@ class CreateScoresTable extends Migration
             $table->bigInteger('player_id')->unsigned();
             $table->bigInteger('hole_id')->unsigned();
             $table->integer('score');
+            $table->timestamps();
         });
 
         Schema::table('scores', function($table) {

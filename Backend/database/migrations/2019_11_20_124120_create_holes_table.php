@@ -17,6 +17,7 @@ class CreateHolesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('course_id')->unsigned();
             $table->string("number");
+            $table->timestamps();
         });
 
         Schema::table('holes', function ($table) {

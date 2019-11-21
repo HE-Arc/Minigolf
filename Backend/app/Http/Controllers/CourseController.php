@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Address;
+use App\Course;
 use Illuminate\Http\Request;
 
-class AddressController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,9 @@ class AddressController extends Controller
      */
     public function index()
     {
-        return Address::all();
+//        return Course::all();
+        $course = Course::with('holes')->get();
+        return $course;
     }
 
     /**
@@ -24,39 +26,39 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $address = Address::create($request->all());
-        return response()->json($address, 201);
+        $course = Course::create($request->all());
+        return response()->json($course, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Address  $address
+     * @param  \App\Course $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Address $address)
+    public function show(Course $course)
     {
-        return $address;
+        return $course;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Address  $address
+     * @param  \App\Course $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Address $address)
+    public function edit(Course $course)
     {
         //
     }
@@ -64,26 +66,25 @@ class AddressController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Address  $address
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Course $course
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Address $address)
+    public function update(Request $request, Course $course)
     {
-        $address->update($request->all());
-
-        return $address;
+        $course->update($request->all());
+        return $course;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Address  $address
+     * @param  \App\Course $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Address $address)
+    public function destroy(Course $course)
     {
-        $address->delete();
+        $course->delete();
 
         return response()->json(null, 204);
     }

@@ -17,6 +17,7 @@ class CreatePlayersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('game_id')->unsigned();
+            $table->timestamps();
         });
 
         Schema::table('players', function($table) {

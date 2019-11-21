@@ -19,6 +19,7 @@ class CreateGamesTable extends Migration
             $table->string('token', 6)->unique();
             $table->boolean('isStarted');
             $table->dateTime('date');
+            $table->timestamps();
         });
 
         Schema::table('games', function ($table) {

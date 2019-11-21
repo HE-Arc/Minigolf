@@ -21,6 +21,7 @@ class CreateMinigolfsTable extends Migration
             $table->string('numpostal');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->timestamps();
         });
     }
 

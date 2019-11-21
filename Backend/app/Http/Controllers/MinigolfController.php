@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Minigolf;
-use App\Game;
 use Illuminate\Http\Request;
 
 class MinigolfController extends Controller
@@ -15,6 +14,8 @@ class MinigolfController extends Controller
      */
     public function index()
     {
+        $minigolf = Minigolf::with('courses.holes')->get();
+        return $minigolf;
         return Minigolf::all();
     }
 
