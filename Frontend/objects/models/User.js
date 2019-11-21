@@ -1,4 +1,4 @@
-import endpoints from "../configs/endpoints";
+import endpoints from "../../configs/endpoints";
 
 export default class User {
   constructor(data = {}) {
@@ -7,6 +7,10 @@ export default class User {
     this.email = data.email;
 
     this.storeName = "users"
+  }
+
+  static string() {
+    return "User"
   }
 
   static endpoint(id = false) {

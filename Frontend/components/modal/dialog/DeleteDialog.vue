@@ -11,7 +11,7 @@
   import Dialog from './Dialog';
 
   export default {
-    name: 'ActionDialog',
+    name: 'DeleteDialog',
     components: { Dialog },
     props: {
       delete: { type: Boolean, default: false },
@@ -22,20 +22,16 @@
         return this.$store.state.dialog
       },
       object() {
-        if (this.delete) return this.state.delete;
-        if (this.update) return this.state.update;
+        return this.state.delete;
       },
       commit() {
-        if (this.delete) return "dialog/DELETE";
-        if (this.update) return "dialog/UPDATE";
+        return "dialog/DELETE";
       },
       dispatch() {
-        if (this.delete) return `${this.object.storeName}/delete`;
-        if (this.update) return `${this.object.storeName}/update`;
+        return `${this.object.storeName}/delete`;
       },
       actionName() {
-        if (this.delete) return "delete";
-        if (this.update) return "update";
+        return "delete";
       },
       modal: {
         get() {

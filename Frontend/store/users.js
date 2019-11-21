@@ -1,4 +1,4 @@
-import User from '../objects/User';
+import User from '../objects/models/User';
 
 export const state = () => ({
   data: [],
@@ -41,14 +41,12 @@ export const actions = {
         .catch(err => this.$notifications('error'));
   },
   update({ commit }, data) {
-    console.log(`Dispatching update request on object with id ${data.id}`);
     this.$axios
         .patch(User.endpoint(data.id), data)
         .then(res => commit('UPDATE', res.data))
         .catch(err => this.$notifications('error'));
   },
   delete({ commit }, data) {
-    console.log(`Dispatching delete request on object with id ${data.id}`);
     this.$axios
         .delete(User.endpoint(data.id))
         .then(res => commit('DELETE', data.id))

@@ -26,7 +26,7 @@
             @click="confirm"
           >
             <v-icon left class="mb-1">mdi-check</v-icon>
-            Yes
+            {{ confirmText }}
           </v-btn>
         </v-col>
         <v-col cols="3">
@@ -48,6 +48,7 @@ export default {
   props: {
     modal: { type: Boolean },
     width: { type: String },
+    confirmText: { type: String, default: "Yes"},
     info: { type: Boolean, default: false },
     warning: { type: Boolean, default: false },
     danger: { type: Boolean, default: false }
@@ -74,11 +75,9 @@ export default {
   },
   methods: {
     close() {
-      this.$notifications("warning");
       this.$emit("close");
     },
     confirm() {
-      this.$notifications("success");
       this.$emit("confirm");
     }
   }
