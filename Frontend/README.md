@@ -27,4 +27,3 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 * Mes résultats (on user logged)
 * Admin (on admin loggedin)
     * CRUD minigolf
-
