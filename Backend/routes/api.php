@@ -15,10 +15,9 @@ use Illuminate\Http\Request;
 
 //Route::resource('swipes', 'SwipeController');
 Route::resource('users', 'UserController');
+Route::resource('courses', 'CourseController');
 Route::resource('minigolfs', 'MinigolfController');
 Route::resource('games', 'GameController');
-Route::resource('addresses', 'AddressController');
-
 
 //Api Auth
 Auth::guard('api')->user(); // instance of the logged user
