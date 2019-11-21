@@ -1,16 +1,17 @@
-import endpoints from "../../configs/endpoints";
+import Model from './abstract/Model';
+import endpoints from '../../configs/endpoints';
 
-export default class User {
+export default class User extends Model {
   constructor(data = {}) {
-    this.id = data.id;
+    super("users", data.id);
+
     this.name = data.name;
     this.email = data.email;
-
-    this.storeName = "users"
   }
 
-  static string() {
-    return "User"
+  initForm() {
+    this.form.createTextField({field: "name", label: "Name", required: true});
+    this.form.createTextField({field: "email", label: "Email", type: "email", min: 4, max: 30});
   }
 
   static endpoint(id = false) {

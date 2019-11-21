@@ -4,7 +4,7 @@
       <v-col xs="12">
         <v-card>
           <v-card-title class="headline">
-            Welcome to SwipeD
+            Welcome to iGolf
           </v-card-title>
           <v-card-text>
             <p>Work in progress</p>
@@ -47,6 +47,7 @@
 <script>
 import Modal from "../components/modal/Modal";
 import Dialog from "../components/modal/dialog/Dialog";
+import Form from '../objects/forms/abstract/Form';
 
 export default {
   name: "Home",
@@ -55,6 +56,19 @@ export default {
     modal: false,
     dialog: false
   }),
+  mounted() {
+    // const name = new TextField({field: "name", label: "Name", required: true});
+    // const email = new TextField({field: "email", label: "Email", type: "email", min: 4, max: 30});
+    // const ready = new CheckBox({field: "ready", label: "Ready"});
+    // const form = new Form([name, ready, email]);
+    
+    const form = new Form();
+    form.createTextField({field: "name", label: "Name", required: true});
+    form.createTextField({field: "email", label: "Email", type: "email", min: 4, max: 30});
+    form.createCheckBox({field: "ready", label: "Ready"});
+    
+    console.log(form.textFields());
+  }
 };
 </script>
 

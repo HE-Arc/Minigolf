@@ -3,7 +3,7 @@
     <nuxt-link to="/" class="link">
       <div class="logo">
         <span class="text" :style="textStyle">iG</span>
-        <img class="icon" src="../assets/icons/golf.svg" alt="minigolf ball" :style="iconStyle">
+        <img class="icon" src="../assets/icons/golf.svg" alt="golf ball" :style="iconStyle">
         <span class="text" :style="textStyle">lf</span>
       </div>
     </nuxt-link>
