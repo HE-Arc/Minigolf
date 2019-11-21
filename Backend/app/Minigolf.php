@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Minigolf extends Model
 {
     protected $fillable = [
-        'name', 'adress',
+        'name', 'city', 'canton', 'numpostal', 'phone', 'email',
     ];
 }

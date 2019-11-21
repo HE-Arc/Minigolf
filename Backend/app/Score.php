@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Game extends Model
+class Score extends Model
 {
     protected $fillable = [
-        'user_id',
+        'player_id', 'hole_id', 'score',
     ];
 }
