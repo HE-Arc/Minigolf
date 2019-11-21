@@ -29,11 +29,6 @@ export default {
     subtitle: { type: String },
     width: { type: String }
   },
-  methods: {
-    close() {
-      this.$emit("close");
-    }
-  }
 };
 </script>
 

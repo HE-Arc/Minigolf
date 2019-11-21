@@ -19,26 +19,16 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer />
-            <v-btn color="primary" @click.stop="() => (dialog = true)">
-              Dialog test
-            </v-btn>
             <v-btn color="primary" @click.stop="() => (modal = true)">
               Modal test
             </v-btn>
             <v-btn color="primary" nuxt to="/users">
-              Users
+              Users test
             </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
-    <Dialog warning :modal="dialog" @close="dialog = false">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur ex
-        expedita fugit vero? Aperiam beatae commodi dolores eos fuga fugiat
-        laudantium non optio quam quisquam, sit sunt totam ullam veritatis!
-      </p>
-    </Dialog>
     <Modal
       :modal="modal"
       @close="modal = false"
@@ -56,7 +46,7 @@
 
 <script>
 import Modal from "../components/modal/Modal";
-import Dialog from "../components/modal/Dialog";
+import Dialog from "../components/modal/dialog/Dialog";
 
 export default {
   name: "Home",
@@ -65,9 +55,6 @@ export default {
     modal: false,
     dialog: false
   }),
-  mounted() {
-    console.log(this.$store.state.swipes.data);
-  }
 };
 </script>
 

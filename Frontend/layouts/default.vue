@@ -17,6 +17,10 @@
       </v-container>
     </v-content>
     <Footer class="footer" />
+    
+<!--    Temporary-->
+    <action-dialog delete />
+    <action-dialog update />
   </v-app>
 </template>
 
@@ -25,9 +29,11 @@ import AppBar from "../components/navbar/AppBar";
 import Logo from "../components/Logo";
 import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
+import ActionDialog from '../components/modal/dialog/ActionDialog';
 
 export default {
   components: {
+    ActionDialog,
     Breadcrumb,
     Footer,
     Logo,

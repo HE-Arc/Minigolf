@@ -26,7 +26,7 @@
             @click="confirm"
           >
             <v-icon left class="mb-1">mdi-check</v-icon>
-            OK
+            Yes
           </v-btn>
         </v-col>
         <v-col cols="3">
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import BaseModal from "./BaseModal";
+import BaseModal from "../BaseModal";
 export default {
   name: "Dialog",
   components: { BaseModal },
@@ -79,7 +79,7 @@ export default {
     },
     confirm() {
       this.$notifications("success");
-      this.$emit("close");
+      this.$emit("confirm");
     }
   }
 };
@@ -87,6 +87,6 @@ export default {
 
 <style lang="scss" scoped>
 .header-icon {
-  font-size: 54px;
+  font-size: 54px !important;
 }
 </style>

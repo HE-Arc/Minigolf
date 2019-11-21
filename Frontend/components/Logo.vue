@@ -2,7 +2,6 @@
   <div class="logo-wrapper">
     <nuxt-link to="/" class="link">
       <div class="logo">
-<!--        <v-icon class="icon" :style="iconStyle">mdi-fingerprint</v-icon>-->
         <span class="text" :style="textStyle">iG</span>
         <img class="icon" src="../assets/icons/golf.svg" alt="minigolf ball" :style="iconStyle">
         <span class="text" :style="textStyle">lf</span>
@@ -24,13 +23,13 @@ export default {
   computed: {
     textStyle() {
       return {
-        "font-size": (this.nav ? "24" : "44") + "px",
+        "font-size": (this.nav ? "34" : "64") + "px",
         color: this.$vuetify.theme.currentTheme.primary
       };
     },
     iconStyle() {
       return {
-        "width": (this.nav ? "16" : "28") + "px"
+        "width": (this.nav ? "30" : "64") + "px"
       };
     }
   }
@@ -53,9 +52,7 @@ export default {
     align-items: center;
 
     .icon {
-      /*margin-top: 3px;*/
       fill: red;
-      /*width: 70px;*/
     }
 
     .text {

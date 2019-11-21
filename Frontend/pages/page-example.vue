@@ -25,7 +25,7 @@
 
 <script>
 import Modal from "../components/modal/Modal";
-import Dialog from "../components/modal/Dialog";
+import Dialog from "../components/modal/dialog/Dialog";
 
 export default {
   name: "page-example",
