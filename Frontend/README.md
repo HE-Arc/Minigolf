@@ -1,6 +1,5 @@
-# swiped-nuxt-test
+# Minigolf Frontend
 
-> swiped-frontend
 
 ## Build Setup
 

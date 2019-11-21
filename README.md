@@ -1,11 +1,4 @@
-# SwipeD
-
-## In a nutshell
-
-SwipeD est une application Android qui a pour but de faire prendre conscience à l'utilisateur de la distance qu'il swipe sur son smartphone. Le projet est découpé en deux parties distinctes:
-
-* Application [Android](https://www.intra.jrosk.ch/projets/SwipeD/)
-* Application Web [ici](https://github.com/HE-Arc/SwipeD/wiki/Cahier-des-charges-Backend#backend) et [là](https://github.com/HE-Arc/SwipeD/wiki/Cahier-des-charges-Frontend#application-web)
+# Minigolf
 
 ## Git flow
 
