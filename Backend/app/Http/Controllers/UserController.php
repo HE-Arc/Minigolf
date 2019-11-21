@@ -10,13 +10,14 @@ namespace App\Http\Controllers;
 
 
 use App\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
 
     public function __construct()
         {
-            $this->middleware('auth')->except('index');
+//            $this->middleware('auth')->except(['index', 'delete', 'show']);
         }
 
         public function index()
@@ -38,14 +39,18 @@ class UserController extends Controller
         public function update(Request $request, User $user)
         {
             $user->update($request->all());
-
             return $user;
         }
 
         public function delete(User $user)
         {
             $user->delete();
+            return response()->json(null, 204);
+        }
 
+        public function destroy($id) {
+            $user = User::findOrFail($id);
+            $user->delete();
             return response()->json(null, 204);
         }
 }

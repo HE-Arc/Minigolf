@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 //Route::resource('swipes', 'SwipeController');
 Route::resource('users', 'UserController');
 Route::resource('minigolfs', 'MinigolfController');
-Route::resource('parties', 'PartyController');
+Route::resource('games', 'GameController');
 Route::resource('addresses', 'AddressController');
 
 

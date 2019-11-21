@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Minigolf;
-use App\Party;
+use App\Game;
 use Illuminate\Http\Request;
 
 class MinigolfController extends Controller
@@ -72,7 +72,6 @@ class MinigolfController extends Controller
     public function update(Request $request, Minigolf $minigolf)
     {
         $minigolf->update($request->all());
-
         return $minigolf;
     }
 
