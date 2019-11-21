@@ -30,12 +30,25 @@
         </v-row>
       </li>
     </ul>
+    <v-btn class="mt-2" color="primary" nuxt @click="create">
+      create test
+    </v-btn>
   </div>
 </template>
 
 <script>
 export default {
-  name: "user-list"
+  name: "user-list",
+  methods: {
+    create() {
+      const user = {
+        "name": "George",
+        "email": "george@gmail.com",
+        "password": "lala",
+      };
+      this.$store.dispatch("users/create", user)
+    },
+  },
 };
 </script>
 

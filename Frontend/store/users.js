@@ -36,23 +36,23 @@ export const actions = {
   },
   create({ commit }, data) {
     this.$axios
-        .post(User.endpoint(), form(data))
+        .post(User.endpoint(), data)
         .then(res => commit('CREATE', res.data))
         .catch(err => this.$notifications('error'));
   },
   update({ commit }, data) {
     console.log(`Dispatching update request on object with id ${data.id}`);
-    // this.$axios
-    //     .patch(User.endpoint(data.id), data)
-    //     .then(res => commit('UPDATE', res.data))
-    //     .catch(err => this.$notifications('error'));
+    this.$axios
+        .patch(User.endpoint(data.id), data)
+        .then(res => commit('UPDATE', res.data))
+        .catch(err => this.$notifications('error'));
   },
   delete({ commit }, data) {
     console.log(`Dispatching delete request on object with id ${data.id}`);
-    // this.$axios
-    //     .delete(User.endpoint(id))
-    //     .then(res => commit('DELETE', id))
-    //     .catch(err => this.$notifications('error'));
+    this.$axios
+        .delete(User.endpoint(data.id))
+        .then(res => commit('DELETE', data.id))
+        .catch(err => this.$notifications('error'));
   },
   deleteConfirm({ commit }, data) {
     this.commit('dialog/DELETE', data);
