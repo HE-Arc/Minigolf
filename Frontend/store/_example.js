@@ -1,4 +1,4 @@
-// import User from '../objects/User';
+// import User from '../objects/models/User';
 //
 // export const state = () => ({
 //   data: [],

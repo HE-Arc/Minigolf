@@ -1,7 +1,7 @@
 {
-  "name": "swiped-nuxt-test",
+  "name": "igolf-frontend",
   "version": "1.0.0",
-  "description": "swiped-frontend",
+  "description": "igolf-frontend",
   "author": "roscas",
   "private": true,
   "scripts": {

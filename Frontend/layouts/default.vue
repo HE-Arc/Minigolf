@@ -19,8 +19,7 @@
     <Footer class="footer" />
     
 <!--    Temporary-->
-    <action-dialog delete />
-    <action-dialog update />
+    <delete-dialog />
   </v-app>
 </template>
 
@@ -29,11 +28,11 @@ import AppBar from "../components/navbar/AppBar";
 import Logo from "../components/Logo";
 import Footer from "../components/Footer";
 import Breadcrumb from "../components/Breadcrumb";
-import ActionDialog from '../components/modal/dialog/ActionDialog';
+import DeleteDialog from '../components/modal/dialog/DeleteDialog';
 
 export default {
   components: {
-    ActionDialog,
+    DeleteDialog,
     Breadcrumb,
     Footer,
     Logo,
