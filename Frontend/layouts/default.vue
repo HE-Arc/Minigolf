@@ -30,7 +30,7 @@ import Logo from '../components/elements/Logo';
 import Footer from '../components/ui/Footer';
 import AppBar from '../components/ui/navbar/AppBar';
 
-import DeleteDialog from '../components/modal/dialog/DeleteDialog';
+import DeleteDialog from '../components/elements/dialogs/DeleteDialog';
 
 export default {
   components: {
@@ -54,7 +54,7 @@ export default {
 
 <style lang="scss">
 .main-content {
-  height: 1200px;
+  min-height: 1200px;
   
   .logo-container {
     margin-top: 40px;

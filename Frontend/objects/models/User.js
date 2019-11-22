@@ -24,7 +24,7 @@ export default class User extends Model {
       required: true,
       min: 4,
       max: 30,
-      rules: [Rules.email],
+      rules: [Rules.email()],
     });
 
     console.log(this.form.fieldByName("email"))

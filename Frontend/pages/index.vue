@@ -46,7 +46,7 @@
 
 <script>
 import Modal from "../components/elements/Modal";
-import Dialog from "../components/modal/dialog/Dialog";
+import Dialog from "../components/elements/dialogs/Dialog";
 
 export default {
   name: "Home",

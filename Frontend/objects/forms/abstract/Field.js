@@ -30,6 +30,7 @@ class Field {
 export class TextField extends Field {
   constructor(attrs) {
     super(attrs);
+    this.fieldType = "TextField";
     this.counter = attrs.counter || null;
     this.type = attrs.type || null;
     this.icon = attrs.icon || null;
@@ -49,18 +50,21 @@ export class TextField extends Field {
 export class TextArea extends TextField {
   constructor(attrs) {
     super(attrs);
+    this.fieldType = "TextArea";
   }
 }
 
 export class CheckBox extends Field {
   constructor(attrs) {
     super(attrs);
+    this.fieldType = "CheckBox";
   }
 }
 
 export class SelectList extends Field {
   constructor(attrs) {
     super(attrs);
+    this.fieldType = "SelectList";
     this.items = attrs.items;
     this.many = attrs.many;
   }
