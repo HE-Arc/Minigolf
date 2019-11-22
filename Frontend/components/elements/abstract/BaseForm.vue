@@ -3,7 +3,9 @@
     <v-container fluid>
       
       <div v-for="(field, i) in form.fields" :key="i">
-        <text-field v-if="isTextField(field)" :field="field" :focus="i == 0"/>
+        <text-field v-if="isTextField(field)" :field="field" :focus="i == 0" />
+        <check-box v-if="isCheckBox(field)" :field="field" />
+        <text-area v-if="isTextArea(field)" :field="field" />
       
       
       </div>
@@ -21,10 +23,12 @@
 <script>
   import ConfirmButtonGroup from '../buttons/ConfirmButtonGroup';
   import TextField from './fields/TextField';
+  import CheckBox from './fields/CheckBox';
+  import TextArea from './fields/TextArea';
 
   export default {
     name: 'BaseForm',
-    components: { TextField, ConfirmButtonGroup },
+    components: { TextArea, CheckBox, TextField, ConfirmButtonGroup },
     props: {
       form: { type: Object },
       confirmText: { type: String, default: 'Send' },
@@ -50,7 +54,9 @@
       }
     },
     mounted() {
-      console.log(this.form)
+      // console.log(this.form);
+      // this.$store.state.users.data.foreach(i => console.log(i.form.fieldByName("name")))
+      // console.log(this.$store.state.users.data);
     }
   };
 </script>

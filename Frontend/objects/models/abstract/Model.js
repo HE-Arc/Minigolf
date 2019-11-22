@@ -6,7 +6,6 @@ export default class Model {
     this.storeName = storeName;
 
     this.form = new Form();
-    this.initForm();
   }
 
   initForm() { /* abstract */ }
