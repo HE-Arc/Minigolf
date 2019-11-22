@@ -14,7 +14,7 @@ class Field {
     this.cache = this.value;
     this.disabled = false;
 
-    this.rules = this.required != null ? [this.required] : [];
+    this.rules = attrs.rules || [];
   }
 
   isEmpty = () => this.value == null;

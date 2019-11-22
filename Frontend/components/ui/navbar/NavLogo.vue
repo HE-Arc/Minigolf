@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Logo from "../Logo";
+import Logo from "../../elements/Logo";
 
 export default {
   name: "NavLogo",

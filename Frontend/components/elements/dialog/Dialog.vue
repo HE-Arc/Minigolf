@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import BaseModal from "../BaseModal";
+import BaseModal from "../../elements/abstract/BaseModal";
 export default {
   name: "Dialog",
   components: { BaseModal },

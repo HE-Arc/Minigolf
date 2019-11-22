@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Logo from "../Logo";
+import Logo from "../../elements/Logo";
 import Pages from "./Pages";
 import DarkmodeSwitch from "./DarkmodeSwitch";
 import NavLogo from "./NavLogo";
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/scss/variables";
+@import "../../../assets/scss/variables";
 
 .fade-enter-active,
 .fade-leave-active {
