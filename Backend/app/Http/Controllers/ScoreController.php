@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Game;
+use App\Score;
 use Illuminate\Http\Request;
 
-class GameController extends Controller
+class ScoreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        return Game::all();
+        return Score::all();
     }
 
     /**
@@ -35,28 +35,28 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        $game = Game::create($request->all());
-        return response()->json($game, 201);
+        $score = Score::create($request->all());
+        return response()->json($score, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Game $game
+     * @param  \App\Score $party
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $game)
+    public function show(Score $score)
     {
-        return $game;
+        return $score;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Game $game
+     * @param  \App\Score $party
      * @return \Illuminate\Http\Response
      */
-    public function edit(Game $game)
+    public function edit(Score $score)
     {
         //
     }
@@ -65,25 +65,25 @@ class GameController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Game $game
+     * @param  \App\Score $party
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Game $game)
+    public function update(Request $request, Score $score)
     {
-        $game->update($request->all());
+        $score->update($request->all());
 
-        return $game;
+        return $score;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Game $game
+     * @param  \App\Score $score
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Game $game)
+    public function destroy(Score $score)
     {
-        $game->delete();
+        $score->delete();
 
         return response()->json(null, 204);
     }

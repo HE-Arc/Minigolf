@@ -14,8 +14,9 @@ class MinigolfController extends Controller
      */
     public function index()
     {
-        $minigolf = Minigolf::with('courses.holes')->get();
-        return $minigolf;
+//        $minigolf = Minigolf::with('courses', 'courses.holes')->get();
+//        return $minigolf;
+
         return Minigolf::all();
     }
 

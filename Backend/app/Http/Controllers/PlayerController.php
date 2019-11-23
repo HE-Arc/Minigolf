@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Game;
+use App\Player;
 use Illuminate\Http\Request;
 
-class GameController extends Controller
+class PlayerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        return Game::all();
+        return Player::all();
     }
 
     /**
@@ -35,28 +35,28 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        $game = Game::create($request->all());
-        return response()->json($game, 201);
+        $player = Player::create($request->all());
+        return response()->json($player, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Game $game
+     * @param  \App\Player $party
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $game)
+    public function show(Player $player)
     {
-        return $game;
+        return $player;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Game $game
+     * @param  \App\Player $party
      * @return \Illuminate\Http\Response
      */
-    public function edit(Game $game)
+    public function edit(Player $player)
     {
         //
     }
@@ -65,25 +65,25 @@ class GameController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Game $game
+     * @param  \App\Player $party
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Game $game)
+    public function update(Request $request, Player $player)
     {
-        $game->update($request->all());
+        $player->update($request->all());
 
-        return $game;
+        return $player;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Game $game
+     * @param  \App\Player $party
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Game $game)
+    public function destroy(Player $player)
     {
-        $game->delete();
+        $player->delete();
 
         return response()->json(null, 204);
     }
