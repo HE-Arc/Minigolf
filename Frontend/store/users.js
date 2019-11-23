@@ -12,18 +12,18 @@ export const mutations = {
   },
   CREATE(state, data) {
     state.data.push(new User(data));
-    this.$notifications('success', `${ User.string() } created`);
+    this.$notifications('success', `${ User.name } created`);
   },
   UPDATE(state, data) {
     let object = state.data.find(i => i.id === data.id);
     Object.getOwnPropertyNames(data).forEach(
       i => (object[i] = data[i]),
     );
-    this.$notifications('success', `${ User.string() } updated`);
+    this.$notifications('success', `${ User.name } updated`);
   },
   DELETE(state, id) {
     state.data = state.data.filter(i => i.id !== id);
-    this.$notifications('success', `${ User.string() } deleted`);
+    this.$notifications('success', `${ User.name } deleted`);
   },
 };
 

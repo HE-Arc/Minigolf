@@ -4,7 +4,7 @@
       <v-col xs="12">
         <v-card>
           <v-card-title class="headline">
-            Welcome to SwipeD
+            Welcome to iGolf
           </v-card-title>
           <v-card-text>
             <p>Work in progress</p>
@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import Modal from "../components/modal/Modal";
-import Dialog from "../components/modal/dialog/Dialog";
+import Modal from "../components/elements/Modal";
+import Dialog from "../components/elements/dialogs/Dialog";
 
 export default {
   name: "Home",

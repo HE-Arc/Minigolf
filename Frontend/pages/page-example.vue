@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import Modal from "../components/modal/Modal";
-import Dialog from "../components/modal/dialog/Dialog";
+import Modal from "../components/elements/Modal";
+import Dialog from "../components/elements/dialogs/Dialog";
 
 export default {
   name: "page-example",
