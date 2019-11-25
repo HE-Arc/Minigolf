@@ -18,12 +18,11 @@ class Field {
   }
 
   isEmpty = () => this.value == null;
-
   isDirty = () =>  this.cache != this.value;
 
   isValid() {
     if (this.required && !this.value) return false;
-    return this.rules.filter(r => typeof r(this.value) === 'string') == 0;
+    return this.rules.filter(r => typeof r === 'string') == 0;
   }
 }
 
@@ -42,8 +41,9 @@ export class TextField extends Field {
   }
 
   initRules() {
-    let rules = [this.max, this.min, this.length];
-    this.rules = [...this.rules, ...rules.filter(r => r != null)];
+    let rules = [this.required, this.max, this.min, this.length];
+    this.rules = [...rules.filter(r => r != null), ...this.rules];
+    console.log(this.rules)
   }
 }
 

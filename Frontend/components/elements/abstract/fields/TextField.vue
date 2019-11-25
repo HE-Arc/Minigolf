@@ -9,8 +9,8 @@
     :type="field.type"
     :append-icon="field.icon"
     :clearable="field.clearable"
+    :rules="field.rules"
   />
-<!--    :rules="field.rules"-->
 </template>
 
 <script>
@@ -21,7 +21,6 @@ export default {
     focus: { type: Boolean, default: false }
   },
   mounted() {
-    console.log(this.field.rules);
   }
 };
 </script>

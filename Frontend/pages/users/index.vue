@@ -37,7 +37,7 @@
         </v-btn>
       </v-col>
       <v-col cols="4">
-        <BaseForm :form="$store.state.users.data[0].form"></BaseForm>
+        <BaseForm :form="createForm()"/>
       </v-col>
     </v-row>
   </div>
@@ -45,10 +45,14 @@
 
 <script>
 import BaseForm from "../../components/elements/abstract/BaseForm";
+import User from '../../objects/models/User';
 export default {
   name: "user-list",
   components: { BaseForm },
   methods: {
+    createForm() {
+      return User.createForm(this.$store.state.users.data[0])
+    },
     create() {
       const user = {
         name: "George",

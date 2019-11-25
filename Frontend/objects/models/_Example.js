@@ -1,23 +1,26 @@
 // import Model from './abstract/Model';
 // import Rules from '../forms/abstract/Rules';
+// import Form from '../forms/abstract/Form';
 // import endpoints from '../../configs/endpoints';
 //
 // export default class User extends Model {
 //   constructor(data = {}) {
 //     super('users', data.id);
-//
 //     this.name = data.name;
 //     this.email = data.email;
 //   }
 //
-//   initForm() {
-//     let name = this.form.createTextField({
+//   static createForm(user) {
+//     let form = new Form();
+//     form.createTextField({
+//       value: user.name,
 //       field: 'name',
 //       label: 'Name',
 //       min: 3,
 //       required: true,
 //     });
-//     let email = this.form.createTextField({
+//     form.createTextField({
+//       value: user.email,
 //       field: 'email',
 //       label: 'Email',
 //       type: 'email',
@@ -26,8 +29,12 @@
 //       max: 30,
 //       rules: [Rules.email],
 //     });
-//
-//     console.log(this.form.fieldByName("email"))
+//     form.createCheckBox({
+//       value: false,
+//       field: 'ready',
+//       label: 'Ready',
+//     });
+//     return form;
 //   }
 //
 //   static endpoint(id = false) {
