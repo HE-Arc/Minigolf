@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BaseModal from "./../elements/abstract/BaseModal";
+import BaseModal from "./../elements/generics/BaseModal";
 
 export default {
   name: "Modal",

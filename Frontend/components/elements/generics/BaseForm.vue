@@ -12,9 +12,9 @@
       
       <slot name="bottom"></slot>
       
-      <confirm-button-group :confirm-text="confirmText"
-                            @close="close"
-                            @confirm="confirm"/>
+<!--      <confirm-button-group :confirm-text="confirmText"-->
+<!--                            @close="close"-->
+<!--                            @confirm="confirm"/>-->
     </v-container>
   </v-form>
 </template>
@@ -24,14 +24,11 @@
   import TextField from './fields/TextField';
   import CheckBox from './fields/CheckBox';
   import TextArea from './fields/TextArea';
-  import Form from '../../../objects/forms/abstract/Form';
-  import User from '../../../objects/models/User';
 
   export default {
     name: 'BaseForm',
     components: { TextArea, CheckBox, TextField, ConfirmButtonGroup },
     props: {
-      // form: { type: Object },
       form: { type: Object },
       confirmText: { type: String, default: 'Send' },
     },
@@ -55,8 +52,6 @@
         this.$emit("confirm");
       }
     },
-    mounted() {
-    }
   };
 </script>
 

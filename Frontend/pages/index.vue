@@ -25,10 +25,16 @@
             <v-btn color="primary" nuxt to="/users">
               Users test
             </v-btn>
+            <v-btn color="primary" @click.stop="() => (loginDialog = true)">
+              Login test
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
+    <login-dialog :dialog="loginDialog" @close="loginDialog = false">
+    
+    </login-dialog>
     <Modal
       :modal="modal"
       @close="modal = false"
@@ -46,15 +52,16 @@
 
 <script>
 import Modal from "../components/elements/Modal";
-import Dialog from "../components/elements/dialogs/Dialog";
+import LoginDialog from '../components/elements/dialogs/LoginDialog';
 
 export default {
   name: "Home",
-  components: { Dialog, Modal },
+  components: { LoginDialog, Modal },
   data: () => ({
+    loginDialog: false,
     modal: false,
     dialog: false
-  }),
+  })
 };
 </script>
 

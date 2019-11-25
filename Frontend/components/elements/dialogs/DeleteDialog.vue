@@ -8,15 +8,11 @@
 </template>
 
 <script>
-  import Dialog from './Dialog';
+  import Dialog from '../generics/BaseDialog';
 
   export default {
     name: 'DeleteDialog',
     components: { Dialog },
-    props: {
-      delete: { type: Boolean, default: false },
-      update: { type: Boolean, default: false },
-    },
     computed: {
       state() {
         return this.$store.state.dialog
@@ -51,7 +47,7 @@
         this.close();
       },
       close() {
-        this.$store.commit(this.commit, null);
+          this.$store.commit(this.commit, null);
       },
     },
   };

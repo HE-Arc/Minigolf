@@ -1,6 +1,6 @@
 <template>
-  <v-row justify="center">
-    <v-col cols="3">
+  <v-row justify="center" class="mx-5">
+    <v-col>
       <v-btn
         text
         block
@@ -8,13 +8,14 @@
         v-shortkey="['enter']"
         @shortkey.native="confirm"
         @click="confirm"
+        :disabled="disableConfirm"
       >
         <v-icon left class="mb-1">mdi-check</v-icon>
         {{ confirmText }}
       </v-btn>
     </v-col>
-    <v-col cols="3">
-      <v-btn color="error darken-1" @click="close" text block>
+    <v-col>
+      <v-btn text block color="error darken-1" @click="close">
         <v-icon left class="mb-1">mdi-cancel</v-icon>
         Cancel
       </v-btn>
@@ -23,22 +24,21 @@
 </template>
 
 <script>
-  export default {
-    name: 'ConfirmButtonGroup',
-    props: {
-      confirmText: { type: String, default: "Yes"},
+export default {
+  name: "ConfirmButtonGroup",
+  props: {
+    confirmText: { type: String, default: "Yes" },
+    disableConfirm: { type: Boolean, default: false}
+  },
+  methods: {
+    close() {
+      this.$emit("close");
     },
-    methods: {
-      close() {
-        this.$emit("close");
-      },
-      confirm() {
-        this.$emit("confirm");
-      }
+    confirm() {
+      this.$emit("confirm");
     }
-  };
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

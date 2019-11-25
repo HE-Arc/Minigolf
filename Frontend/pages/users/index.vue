@@ -37,22 +37,19 @@
         </v-btn>
       </v-col>
       <v-col cols="4">
-        <BaseForm :form="createForm()"/>
+<!--        EMPTY -->
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-import BaseForm from "../../components/elements/abstract/BaseForm";
-import User from '../../objects/models/User';
+import BaseForm from "../../components/elements/generics/BaseForm";
+
 export default {
   name: "user-list",
   components: { BaseForm },
   methods: {
-    createForm() {
-      return User.createForm(this.$store.state.users.data[0])
-    },
     create() {
       const user = {
         name: "George",

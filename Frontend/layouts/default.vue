@@ -20,6 +20,7 @@
   
     <!--    Temporary-->
     <delete-dialog/>
+    
   </v-app>
 </template>
 
