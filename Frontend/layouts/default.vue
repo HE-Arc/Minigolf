@@ -1,5 +1,8 @@
 <template>
   <v-app id="app" :style="appStyle">
+    
+    <drawer />
+    
     <v-content class="main-content">
       <div class="logo-container">
         <Logo class="main-logo"/>
@@ -32,16 +35,17 @@ import Footer from '../components/ui/Footer';
 import AppBar from '../components/ui/navbar/AppBar';
 
 import DeleteDialog from '../components/elements/dialogs/DeleteDialog';
+import Drawer from '../components/ui/Drawer';
 
 export default {
   components: {
+    Drawer,
     DeleteDialog,
     Breadcrumb,
     Footer,
     Logo,
     AppBar,
   },
-  data: () => ({}),
   computed: {
     appStyle() {
       return {
