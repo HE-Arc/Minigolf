@@ -60,6 +60,7 @@ export default {
    */
   modules: [
     "@nuxtjs/axios",
+    "@nuxtjs/auth",
     "nuxt-izitoast",
   ],
   /*

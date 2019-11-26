@@ -22,7 +22,6 @@ export default {
   data: () => ({
     links: [
       { name: "Laderboard", to: "" },
-      { name: "Numbers", to: "" },
       { name: "Download", to: "" },
       { name: "About", to: "" },
       { name: "Contact", to: "" }

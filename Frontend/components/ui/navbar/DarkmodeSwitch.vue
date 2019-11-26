@@ -33,6 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 .darkmode-wrapper {
+  transform: scale(.8);
   display: flex;
 }
 </style>

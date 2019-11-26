@@ -10,6 +10,7 @@
     <div class="nav-elements">
       <nav-logo class="nav-logo" :show="sticky" />
       <Pages class="pages" />
+      <login-button class="login-button"/>
       <darkmode-switch class="dark-mode-switch" />
       <v-app-bar-nav-icon class="mobile-button" @click.stop="$emit('drawer')" />
     </div>
@@ -21,10 +22,11 @@ import Logo from "../../elements/Logo";
 import Pages from "./Pages";
 import DarkmodeSwitch from "./DarkmodeSwitch";
 import NavLogo from "./NavLogo";
+import LoginButton from '../../elements/buttons/LoginButton';
 
 export default {
   name: "AppBar",
-  components: { NavLogo, DarkmodeSwitch, Pages, Logo },
+  components: { LoginButton, NavLogo, DarkmodeSwitch, Pages, Logo },
   props: {
     drawer: { type: Boolean }
   },
@@ -32,13 +34,6 @@ export default {
     elevate: true,
     sticky: false,
     stickyHeight: 160,
-    links: [
-      { name: "Laderboard", to: "" },
-      { name: "Numbers", to: "" },
-      { name: "Download", to: "" },
-      { name: "About", to: "" },
-      { name: "Contact", to: "" }
-    ]
   }),
   methods: {
     onScroll(e) {
@@ -84,13 +79,16 @@ export default {
 
   .mobile-button {
     display: none;
-    /*position: absolute;*/
-    /*position: relative;*/
-    /*margin-left: auto;*/
     right: 10px;
     margin-left: 10px;
     @media screen and (max-width: $tablet) {
       display: flex;
+    }
+  }
+  
+  .login-button {
+    @media screen and (max-width: $tablet) {
+      display: none;
     }
   }
 

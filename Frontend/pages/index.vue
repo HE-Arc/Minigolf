@@ -32,9 +32,7 @@
         </v-card>
       </v-col>
     </v-row>
-    <login-dialog :dialog="loginDialog" @close="loginDialog = false">
     
-    </login-dialog>
     <Modal
       :modal="modal"
       @close="modal = false"
