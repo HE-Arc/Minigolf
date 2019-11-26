@@ -24,7 +24,6 @@ class Field {
     if (!this.value && this.required) {
       return false;
     }
-    console.log(this.rules)
     return this.rules.filter(r => typeof r(this.value) === "string") == 0;
   }
 }

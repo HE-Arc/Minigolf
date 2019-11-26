@@ -40,6 +40,17 @@ export default {
     // proxyHeaders: false
     baseURL: process.env.API_HOST
   },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: "auth/token/", method: "post", propertyName: "access" },
+          user: { url: "users/", method: "get", propertyName: "" },
+          logout: false
+        }
+      }
+    }
+  },
   /*
    ** Nuxt.js dev-modules
    */
