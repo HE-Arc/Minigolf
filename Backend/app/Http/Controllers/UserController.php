@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function __construct()
         {
-//            $this->middleware('auth')->except(['index', 'delete', 'show']);
+            $this->middleware('auth')->except(['index', 'delete', 'show']);
         }
 
         public function index()
