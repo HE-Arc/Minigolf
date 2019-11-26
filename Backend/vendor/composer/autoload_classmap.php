@@ -11,7 +11,7 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Game' => $baseDir . '/app/Game.php',
     'App\\Hole' => $baseDir . '/app/Hole.php',
-    'App\\Http\\Controllers\\ApiAuthController' => $baseDir . '/app/Http/Controllers/ApiAuthController.php',
+    'App\\Http\\Controllers\\Api\\ApiAuthController' => $baseDir . '/app/Http/Controllers/ApiAuthController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
