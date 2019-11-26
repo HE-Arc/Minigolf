@@ -21,8 +21,11 @@ class Field {
   isDirty = () => this.cache != this.value;
 
   isValid() {
-    if (this.required && !this.value) return false;
-    return this.rules.filter(r => typeof r === "string") == 0;
+    if (!this.value && this.required) {
+      return false;
+    }
+    console.log(this.rules)
+    return this.rules.filter(r => typeof r(this.value) === "string") == 0;
   }
 }
 
