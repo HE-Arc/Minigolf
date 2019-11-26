@@ -31,12 +31,12 @@
     components: { TextArea, CheckBox, TextField, ConfirmButtonGroup },
     props: {
       form: { type: Object },
-      active: { type: Boolean },
+      resetFlag: { type: Boolean },
       buttons: { type: Boolean, default: false },
       confirmText: { type: String, default: 'Send' },
     },
     watch: {
-      active(value) {
+      resetFlag(value) {
         if (!value) this.$refs.form.resetValidation();
       },
     },

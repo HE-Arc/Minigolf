@@ -41,7 +41,6 @@ export const actions = {
         .catch(err => this.$notifications('error'));
   },
   update({ commit }, data) {
-    console.log(data);
     this.$axios
         .patch(User.endpoint(data.id), data)
         .then(res => commit('UPDATE', res.data))

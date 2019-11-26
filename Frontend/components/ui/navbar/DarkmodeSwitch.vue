@@ -2,7 +2,9 @@
   <v-tooltip top>
     <template v-slot:activator="{ on }">
       <div v-on="on" class="darkmode-wrapper">
-        <v-icon @click="() => (toggle = !toggle)">mdi-theme-light-dark</v-icon>
+        <v-icon class="icon" @click="() => (toggle = !toggle)">
+          mdi-theme-light-dark
+        </v-icon>
         <v-switch class="ml-3" v-model="toggle" hide-details />
       </div>
     </template>
@@ -12,7 +14,7 @@
 
 <script>
 export default {
-  name: "Darkmode",
+  name: "DarkmodeSwitch",
   data: () => ({
     toggle: false
   }),
@@ -33,7 +35,8 @@ export default {
 
 <style lang="scss" scoped>
 .darkmode-wrapper {
-  transform: scale(.8);
+  transform: scale(0.8);
   display: flex;
+  align-items: baseline;
 }
 </style>

@@ -4,11 +4,11 @@
     icon="mdi-account-circle-outline"
     confirm-text="Submit"
     :disable-confirm="!getForm().isValid()"
-    :modal="dialog"
+    :modal="dialogFlag"
     @close="close"
     @confirm="confirm"
   >
-    <base-form :form="getForm()" :active="dialog"/>
+    <base-form :form="getForm()" :active="dialogFlag" />
   </base-dialog>
 </template>
 
@@ -22,24 +22,22 @@ export default {
   name: "LoginDialog",
   components: { BaseForm, BaseDialog },
   props: {
-    dialog: { type: Boolean, default: false }
+    dialogFlag: { type: Boolean, default: false }
   },
   data: () => ({
-    form: null,
+    form: null
   }),
   methods: {
     confirm() {
-      console.log("Confirmed");
       this.loginAction();
       this.close();
     },
     close() {
-      console.log("Closed");
       this.$emit("close");
     },
     getForm() {
       if (this.form != null) return this.form;
-      
+
       let form = new Form();
       form.createTextField({
         value: "",
@@ -66,7 +64,7 @@ export default {
     loginAction() {
       let form = this.form.getForm();
       this.$store.dispatch("auth/login", form);
-    },
+    }
   }
 };
 </script>

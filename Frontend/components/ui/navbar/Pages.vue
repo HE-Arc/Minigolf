@@ -2,7 +2,7 @@
   <v-row class="pages" align="start" justify="center">
     <v-col class="pages" xs="12" sm="8" lg="7">
       <v-btn
-        v-for="(link, i) in links"
+        v-for="(link, i) in pages"
         class="font-weight-regular"
         :to="link.to"
         :key="i"
@@ -19,14 +19,9 @@
 <script>
 export default {
   name: "Pages",
-  data: () => ({
-    links: [
-      { name: "Laderboard", to: "" },
-      { name: "Download", to: "" },
-      { name: "About", to: "" },
-      { name: "Contact", to: "" }
-    ]
-  })
+  props: {
+    pages: { type: Array },
+  },
 };
 </script>
 

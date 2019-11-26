@@ -9,7 +9,7 @@
   >
     <div class="nav-elements">
       <nav-logo class="nav-logo" :show="sticky" />
-      <Pages class="pages" />
+      <pages class="pages" :pages="pages"/>
       <login-button class="login-button" />
       <darkmode-switch class="dark-mode-switch" />
       <v-app-bar-nav-icon class="mobile-button" @click="toggleDrawer"/>
@@ -22,13 +22,13 @@ import Logo from "../../elements/Logo";
 import Pages from "./Pages";
 import DarkmodeSwitch from "./DarkmodeSwitch";
 import NavLogo from "./NavLogo";
-import LoginButton from "../../elements/buttons/LoginButton";
+import LoginButton from "./LoginButton";
 
 export default {
   name: "AppBar",
   components: { LoginButton, NavLogo, DarkmodeSwitch, Pages, Logo },
   props: {
-    drawer: { type: Boolean }
+    pages: { type: Array }
   },
   data: () => ({
     elevate: true,
@@ -40,7 +40,7 @@ export default {
       this.sticky = window.pageYOffset >= this.stickyHeight;
     },
     toggleDrawer() {
-      // this.$emit('toggleDrawer')
+      this.$store.commit("application/SET_DRAWER", true)
     }
   }
 };

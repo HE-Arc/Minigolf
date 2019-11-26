@@ -1,11 +1,11 @@
 
 export const state = () => ({
-  drawer: true,
+  drawer: false,
 });
 
 export const mutations = {
   SET_DRAWER(state, value) {
-    state.publicDrawer = value;
+    state.drawer = value;
   },
 };
 

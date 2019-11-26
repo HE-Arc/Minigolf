@@ -38,7 +38,10 @@
             </span>
           </v-btn>
 
-          <login-dialog :dialog="loginDialog" @close="loginDialog = false" />
+          <login-dialog
+            :dialog-flag="loginDialog"
+            @close="loginDialog = false"
+          />
         </div>
       </template>
       <span>Connect</span>
@@ -47,7 +50,7 @@
 </template>
 
 <script>
-import LoginDialog from "../dialogs/LoginDialog";
+import LoginDialog from "../../elements/dialogs/LoginDialog";
 
 export default {
   name: "LoginButton",
