@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
@@ -9,7 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 
-class ApiAuthController extends Controller
+class AuthController extends Controller
 {
     public $successStatus = 200;
 
