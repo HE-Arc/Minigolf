@@ -58,14 +58,14 @@ export default {
         label: "Password",
         type: "password",
         required: true,
-        min: 8
+        min: 6
       });
       this.form = form;
       return form;
     },
     loginAction() {
       let form = this.form.getForm();
-      this.$store.dispatch("auth/update", form);
+      this.$store.dispatch("auth/login", form);
     },
   }
 };
