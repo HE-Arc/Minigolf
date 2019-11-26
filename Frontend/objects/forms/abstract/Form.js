@@ -1,8 +1,9 @@
 import { CheckBox, SelectList, TextArea, TextField } from "./Field";
 
 export default class Form {
-  constructor() {
+  constructor(id) {
     this.fields = [];
+    this.entityId = id;
   }
 
   _filterBy = type => this.fields.filter(f => f instanceof type);
@@ -33,4 +34,6 @@ export default class Form {
   createCheckBox = attrs => this._createField(new CheckBox(attrs));
 
   createSelectList = attrs => this._createField(new SelectList(attrs));
+
+  clear = () => this.fields.forEach(i => i. value = null);
 }

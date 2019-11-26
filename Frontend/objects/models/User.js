@@ -11,7 +11,7 @@ export default class User extends Model {
   }
 
   static createForm(user) {
-    let form = new Form();
+    let form = new Form(user.id);
     form.createTextField({
       value: user.name,
       field: 'name',
@@ -28,11 +28,6 @@ export default class User extends Model {
       min: 4,
       max: 30,
       rules: [Rules.email],
-    });
-    form.createCheckBox({
-      value: false,
-      field: 'ready',
-      label: 'Ready',
     });
     return form;
   }

@@ -12,9 +12,10 @@
       
       <slot name="bottom"></slot>
       
-<!--      <confirm-button-group :confirm-text="confirmText"-->
-<!--                            @close="close"-->
-<!--                            @confirm="confirm"/>-->
+      <confirm-button-group v-if="buttons"
+              :confirm-text="confirmText"
+                            @close="close"
+                            @confirm="confirm"/>
     </v-container>
   </v-form>
 </template>
@@ -30,7 +31,14 @@
     components: { TextArea, CheckBox, TextField, ConfirmButtonGroup },
     props: {
       form: { type: Object },
+      active: { type: Boolean },
+      buttons: { type: Boolean, default: false },
       confirmText: { type: String, default: 'Send' },
+    },
+    watch: {
+      active(value) {
+        if (!value) this.$refs.form.resetValidation();
+      },
     },
     methods: {
       isTextField(field) {
@@ -52,6 +60,9 @@
         this.$emit("confirm");
       }
     },
+    mounted() {
+      this.$emit("form-initialized", this.$refs.form);
+    }
   };
 </script>
 

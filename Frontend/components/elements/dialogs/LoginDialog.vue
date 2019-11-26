@@ -8,7 +8,7 @@
     @close="close"
     @confirm="confirm"
   >
-    <base-form :form="getForm()"> </base-form>
+    <base-form :form="getForm()" :active="dialog"/>
   </base-dialog>
 </template>
 
@@ -27,7 +27,6 @@ export default {
   data: () => ({
     form: null,
   }),
-
   methods: {
     getForm() {
       if (this.form != null) return this.form;

@@ -36,8 +36,8 @@
           create test
         </v-btn>
       </v-col>
-      <v-col cols="4">
-<!--        EMPTY -->
+      <v-col>
+        <user-test-form />
       </v-col>
     </v-row>
   </div>
@@ -45,10 +45,11 @@
 
 <script>
 import BaseForm from "../../components/elements/generics/BaseForm";
+import UserTestForm from '../../components/elements/forms/UserTestForm';
 
 export default {
   name: "user-list",
-  components: { BaseForm },
+  components: { UserTestForm, BaseForm },
   methods: {
     create() {
       const user = {
