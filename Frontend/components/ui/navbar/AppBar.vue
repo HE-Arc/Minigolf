@@ -10,9 +10,9 @@
     <div class="nav-elements">
       <nav-logo class="nav-logo" :show="sticky" />
       <Pages class="pages" />
-      <login-button class="login-button"/>
+      <login-button class="login-button" />
       <darkmode-switch class="dark-mode-switch" />
-      <v-app-bar-nav-icon class="mobile-button" @click.stop="$emit('drawer')" />
+      <v-app-bar-nav-icon class="mobile-button" @click="toggleDrawer"/>
     </div>
   </v-app-bar>
 </template>
@@ -22,7 +22,7 @@ import Logo from "../../elements/Logo";
 import Pages from "./Pages";
 import DarkmodeSwitch from "./DarkmodeSwitch";
 import NavLogo from "./NavLogo";
-import LoginButton from '../../elements/buttons/LoginButton';
+import LoginButton from "../../elements/buttons/LoginButton";
 
 export default {
   name: "AppBar",
@@ -33,11 +33,14 @@ export default {
   data: () => ({
     elevate: true,
     sticky: false,
-    stickyHeight: 160,
+    stickyHeight: 160
   }),
   methods: {
     onScroll(e) {
       this.sticky = window.pageYOffset >= this.stickyHeight;
+    },
+    toggleDrawer() {
+      // this.$emit('toggleDrawer')
     }
   }
 };
@@ -76,19 +79,19 @@ export default {
       display: none;
     }
   }
-
+  
+  .login-button {
+    @media screen and (max-width: $tablet) {
+      display: none;
+    }
+  }
+  
   .mobile-button {
     display: none;
     right: 10px;
     margin-left: 10px;
     @media screen and (max-width: $tablet) {
       display: flex;
-    }
-  }
-  
-  .login-button {
-    @media screen and (max-width: $tablet) {
-      display: none;
     }
   }
 
