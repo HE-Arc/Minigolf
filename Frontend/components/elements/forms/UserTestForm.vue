@@ -19,12 +19,7 @@ export default {
       return this.form;
     },
     confirm() {
-      let form = { id: this.form.entityId };
-      console.log(this.form);
-      this.form.fields.forEach(field => {
-        form[field.field] = field.value;
-      });
-      this.$store.dispatch("users/update", form);
+      this.$store.dispatch("users/update", this.form.getForm());
     }
   }
 };

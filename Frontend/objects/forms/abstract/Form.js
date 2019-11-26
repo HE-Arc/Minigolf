@@ -36,4 +36,10 @@ export default class Form {
   createSelectList = attrs => this._createField(new SelectList(attrs));
 
   clear = () => this.fields.forEach(i => i. value = null);
+
+  getForm() {
+    let form = { id: this.entityId };
+    this.fields.forEach(field => form[field.field] = field.value);
+    return form;
+  }
 }

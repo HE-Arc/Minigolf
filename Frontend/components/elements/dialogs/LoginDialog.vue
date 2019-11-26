@@ -28,6 +28,15 @@ export default {
     form: null,
   }),
   methods: {
+    confirm() {
+      console.log("Confirmed");
+      this.loginAction();
+      this.close();
+    },
+    close() {
+      console.log("Closed");
+      this.$emit("close");
+    },
     getForm() {
       if (this.form != null) return this.form;
       
@@ -54,14 +63,10 @@ export default {
       this.form = form;
       return form;
     },
-    confirm() {
-      console.log("Confirmed");
-      this.close();
+    loginAction() {
+      let form = this.form.getForm();
+      this.$store.dispatch("auth/update", form);
     },
-    close() {
-      console.log("Closed");
-      this.$emit("close");
-    }
   }
 };
 </script>
