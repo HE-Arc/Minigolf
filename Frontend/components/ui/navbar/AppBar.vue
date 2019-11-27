@@ -9,10 +9,10 @@
   >
     <div class="nav-elements">
       <nav-logo class="nav-logo" :show="sticky" />
-      <pages class="pages" :pages="pages"/>
+      <pages class="pages" :pages="pages" />
       <login-button class="login-button" />
       <darkmode-switch class="dark-mode-switch" />
-      <v-app-bar-nav-icon class="mobile-button" @click="toggleDrawer"/>
+      <v-app-bar-nav-icon class="mobile-button" @click="toggleDrawer" />
     </div>
   </v-app-bar>
 </template>
@@ -40,7 +40,7 @@ export default {
       this.sticky = window.pageYOffset >= this.stickyHeight;
     },
     toggleDrawer() {
-      this.$store.commit("application/SET_DRAWER", true)
+      this.$store.commit("application/SET_DRAWER", true);
     }
   }
 };
@@ -79,13 +79,13 @@ export default {
       display: none;
     }
   }
-  
+
   .login-button {
     @media screen and (max-width: $tablet) {
       display: none;
     }
   }
-  
+
   .mobile-button {
     display: none;
     right: 10px;

@@ -9,9 +9,9 @@
       <v-card-text>
         <div class="footer-content">
           <div class="button-top">
-            <v-btn color="primary" v-scroll-to="'#app'">
+            <v-btn class="blue lighten-2" v-scroll-to="'#app'">
               <v-icon left>mdi-arrow-up-thick</v-icon>
-              Haut de la page
+              Top
             </v-btn>
           </div>
 
