@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" class="mx-5">
+  <v-row class="ma-0 pa-0" justify="center">
     <v-col>
       <v-btn
         text
@@ -10,12 +10,18 @@
         @click="confirm"
         :disabled="disableConfirm"
       >
-        <v-icon left class="mb-1">mdi-check</v-icon>
+        <v-icon left class="mb-1">{{ icon }}</v-icon>
         {{ confirmText }}
       </v-btn>
     </v-col>
-    <v-col>
-      <v-btn text block color="error darken-1" @click="close">
+    
+    <v-col v-if="!confirmOnly">
+      <v-btn
+        text
+        block
+        color="error darken-1"
+        @click="close"
+      >
         <v-icon left class="mb-1">mdi-cancel</v-icon>
         Cancel
       </v-btn>
@@ -28,7 +34,9 @@ export default {
   name: "ConfirmButtonGroup",
   props: {
     confirmText: { type: String, default: "Yes" },
-    disableConfirm: { type: Boolean, default: false}
+    disableConfirm: { type: Boolean, default: false },
+    confirmOnly: { type: Boolean, default: false },
+    icon: { type: String, default: "mdi-check" }
   },
   methods: {
     close() {

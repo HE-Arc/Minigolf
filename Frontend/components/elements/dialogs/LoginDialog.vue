@@ -1,14 +1,15 @@
 <template>
   <base-dialog
+    confirm-only
     width="400"
     icon="mdi-account-circle-outline"
-    confirm-text="Submit"
+    confirm-text="Login"
     :disable-confirm="!getForm().isValid()"
     :modal="dialogFlag"
     @close="close"
     @confirm="confirm"
   >
-    <base-form :form="getForm()" :active="dialogFlag" />
+    <base-form :form="getForm()" :active="dialogFlag" icon="mdi-send"/>
   </base-dialog>
 </template>
 
@@ -40,18 +41,19 @@ export default {
 
       let form = new Form();
       form.createTextField({
-        value: "",
+        value: "admin@test.com",
         field: "email",
         label: "Email",
         type: "email",
         required: true,
         placeholder: "john@myemail.com",
+        focus: true,
         min: 4,
         max: 30,
         rules: [Rules.email]
       });
       form.createTextField({
-        value: "",
+        value: "toptal00",
         field: "password",
         label: "Password",
         type: "password",
@@ -64,6 +66,7 @@ export default {
     loginAction() {
       let form = this.form.getForm();
       this.$store.dispatch("auth/login", form);
+      
     }
   }
 };

@@ -2,7 +2,7 @@
   <v-text-field
     outlined
     v-model="field.value"
-    :autofocus="focus"
+    :autofocus="field.focus"
     :required="field.required"
     :label="field.label"
     :counter="field.counter"

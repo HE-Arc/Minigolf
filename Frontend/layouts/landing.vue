@@ -9,7 +9,7 @@
       <app-bar :pages="pages" />
       <v-container fluid>
         <v-row class="main-row pa-0" align="start" justify="center">
-          <v-col class="ma-0 pa-0" cols="12">
+          <v-col class="ma-0 pa-0">
             <nuxt />
           </v-col>
         </v-row>
@@ -32,6 +32,7 @@ import DeleteDialog from "../components/elements/dialogs/DeleteDialog";
 import Drawer from "../components/ui/drawer/Drawer";
 
 export default {
+  name: "landing",
   components: {
     Drawer,
     DeleteDialog,

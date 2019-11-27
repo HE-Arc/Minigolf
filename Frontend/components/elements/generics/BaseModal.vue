@@ -19,11 +19,11 @@
         </v-list-item>
       </v-list>
 
-      <v-card-text>
+      <v-card-text class="pb-0">
         <slot name="body"></slot>
       </v-card-text>
 
-      <v-card-actions>
+      <v-card-actions class="pt-0">
         <slot name="actions"></slot>
       </v-card-actions>
     </v-card>

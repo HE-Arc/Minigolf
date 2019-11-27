@@ -1,5 +1,5 @@
 <template>
-  <base-modal :modal="modal" :width="width" @close="close" confirmation>
+  <base-modal :modal="modal" :width="width" @close="close">
     <template v-slot:header>
       <v-list-item-content>
         <v-list-item-avatar>
@@ -18,6 +18,7 @@
       <confirm-button-group
         :confirm-text="confirmText"
         :disable-confirm="disableConfirm"
+        :confirm-only="confirmOnly"
         @close="close"
         @confirm="confirm"
       />
@@ -36,8 +37,11 @@ export default {
     modal: { type: Boolean },
     width: { type: String },
     icon: {type: String },
+    
     confirmText: { type: String, default: "Yes" },
     disableConfirm: { type: Boolean, default: false},
+    confirmOnly: { type: Boolean },
+    
     info: { type: Boolean, default: false },
     warning: { type: Boolean, default: false },
     danger: { type: Boolean, default: false },

@@ -10,6 +10,7 @@ class Field {
     this.clearable = attrs.clearable || null;
     this.hint = attrs.hint || null;
     this.placeholder = attrs.placeholder || null;
+    this.focus = attrs.focus || false;
 
     this.cache = this.value;
     this.disabled = false;

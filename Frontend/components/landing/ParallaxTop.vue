@@ -2,7 +2,7 @@
   <v-parallax src="01.jpg" height="500">
     <v-layout column align-center justify-center class="white--text">
       <h1 class="main-header white--text mb-2 display-1 text-xs-center">
-        The way minigolf was ment to be played
+        The way minigolf was ment to be played...
       </h1>
       <div class="sub-header white--text subheading mb-3 text-xs-center">
         For you and all your friends
