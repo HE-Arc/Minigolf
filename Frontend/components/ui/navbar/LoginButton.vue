@@ -10,7 +10,7 @@
             @click="$store.commit('application/SET_PUBLIC_DRAWER', true)"
           >
             <span class="caption">
-              {{ $auth.user.short_name }}
+              {{ $auth.user.name }}
             </span>
 
             <v-avatar class="ml-2" size="28px">
@@ -57,7 +57,10 @@ export default {
   components: { LoginDialog },
   data: () => ({
     loginDialog: false
-  })
+  }),
+  mounted() {
+    console.log(this.$auth.user)
+  }
 };
 </script>
 

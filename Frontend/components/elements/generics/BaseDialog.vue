@@ -37,6 +37,7 @@ export default {
     modal: { type: Boolean },
     width: { type: String },
     icon: {type: String },
+    confirmIcon: {type: String },
     
     confirmText: { type: String, default: "Yes" },
     disableConfirm: { type: Boolean, default: false},

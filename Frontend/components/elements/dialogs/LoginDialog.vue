@@ -9,7 +9,8 @@
     @close="close"
     @confirm="confirm"
   >
-    <base-form :form="getForm()" :active="dialogFlag" icon="mdi-send"/>
+    <base-form :form="getForm()"/>
+    
   </base-dialog>
 </template>
 
@@ -65,8 +66,13 @@ export default {
     },
     loginAction() {
       let form = this.form.getForm();
-      this.$store.dispatch("auth/login", form);
-      
+      this.$auth.loginWith('local', {
+        data: {
+          email: form.email,
+          password: form.password,
+        }
+      })
+      // this.$store.dispatch("auth/login", form);
     }
   }
 };

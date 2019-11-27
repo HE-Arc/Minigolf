@@ -1,11 +1,10 @@
 <template>
-  <h1>about</h1>
+  <h1>Minigolfs</h1>
 </template>
 
 <script>
   export default {
-    layout: "default",
-    name: 'about',
+    name: 'news',
   };
 </script>
 

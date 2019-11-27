@@ -10,7 +10,7 @@
       <v-container fluid>
         <v-row class="main-row" align="start" justify="center">
           <v-col cols="12" xs="12" sm="11" md="10" lg="7">
-            <Breadcrumb class="ml-4" />
+            <Breadcrumb class="breadcrumb ml-4" />
           </v-col>
           <v-col cols="12" xs="12" sm="11" md="10" lg="7">
             <nuxt />
@@ -46,9 +46,9 @@ export default {
   },
   data: () => ({
     pages: [
-      { name: "Minigolfs", to: "/news" },
-      { name: "Laderboard", to: "/news" },
-      { name: "Download", to: "/news" },
+      { name: "Minigolfs", to: "/minigolfs" },
+      { name: "Laderboard", to: "/laderboard" },
+      { name: "Download", to: "/users" },
       { name: "About", to: "/about" },
     ]
   }),
@@ -76,6 +76,10 @@ export default {
 
   .main-row {
     margin-top: 200px;
+  }
+  
+  .breadcrumb {
+    margin-top: 30px;
   }
 }
 

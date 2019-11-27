@@ -2,13 +2,9 @@
   <v-parallax src="02.jpg" height="380">
     <v-layout column align-center justify-center>
       <div class="headline white--text mb-3 text-xs-center">
-        Endorfine is a social network that allows everyone to reach a huge
-        audience with a tap
+        Lorem ipsum dolor sit amet, elit. Asperiores, aspernatur assumenda aut cupiditate deleniti
       </div>
-      <em
-        >With the power of Endorfine you don't need to be famous or post pics of
-        cute cats in order to get visibility</em
-      >
+      <em>Dignissimos minima neque praesentium quod, ratione rem sint tempora temporibus ut! Et, exercitationem.</em>
       <v-btn class="blue lighten-2 mt-5" dark large href="/pre-made-themes">
         Get more info
       </v-btn>

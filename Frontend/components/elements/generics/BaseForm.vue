@@ -12,9 +12,9 @@
       <confirm-button-group
         v-if="buttons"
         :confirm-text="confirmText"
-        :icon="icon"
-        @close="close"
+        :confirm-only="confirmOnly"
         @confirm="confirm"
+        @close="close"
       />
     </v-container>
   </v-form>
@@ -31,10 +31,11 @@ export default {
   components: { TextArea, CheckBox, TextField, ConfirmButtonGroup },
   props: {
     form: { type: Object },
-    resetFlag: { type: Boolean },
     buttons: { type: Boolean, default: false },
-    confirmText: { type: String, default: "Send" },
-    icon: { type: String, default: "mdi-check" }
+    resetFlag: { type: Boolean },
+    confirmOnly: { type: Boolean, default: false },
+    confirmText: { type: String },
+    confirmIcon: { type: String },
   },
   watch: {
     resetFlag(value) {
@@ -63,6 +64,7 @@ export default {
   },
   mounted() {
     this.$emit("form-initialized", this.$refs.form);
+    console.log(this.confirmIcon)
   }
 };
 </script>

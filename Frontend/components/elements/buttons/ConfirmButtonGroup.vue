@@ -10,7 +10,7 @@
         @click="confirm"
         :disabled="disableConfirm"
       >
-        <v-icon left class="mb-1">{{ icon }}</v-icon>
+        <v-icon left class="mb-1">mdi-check</v-icon>
         {{ confirmText }}
       </v-btn>
     </v-col>
@@ -36,7 +36,6 @@ export default {
     confirmText: { type: String, default: "Yes" },
     disableConfirm: { type: Boolean, default: false },
     confirmOnly: { type: Boolean, default: false },
-    icon: { type: String, default: "mdi-check" }
   },
   methods: {
     close() {

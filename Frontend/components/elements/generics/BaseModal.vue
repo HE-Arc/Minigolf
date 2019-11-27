@@ -12,7 +12,7 @@
           <slot name="header"></slot>
 
           <v-list-item-avatar v-if="!confirmation" class="close-button">
-            <v-btn text small @click="close()">
+            <v-btn text small fab @click="close()">
               <v-icon color="pink">mdi-close</v-icon>
             </v-btn>
           </v-list-item-avatar>

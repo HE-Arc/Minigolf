@@ -43,10 +43,10 @@ export default {
   },
   data: () => ({
     pages: [
-      { name: "Minigolfs", to: "/news" },
-      { name: "Laderboard", to: "/news" },
-      { name: "Download", to: "/news" },
-      { name: "About", to: "/about" }
+      { name: "Minigolfs", to: "/minigolfs" },
+      { name: "Laderboard", to: "/laderboard" },
+      { name: "Download", to: "/users" },
+      { name: "About", to: "/about" },
     ]
   }),
 
