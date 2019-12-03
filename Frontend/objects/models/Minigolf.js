@@ -13,7 +13,8 @@ export default class Minigolf extends Model {
     this.phone = data.phone;
     this.email = data.email;
 
-    this.image = Model.getRandomImageUrl()
+    this.image = Model.getRandomImageUrl();
+    this.courts = Math.floor(Math.random() * 5) + 1;
   }
 
   static createForm(entity) {
@@ -23,6 +24,7 @@ export default class Minigolf extends Model {
     form.createTextField(Model.cityField(entity.city));
     form.createTextField(Model.addressField(entity.address));
     form.createTextField(Model.phoneField(entity.phone));
+    form.createTextArea(Model.descriptionField(entity.description));
     return form;
   }
 

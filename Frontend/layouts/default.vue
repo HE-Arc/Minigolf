@@ -10,7 +10,7 @@
       <v-container fluid>
         <v-row class="main-row" align="start" justify="center">
           <v-col cols="12" xs="12" sm="11" md="10" lg="7">
-            <Breadcrumb class="breadcrumb ml-4" />
+            <Breadcrumb class="breadcrumb" />
           </v-col>
           <v-col cols="12" xs="12" sm="11" md="10" lg="7">
             <nuxt />

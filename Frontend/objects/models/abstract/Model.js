@@ -64,4 +64,11 @@ export default class Model {
       rules: [Rules.len(10)]
     };
   }
+  static descriptionField(value) {
+    return {
+      value: value,
+      field: "description",
+      label: "Description",
+    };
+  }
 }
