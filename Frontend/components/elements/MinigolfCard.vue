@@ -4,7 +4,7 @@
       <template v-slot="{ hover }">
         <v-card
           class="card"
-          @click.stop="link(minigolf.id)"
+          @click.stop="link(minigolf.slug)"
           :ripple="false"
           :elevation="hover ? 12 : 2"
         >
@@ -16,7 +16,14 @@
             <div class="admin-actions">
               <v-tooltip color="blue" top>
                 <template v-slot:activator="{ on }">
-                  <v-btn fab small elevation="1" color="white" v-on="on">
+                  <v-btn
+                    fab
+                    small
+                    elevation="1"
+                    color="white"
+                    v-on="on"
+                    @click.stop="dialog = true"
+                  >
                     <v-icon color="blue">mdi-pen</v-icon>
                   </v-btn>
                 </template>
@@ -87,18 +94,37 @@
         </v-card>
       </template>
     </v-hover>
+    
+    <base-dialog
+            icon="mdi-pen"
+            :title="minigolf.name"
+            :modal="dialog"
+            @close="dialog = false"
+    >
+      <minigolf-form :minigolf="minigolf"  @close="dialog = false"/>
+    </base-dialog>
   </div>
 </template>
 
 <script>
+import BaseDialog from './generics/BaseDialog';
+import MinigolfForm from './forms/MinigolfForm';
 export default {
   name: "MinigolfCard",
+  components: { MinigolfForm, BaseDialog },
   props: {
     minigolf: { type: Object }
   },
+  data: () => ({
+    dialog: false,
+  }),
+
   methods: {
-    link(id) {
-      this.$router.push({ path: `/minigolf/${id}` });
+    link(slug) {
+      this.$router.push({ path: `/minigolfs/${slug}` });
+    },
+    confirm() {
+    
     }
   }
 };

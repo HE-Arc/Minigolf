@@ -5,7 +5,7 @@ export const state = () => ({
 });
 
 export const getters = {
-  byEmail: state => email => state.data.find(i => i.email === email),
+  bySlug: state => slug => state.data.find(i => i.slug === slug),
 };
 
 export const mutations = {

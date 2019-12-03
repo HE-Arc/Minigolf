@@ -11,6 +11,7 @@
 
       <confirm-button-group
         v-if="buttons"
+        :disable-confirm="disableConfirm"
         :confirm-text="confirmText"
         :confirm-only="confirmOnly"
         @confirm="confirm"
@@ -33,6 +34,7 @@ export default {
     form: { type: Object },
     buttons: { type: Boolean, default: false },
     resetFlag: { type: Boolean },
+    disableConfirm: { type: Boolean },
     confirmOnly: { type: Boolean, default: false },
     confirmText: { type: String },
     confirmIcon: { type: String },

@@ -1,6 +1,7 @@
 <template>
   <Dialog
     danger
+    buttons
     confirm-only
     :modal="modal"
     @close="close"

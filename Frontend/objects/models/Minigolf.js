@@ -6,12 +6,13 @@ import endpoints from '../../configs/endpoints';
 export default class Minigolf extends Model {
   constructor(data = {}) {
     super('minigolfs', data.id);
-    this.name = data.name;
+    this.name = data.name || "";
     this.city = data.city;
     this.address = data.canton;
     this.description = data.description;
     this.phone = data.phone;
     this.email = data.email;
+    this.slug = this.name.split(" ").join("-");
 
     this.image = Model.getRandomImageUrl();
     this.courts = Math.floor(Math.random() * 5) + 1;

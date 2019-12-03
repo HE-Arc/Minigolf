@@ -1,5 +1,6 @@
 <template>
   <base-dialog
+    buttons
     confirm-only
     width="400"
     icon="mdi-account-circle-outline"

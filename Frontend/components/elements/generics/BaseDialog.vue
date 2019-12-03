@@ -3,9 +3,12 @@
     <template v-slot:header>
       <v-list-item-content>
         <v-list-item-avatar>
+          
           <v-icon class="header-icon" :color="getColor">
             {{ getIcon }}
           </v-icon>
+          <h2 v-if="title" class="mr-auto ml-5">{{ title }}</h2>
+        
         </v-list-item-avatar>
       </v-list-item-content>
     </template>
@@ -16,6 +19,7 @@
 
     <template v-slot:actions>
       <confirm-button-group
+        v-if="buttons"
         :confirm-text="confirmText"
         :disable-confirm="disableConfirm"
         :confirm-only="confirmOnly"
@@ -31,13 +35,15 @@ import BaseModal from "../../elements/generics/BaseModal";
 import ConfirmButtonGroup from "../buttons/ConfirmButtonGroup";
 
 export default {
-  name: "Dialog",
+  name: "BaseDialog",
   components: { ConfirmButtonGroup, BaseModal },
   props: {
     modal: { type: Boolean },
     width: { type: String },
     icon: {type: String },
     confirmIcon: {type: String },
+    
+    title: {type: String },
     
     confirmText: { type: String, default: "Yes" },
     disableConfirm: { type: Boolean, default: false},
@@ -46,6 +52,8 @@ export default {
     info: { type: Boolean, default: false },
     warning: { type: Boolean, default: false },
     danger: { type: Boolean, default: false },
+    
+    buttons: { type: Boolean, default: false },
   },
   computed: {
     getIcon() {
