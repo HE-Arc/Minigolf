@@ -7,9 +7,10 @@
             text
             v-if="$auth.loggedIn"
             color="primary"
-            @click="$store.commit('application/SET_PUBLIC_DRAWER', true)"
+            @click="$store.commit('application/SET_DRAWER', true)"
           >
             <span class="caption">
+<!--              {{ $store.state.auth.user.name }}-->
               {{ $auth.user.name }}
             </span>
 
@@ -58,9 +59,6 @@ export default {
   data: () => ({
     loginDialog: false
   }),
-  mounted() {
-    console.log(this.$auth.user)
-  }
 };
 </script>
 

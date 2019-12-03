@@ -64,7 +64,6 @@ export default {
   },
   mounted() {
     this.$emit("form-initialized", this.$refs.form);
-    console.log(this.confirmIcon)
   }
 };
 </script>

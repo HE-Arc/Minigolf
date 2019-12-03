@@ -8,9 +8,9 @@
 // const tokenLength = 36;
 //
 // export const state = () => ({
-//   loading: false,
 //   token: "", // password lost token
-//   type: ""
+//   type: "",
+//   user: null
 // });
 //
 // export const getters = {};
@@ -19,8 +19,8 @@
 //   SET_TOKEN(state, data) {
 //     state.token = data.length === tokenLength ? data : "";
 //   },
-//   SET_LOADING(state, data) {
-//     state.loading = data;
+//   SET_USER(state, data) {
+//     state.user = data;
 //   },
 //   SET_TYPE(state, data) {
 //     switch (data) {
@@ -39,19 +39,18 @@
 // };
 //
 // export const actions = {
+//
 //   async login({ commit, state }, data) {
-//     // let callback = data.callback;
-//     // delete data.callback;
-//     commit("SET_LOADING", true);
 //     try {
 //       await this.$auth.loginWith("local", {
 //         data: { email: data.email, password: data.password }
 //       });
-//       let name = "";
-//       if (this.$auth.loggedIn) {
-//         name = this.$auth.user.name;
-//       }
-//       this.$notifications("success", `Welcome ${name}`);
+//
+//       let user = this.getters["users/byEmail"](data.email);
+//       commit("SET_USER", user);
+//       this.$notifications("success", `Welcome ${state.user.name}`);
+//
+//
 //     } catch (e) {
 //       let message = "Error!";
 //       if (e.response && e.response.status === 401) {
@@ -61,10 +60,10 @@
 //       }
 //       this.$notifications("error", message);
 //     } finally {
-//       commit("RESET_DATA");
-//       // callback();
+//       // commit("RESET_DATA");
 //     }
 //   },
+//
 //   async lost({ commit, state }, data) {
 //     let callback = data.callback;
 //     delete data.callback;
@@ -81,6 +80,8 @@
 //       callback();
 //     }
 //   },
+//
+//
 //   async update({ commit, state }, data) {
 //     let callback = data.callback;
 //     delete data.callback;

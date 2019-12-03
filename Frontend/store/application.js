@@ -8,6 +8,3 @@ export const mutations = {
     state.drawer = value;
   },
 };
-
-export const actions = {
-};
