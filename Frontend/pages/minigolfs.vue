@@ -1,6 +1,20 @@
 <template>
-  <div>
-    <h1>Minigolfs</h1>
+  <Page>
+    <div class="header">
+      
+      <h1 class="page-title display-3">Affiliated minigolfs</h1>
+
+      <div v-if="isAdmin" class="admin-actions">
+        <v-tooltip color="green" top>
+          <template v-slot:activator="{ on }">
+            <v-btn v-on="on" color="green" elevation="1" fab small>
+              <v-icon color="white" large>mdi-plus</v-icon>
+            </v-btn>
+          </template>
+          <span>Register a new minigolf</span>
+        </v-tooltip>
+      </div>
+    </div>
 
     <v-row>
       <v-col cols="12">
@@ -14,23 +28,27 @@
     </v-row>
 
     <v-row>
-      <v-col cols="6" v-for="minigolf in results" :key="minigolf.id">
+      <v-col cols="12" sm="6" v-for="minigolf in results" :key="minigolf.id">
         <minigolf-card :minigolf="minigolf" />
       </v-col>
     </v-row>
-  </div>
+  </Page>
 </template>
 
 <script>
 import MinigolfCard from "../components/elements/MinigolfCard";
+import Page from "../components/elements/generics/Page";
 
 export default {
   name: "news",
-  components: { MinigolfCard },
+  components: { Page, MinigolfCard },
   data: () => ({
     query: null
   }),
   computed: {
+    isAdmin() {
+      return true;
+    },
     results() {
       let minigolfs = this.$store.state.minigolfs.data;
       if (this.query) {
@@ -45,4 +63,27 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  @import "../assets/scss/variables";
+  
+.header {
+  display: flex;
+  align-items: center;
+  
+  @media screen and (max-width: $mobile) {
+    flex-direction: column;
+  }
+
+  .page-title {
+    margin-right: auto;
+  }
+
+  .admin-actions {
+    margin-left: auto;
+    
+    @media screen and (max-width: $mobile) {
+      margin: 15px auto auto 0;
+    }
+  }
+}
+</style>
