@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import Page from '../../components/elements/generics/Page';
+  import Page from '../../components/Page';
   export default {
     name: 'user',
     components: { Page },

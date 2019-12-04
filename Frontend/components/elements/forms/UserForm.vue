@@ -12,23 +12,23 @@
 
 <script>
 import BaseForm from "../generics/BaseForm";
-import Minigolf from "../../../objects/models/Minigolf";
+import User from "../../../objects/models/User";
 
 export default {
   props: {
-    minigolf: { type: Object }
+    user: { type: Object }
   },
   data: () => ({
     form: null,
     resetFlag: false,
   }),
-  name: "MinigolfForm",
+  name: "UserForm",
   components: { BaseForm },
   methods: {
     getForm() {
       if (this.form != null) return this.form;
-      let minigolf = this.minigolf ? this.minigolf : new Minigolf();
-      this.form = Minigolf.createForm(minigolf);
+      let user = this.user ? this.user : new User();
+      this.form = User.createForm(user);
       return this.form;
     },
     isValid() {
@@ -39,7 +39,7 @@ export default {
       this.$emit('close');
     },
     confirm() {
-      let action = `minigolfs/${this.minigolf ? 'update' : 'create'}`;
+      let action = `users/${this.user ? 'update' : 'create'}`;
       this.$store.dispatch(action, this.form.getForm());
       this.close();
     }

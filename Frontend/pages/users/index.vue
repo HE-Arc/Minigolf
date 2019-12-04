@@ -1,55 +1,58 @@
 <template>
-  <div>
-    <h1>user list</h1>
-    <v-row align="center">
-      <v-col cols="8">
-        <ul>
-          <li v-for="user in $store.state.users.data" :key="user.id">
-            <v-row align="center">
-              <v-col class="py-0" cols="4">{{ user.name }}</v-col>
-              <v-col class="py-0" cols="2">
-                <v-row align="center">
-                  <v-btn
-                    fab
-                    text
-                    x-small
-                    color="info"
-                    @click="$store.dispatch('users/updateConfirm', user)"
-                  >
-                    <v-icon>mdi-pen</v-icon>
-                  </v-btn>
-                  <v-btn
-                    fab
-                    text
-                    x-small
-                    color="red"
-                    @click="$store.dispatch('users/deleteConfirm', user)"
-                  >
-                    <v-icon>mdi-close</v-icon>
-                  </v-btn>
-                </v-row>
-              </v-col>
-            </v-row>
-          </li>
-        </ul>
-        <v-btn class="mt-2" color="primary" nuxt @click="create">
-          create test
-        </v-btn>
-      </v-col>
-      <v-col>
-        <user-test-form />
+  <Page>
+    <div class="header">
+      <h1 class="page-title display-3">Users</h1>
+      <admin-action-create entity-name="user" class="admin-actions">
+        <user-form/>
+      </admin-action-create>
+    </div>
+
+    <v-row>
+      <v-col cols="12">
+        <v-text-field
+          v-model="query"
+          label="Search"
+          hint="Start typing a user name or email address"
+          clearable
+        ></v-text-field>
       </v-col>
     </v-row>
-  </div>
+
+    <v-row v-if="results.length" justify="start">
+      <v-col cols="10" class="ml-0 pl-0">
+        <v-list rounded subheader dense>
+          <v-list-item-group color="primary">
+            <user-list-element
+              v-for="user in results"
+              :key="user.id"
+              :user="user"
+            />
+          </v-list-item-group>
+        </v-list>
+      </v-col>
+    </v-row>
+    <v-row v-else>
+      <v-col cols="12" sm="6">
+        <p>No results matching</p>
+      </v-col>
+    </v-row>
+  </Page>
 </template>
 
 <script>
-import BaseForm from "../../components/elements/generics/BaseForm";
-import UserTestForm from '../../components/elements/forms/UserTestForm';
+import Page from "../../components/Page";
+import UserListElement from "../../components/elements/UserListElement";
+import AdminActionCreate from "../../components/elements/buttons/AdminActionCreate";
+import UserForm from '../../components/elements/forms/UserForm';
 
 export default {
-  name: "user-list",
-  components: { UserTestForm, BaseForm },
+  components: { UserForm, AdminActionCreate, UserListElement, Page },
+  data: () => ({
+    query: null,
+    createDialog: false,
+    dialog: false,
+    results: [],
+  }),
   methods: {
     create() {
       const user = {
@@ -59,8 +62,49 @@ export default {
       };
       this.$store.dispatch("users/create", user);
     }
+  },
+  watch: {
+    query(value) {
+      this.results = this.$store.state.users.data;
+      if (this.query) {
+        let query = value.toLowerCase();
+        let name = i => i.name.toLowerCase().includes(query);
+        let email = i => i.email.toLowerCase().includes(query);
+        this.results = this.results.filter(i => name(i) || email(i));
+      }
+    },
+  },
+  computed: {
+    isAdmin() {
+      return true;
+    },
+  },
+  mounted() {
+    this.results = this.$store.state.users.data
   }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import "../../assets/scss/variables";
+
+.header {
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: $mobile) {
+    flex-direction: column;
+  }
+  .page-title {
+    margin-right: auto;
+  }
+
+  .admin-actions {
+    margin-left: auto;
+
+    @media screen and (max-width: $mobile) {
+      margin: 15px auto auto 0;
+    }
+  }
+}
+</style>

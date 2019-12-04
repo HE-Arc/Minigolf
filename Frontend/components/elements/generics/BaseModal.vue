@@ -8,7 +8,7 @@
           @click:outside="!confirmation ? close : null">
     <v-card class="pa-4">
       <v-list>
-        <v-list-item>
+        <v-list-item inactive>
           <slot name="header"></slot>
 
           <v-list-item-avatar v-if="!confirmation" class="close-button">

@@ -14,6 +14,7 @@
         :disable-confirm="disableConfirm"
         :confirm-text="confirmText"
         :confirm-only="confirmOnly"
+        @reset-form="resetForm"
         @confirm="confirm"
         @close="close"
       />
@@ -33,18 +34,16 @@ export default {
   props: {
     form: { type: Object },
     buttons: { type: Boolean, default: false },
-    resetFlag: { type: Boolean },
     disableConfirm: { type: Boolean },
     confirmOnly: { type: Boolean, default: false },
     confirmText: { type: String },
-    confirmIcon: { type: String },
-  },
-  watch: {
-    resetFlag(value) {
-      if (!value) this.$refs.form.resetValidation();
-    }
+    confirmIcon: { type: String }
   },
   methods: {
+    resetForm() {
+      console.log("ICI")
+      this.$refs.form.resetValidation();
+    },
     isTextField(field) {
       return field.fieldType == "TextField";
     },

@@ -47,8 +47,9 @@ export default {
   data: () => ({
     pages: [
       { name: "Minigolfs", to: "/minigolfs" },
+      { name: "Users", to: "/users" },
       { name: "Laderboard", to: "/laderboard" },
-      { name: "Download", to: "/users" },
+      { name: "Download", to: "/download" },
       { name: "About", to: "/about" },
     ]
   }),

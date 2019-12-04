@@ -13,40 +13,22 @@
             height="200px"
             :src="minigolf.image"
           >
-            <div class="admin-actions">
-              <v-tooltip color="blue" top>
-                <template v-slot:activator="{ on }">
-                  <v-btn
-                    fab
-                    small
-                    elevation="1"
-                    color="white"
-                    v-on="on"
-                    @click.stop="dialog = true"
-                  >
-                    <v-icon color="blue">mdi-pen</v-icon>
-                  </v-btn>
-                </template>
-                <span>Edit</span>
-              </v-tooltip>
-              <v-tooltip color="red" top>
-                <template v-slot:activator="{ on }">
-                  <v-btn
-                    fab
-                    small
-                    color="white"
-                    elevation="1"
-                    v-on="on"
-                    @click.stop="
-                      $store.dispatch('minigolfs/deleteConfirm', minigolf)
-                    "
-                  >
-                    <v-icon color="red">mdi-close</v-icon>
-                  </v-btn>
-                </template>
-                <span>Delete</span>
-              </v-tooltip>
-            </div>
+            <admin-actions
+              class="admin-actions"
+              :entity="minigolf"
+              @dialog="dialog = true"
+            >
+              <template v-slot:dialog>
+                <base-dialog
+                  icon="mdi-pen"
+                  :title="minigolf.name"
+                  :modal="dialog"
+                  @close="dialog = false"
+                >
+                  <minigolf-form :minigolf="minigolf" @close="dialog = false" />
+                </base-dialog>
+              </template>
+            </admin-actions>
 
             <v-card-title>
               <h1
@@ -94,45 +76,33 @@
         </v-card>
       </template>
     </v-hover>
-    
-    <base-dialog
-            icon="mdi-pen"
-            :title="minigolf.name"
-            :modal="dialog"
-            @close="dialog = false"
-    >
-      <minigolf-form :minigolf="minigolf"  @close="dialog = false"/>
-    </base-dialog>
   </div>
 </template>
 
 <script>
-import BaseDialog from './generics/BaseDialog';
-import MinigolfForm from './forms/MinigolfForm';
+import BaseDialog from "./generics/BaseDialog";
+import MinigolfForm from "./forms/MinigolfForm";
+import AdminActions from "./buttons/AdminActions";
 export default {
   name: "MinigolfCard",
-  components: { MinigolfForm, BaseDialog },
+  components: { AdminActions, MinigolfForm, BaseDialog },
   props: {
     minigolf: { type: Object }
   },
   data: () => ({
-    dialog: false,
+    dialog: false
   }),
-
   methods: {
     link(slug) {
       this.$router.push({ path: `/minigolfs/${slug}` });
     },
-    confirm() {
-    
-    }
+    confirm() {}
   }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../../assets/scss/variables";
-
 .admin-actions {
   position: absolute;
   right: 10px;
