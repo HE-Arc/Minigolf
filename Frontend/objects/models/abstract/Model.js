@@ -6,7 +6,7 @@ export default class Model {
     this.storeName = storeName;
   }
 
-  static getRandomImageUrl(width = 400, height = 300) {
+  static getRandomImageUrl(width = 800, height = 600) {
     let min = 100;
     let max = 1000;
     let rand = Math.floor(Math.random() * (max - min + 1)) + min;

@@ -1,9 +1,12 @@
 <template>
   <div class="wrapper">
-    <div class="header">
-      <h1 class="page-title display-3">{{ title }}</h1>
-      <slot name="header-side"></slot>
-    </div>
+    <v-row v-if="title">
+      <v-col class="header">
+        <h1 class="page-title display-3">{{ title }}</h1>
+        <slot name="header-side"></slot>
+      </v-col>
+    </v-row>
+    <slot v-else name="header"></slot>
     <v-row>
       <v-col class="sub-header" cols="12">
         <slot name="sub-header"></slot>
