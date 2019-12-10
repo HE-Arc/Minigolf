@@ -17,7 +17,7 @@ class CreateMinigolfsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('description');
-            $table->string('canton');
+            $table->string('city');
             $table->string('address');
             $table->string('longitude');
             $table->string('latitude');

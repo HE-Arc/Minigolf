@@ -14,6 +14,6 @@ class Minigolf extends Model
     }
 
     protected $fillable = [
-        'name', 'description', 'address', 'canton', 'zipcode', 'phone', 'email', 'longitude', 'latitude', 'icon',
+        'name', 'description', 'address', 'city', 'zipcode', 'phone', 'email', 'longitude', 'latitude', 'icon',
     ];
 }

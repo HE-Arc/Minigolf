@@ -18,7 +18,7 @@ class MinigolfsTableSeeder extends Seeder
             Minigolf::create([
                 'name' => $faker->company,
                 'description' => $faker->text,
-                'canton' => $faker->city,
+                'city' => $faker->city,
                 'address' => $faker->address,
                 'longitude' => "46.{$faker->numberBetween(953316,856612)}",
                 'latitude' => "6.{$faker->numberBetween(997679,991582)}",
