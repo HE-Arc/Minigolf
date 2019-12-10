@@ -19,11 +19,6 @@ class CreatePlayersTable extends Migration
             $table->bigInteger('game_id')->unsigned();
             $table->timestamps();
         });
-
-        Schema::table('players', function($table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('game_id')->references('id')->on('games');
-        });
     }
 
     /**

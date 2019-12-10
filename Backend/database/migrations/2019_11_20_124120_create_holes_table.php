@@ -19,10 +19,6 @@ class CreateHolesTable extends Migration
             $table->string("number");
             $table->timestamps();
         });
-
-        Schema::table('holes', function ($table) {
-            $table->foreign("course_id")->references('id')->on('courses');
-        });
     }
 
     /**

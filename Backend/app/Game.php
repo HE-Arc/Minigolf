@@ -7,12 +7,12 @@ use Illuminate\Support\Str;
 
 class Game extends Model
 {
+    protected $table = 'games';
     public function user()
     {
         $this->hasOne('App\User');
     }
 
-    protected $table = 'games';
     protected $fillable = [
         'user_id', 'token', 'date'
     ];
@@ -28,7 +28,7 @@ class Game extends Model
     public function save(array $options = array())
     {
         if(empty($this->id)) {
-            $this->token = Str::random(6);
+            $this->token = Str::upper(Str::random(6));
             $this->date = now();
         }
         return parent::save($options);

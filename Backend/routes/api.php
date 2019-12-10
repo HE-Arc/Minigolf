@@ -30,9 +30,10 @@ Route::resource('scores', 'ScoreController');
 Route::prefix('auth')->group(function(){
  Route::post('login', 'Api\AuthController@login');
  Route::post('register', 'Api\AuthController@register');
- Route::group(['middleware' => 'auth:api'], function(){
- Route::post('getUser', 'Api\AuthController@getUser');
- });
+// Route::group(['middleware' => 'auth:api'], function(){
+//     Route::resource('users', 'UserController');
+// Route::post('getUser', 'Api\AuthController@getUser');
+// });
 });
 //Route::post('login', 'Auth\LoginController@login');
 //Route::post('logout', 'Auth\LoginController@logout');
