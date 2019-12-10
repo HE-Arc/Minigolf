@@ -1,41 +1,38 @@
 <template>
-  <Page>
-    <div class="header">
-      <h1 class="page-title display-3">Users</h1>
+  <Page title="Users">
+    <template v-slot:header-side>
       <admin-action-create entity-name="user" class="admin-actions">
         <user-form />
       </admin-action-create>
-    </div>
-
-    <v-row>
-      <v-col cols="12">
-        <v-text-field
-          v-model="query"
-          label="Search"
-          hint="Start typing a user name or email address"
-          clearable
-        />
-      </v-col>
-    </v-row>
-    
-    <v-row v-if="results.length" justify="start">
-      <v-col cols="10" class="ml-0 pl-0">
-        <v-list rounded subheader dense>
-          <v-list-item-group color="primary">
-            <user-list-element
-              v-for="user in results"
-              :key="user.id"
-              :user="user"
-            />
-          </v-list-item-group>
-        </v-list>
-      </v-col>
-    </v-row>
-    <v-row v-else>
-      <v-col cols="12" sm="6">
-        <p>No results matching</p>
-      </v-col>
-    </v-row>
+    </template>
+    <template v-slot:sub-header>
+      <v-text-field
+        v-model="query"
+        label="Search"
+        hint="Start typing a user name or email address"
+        clearable
+      />
+    </template>
+    <template v-slot:body>
+      <v-row v-if="results.length" justify="start">
+        <v-col cols="10" class="ml-0 pl-0">
+          <v-list rounded subheader dense>
+            <v-list-item-group color="primary">
+              <user-list-element
+                v-for="user in results"
+                :key="user.id"
+                :user="user"
+              />
+            </v-list-item-group>
+          </v-list>
+        </v-col>
+      </v-row>
+      <v-row v-else>
+        <v-col cols="12" sm="6">
+          <p>No results matching</p>
+        </v-col>
+      </v-row>
+    </template>
   </Page>
 </template>
 
