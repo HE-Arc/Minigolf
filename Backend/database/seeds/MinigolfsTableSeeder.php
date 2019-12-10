@@ -23,8 +23,6 @@ class MinigolfsTableSeeder extends Seeder
                 'zipcode' => $faker->numberBetween(1500,3000),
                 'phone' => $faker->phoneNumber,
                 'email' => $faker->email,
-                'image' => "https://picsum.photos/id/{$faker->numberBetween(100,1080)}/800/600",
-
             ]);
         }
     }
