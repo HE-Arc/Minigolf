@@ -30,6 +30,7 @@ export default class Minigolf extends Model {
     form.createTextField(Model.emailField(entity.email));
     form.createTextField(Model.cityField(entity.city));
     form.createTextField(Model.addressField(entity.address));
+    form.createTextField(Model.zipField(entity.zipcode));
     form.createTextField(Model.phoneField(entity.phone));
     form.createTextArea(Model.descriptionField(entity.description));
     return form;

@@ -41,6 +41,8 @@ export class TextField extends Field {
     this.min = attrs.min ? Rules.min(attrs.min) : null;
     this.length = attrs.length ? Rules.len(attrs.length) : null;
     this.initRules();
+
+    this.cols = attrs.cols || 12;
   }
 
   initRules() {

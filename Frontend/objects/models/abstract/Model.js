@@ -51,7 +51,19 @@ export default class Model {
       label: "Addres",
       required: true,
       min: 4,
-      max: 64
+      max: 64,
+      cols: 8,
+    };
+  }
+  static zipField(value) {
+    return {
+      value: value,
+      field: "zipcode",
+      label: "Zip",
+      required: true,
+      min: 4,
+      max: 8,
+      cols: 4,
     };
   }
   static phoneField(value) {

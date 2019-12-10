@@ -1,12 +1,19 @@
 <template>
   <v-form ref="form">
     <v-container fluid>
-      <div v-for="(field, i) in form.fields" :key="i">
-        <text-field v-if="isTextField(field)" :field="field" />
-        <check-box v-if="isCheckBox(field)" :field="field" />
-        <text-area v-if="isTextArea(field)" :field="field" />
-      </div>
-
+      <v-row justify="space-arround">
+<!--          :cols="field.cols ? field.cols : 12"-->
+        <v-col
+          class="my-0 py-0"
+          :cols="field.cols"
+          v-for="(field, i) in form.fields"
+          :key="i"
+        >
+          <text-field v-if="isTextField(field)" :field="field" />
+          <check-box v-if="isCheckBox(field)" :field="field" />
+          <text-area v-if="isTextArea(field)" :field="field" />
+        </v-col>
+      </v-row>
       <slot name="bottom"></slot>
 
       <confirm-button-group
@@ -41,7 +48,7 @@ export default {
   },
   methods: {
     resetForm() {
-      console.log("ICI")
+      console.log("ICI");
       this.$refs.form.resetValidation();
     },
     isTextField(field) {
