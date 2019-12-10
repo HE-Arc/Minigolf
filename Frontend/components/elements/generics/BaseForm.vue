@@ -1,7 +1,7 @@
 <template>
   <v-form ref="form">
     <v-container fluid>
-      <v-row justify="space-arround">
+      <v-row justify="space-around">
 <!--          :cols="field.cols ? field.cols : 12"-->
         <v-col
           class="my-0 py-0"
@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     resetForm() {
-      console.log("ICI");
       this.$refs.form.resetValidation();
     },
     isTextField(field) {

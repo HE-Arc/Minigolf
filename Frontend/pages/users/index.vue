@@ -14,12 +14,12 @@
       />
     </template>
     <template v-slot:body>
-      <v-row v-if="results.length" justify="start">
+      <v-row v-if="users.length" justify="start">
         <v-col cols="10" class="ml-0 pl-0">
           <v-list rounded subheader dense>
             <v-list-item-group color="primary">
               <user-list-element
-                v-for="user in results"
+                v-for="user in users"
                 :key="user.id"
                 :user="user"
               />
@@ -61,24 +61,19 @@ export default {
     }
   },
   watch: {
-    query(value) {
-      this.results = this.$store.state.users.data;
-      if (this.query) {
-        let query = value.toLowerCase();
-        let name = i => i.name.toLowerCase().includes(query);
-        let email = i => i.email.toLowerCase().includes(query);
-        this.results = this.results.filter(i => name(i) || email(i));
-      }
+    query() {
+      return this.users;
     }
   },
   computed: {
+    users() {
+      let query = this.query ? this.query : "";
+      return this.$store.getters["users/filter"](query);
+    },
     isAdmin() {
       return true;
     }
   },
-  mounted() {
-    this.results = this.$store.state.users.data;
-  }
 };
 </script>
 

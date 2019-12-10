@@ -1,14 +1,15 @@
 <template>
   <div>
     <div v-if="isAdmin" class="admin-actions">
+      
       <v-tooltip color="blue" top>
         <template v-slot:activator="{ on }">
           <v-btn
             fab
             x-small
-            elevation="1"
-            color="white"
             v-on="on"
+            color="white"
+            elevation="1"
             @click.stop="$emit('dialog')"
           >
             <v-icon color="blue">mdi-pen</v-icon>
@@ -16,14 +17,15 @@
         </template>
         <span>Edit</span>
       </v-tooltip>
+      
       <v-tooltip color="red" top>
         <template v-slot:activator="{ on }">
           <v-btn
             fab
             x-small
+            v-on="on"
             color="white"
             elevation="1"
-            v-on="on"
             @click.stop="deleteEntity"
           >
             <v-icon color="red">mdi-close</v-icon>

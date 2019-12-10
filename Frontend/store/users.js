@@ -6,6 +6,12 @@ export const state = () => ({
 
 export const getters = {
   byEmail: state => email => state.data.find(i => i.email === email),
+  filter: state => query => {
+    let q = query.toLowerCase();
+    let name = i => i.name.toLowerCase().includes(q);
+    let email = i => i.email.toLowerCase().includes(q);
+    return state.data.filter(i => name(i) || email(i));
+  }
 };
 
 export const mutations = {

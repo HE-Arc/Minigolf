@@ -27,12 +27,12 @@
   
 export default {
   name: "Map",
+  props: {
+    locations: { type: Array, default: {lat: "12.123", lng: "12.123"} },
+  },
   data: () => ({
     currentLocation: {},
     locationsVisibleOnMap: "",
-    locations: [
-      { lat: 46.992979, lng: 6.931933 },
-    ],
     pins: mapsConf.pins,
     clusterStyle: mapsConf.clusterStyle,
     mapStyle: mapsConf.mapStyle
@@ -48,8 +48,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  //.GMap__Wrapper {
-  //  width: 100%;
-  //  height: 900px;
-  //}
 </style>

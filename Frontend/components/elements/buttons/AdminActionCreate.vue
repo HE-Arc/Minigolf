@@ -3,12 +3,12 @@
     <v-tooltip color="green" top>
       <template v-slot:activator="{ on }">
         <v-btn
+          fab
+          small
           v-on="on"
           color="green"
           elevation="1"
-          @click="createDialog = true"
-          fab
-          small
+          @click="dialog = true"
         >
           <v-icon color="white" large>mdi-plus</v-icon>
         </v-btn>
@@ -18,8 +18,8 @@
     <base-dialog
       icon="mdi-plus"
       :title="`Create a ${entityName}`"
-      :modal="createDialog"
-      @close="createDialog = false"
+      :modal="dialog"
+      @close="dialog = false"
     >
       <slot></slot>
     </base-dialog>
@@ -36,7 +36,7 @@
       entityName: { type: String },
     },
     data: () => ({
-      createDialog: false
+      dialog: false
     }),
     computed: {
       isAdmin() {
