@@ -19,12 +19,12 @@ class CreateMinigolfsTable extends Migration
             $table->text('description');
             $table->string('city');
             $table->string('address');
-            $table->string('longitude');
-            $table->string('latitude');
+            $table->string('long');
+            $table->string('lat');
             $table->string('zipcode');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->string('icon')->nullable();
+            $table->string('image')->nullable();
 
             $table->timestamps();
         });

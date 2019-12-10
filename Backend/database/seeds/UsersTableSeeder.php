@@ -20,14 +20,14 @@ class UsersTableSeeder extends Seeder
 
         User::create([
             'name' => 'admin',
-            'permission' => 'staff',
+            'role' => 'staff',
             'email' => 'admin@test.com',
             'password' => $password,
         ]);
 
         User::create([
             'name' => 'nath',
-            'permission' => 'staff',
+            'role' => 'staff',
             'email' => 'nath@test.com',
             'password' => $password,
         ]);
