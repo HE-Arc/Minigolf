@@ -62,6 +62,7 @@ export default {
     "@nuxtjs/axios",
     "@nuxtjs/auth",
     "nuxt-izitoast",
+    ['nuxt-gmaps', { key: process.env.MAPS_API }]
   ],
   /*
    ** Build configuration

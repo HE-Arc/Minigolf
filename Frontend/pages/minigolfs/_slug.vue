@@ -19,7 +19,7 @@
         </v-col>
         <v-col cols="">
           <data-card title="Location">
-            <data-list :list="attributes" />
+            <Map/>
           </data-card>
         </v-col>
       </v-row>
@@ -44,10 +44,11 @@
 import Page from "../../components/Page";
 import DataList from "../../components/elements/generics/containers/DataList";
 import DataCard from "../../components/elements/generics/containers/DataCard";
+import Map from '../../components/Map';
 
 export default {
   name: "user",
-  components: { DataCard, DataList, Page },
+  components: { Map, DataCard, DataList, Page },
   computed: {
     minigolf() {
       let slug = this.$route.params.slug;

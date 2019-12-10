@@ -1,6 +1,6 @@
 <template>
   <v-list>
-    <v-list-item v-for="attr in list">
+    <v-list-item v-for="attr in list" :key="attr.name.value">
       <v-list-item-content>
         <v-list-item-title>{{ attr.name }}</v-list-item-title>
         <v-list-item-subtitle>
