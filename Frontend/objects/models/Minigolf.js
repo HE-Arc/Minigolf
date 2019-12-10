@@ -8,13 +8,19 @@ export default class Minigolf extends Model {
     super('minigolfs', data.id);
     this.name = data.name || "";
     this.city = data.city;
-    this.address = data.canton;
-    this.description = data.description;
+    this.address = data.address;
+    this.long = data.long;
+    this.lat = data.lat;
+    this.zipcode = data.zipcode;
     this.phone = data.phone;
     this.email = data.email;
-    this.slug = this.name.split(" ").join("-");
+    this.description = data.description;
+    this.image = data.image;
 
-    this.image = Model.getRandomImageUrl();
+
+
+    this.slug = this.name.split(" ").join("-");
+    // this.image = Model.getRandomImageUrl();
     this.courts = Math.floor(Math.random() * 5) + 1;
   }
 

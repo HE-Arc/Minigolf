@@ -7,6 +7,7 @@ export default class User extends Model {
     super('users', data.id);
     this.name = data.name;
     this.email = data.email;
+    this.role = data.role;
   }
 
   static createForm(entity) {
