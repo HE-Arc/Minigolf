@@ -20,11 +20,6 @@ class CreateScoresTable extends Migration
             $table->integer('score');
             $table->timestamps();
         });
-
-        Schema::table('scores', function($table) {
-            $table->foreign('player_id')->references('id')->on('players');
-            $table->foreign('hole_id')->references('id')->on('holes');
-        });
     }
 
     /**

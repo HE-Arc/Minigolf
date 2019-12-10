@@ -19,10 +19,6 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
-
-        Schema::table('courses', function ($table) {
-            $table->foreign("minigolf_id")->references('id')->on('minigolfs');
-        });
     }
 
     /**

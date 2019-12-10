@@ -14,14 +14,19 @@ class MinigolfsTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 15; $i++) {
             Minigolf::create([
-                'name' => $faker->name,
+                'name' => $faker->company,
+                'description' => $faker->text,
                 'city' => $faker->city,
-                'canton' => $faker->address,
-                'numpostal' => $faker->numberBetween(1500,3000),
+                'address' => $faker->address,
+                'longitude' => "46.{$faker->numberBetween(953316,856612)}",
+                'latitude' => "6.{$faker->numberBetween(997679,991582)}",
+                'zipcode' => $faker->numberBetween(1500,3000),
                 'phone' => $faker->phoneNumber,
                 'email' => $faker->email,
+                'icon' => "https://picsum.photos/id/{$faker->numberBetween(0,1080)}/800/600"
+
             ]);
         }
     }

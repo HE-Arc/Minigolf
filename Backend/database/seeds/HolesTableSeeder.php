@@ -14,11 +14,13 @@ class HolesTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 0; $i < 180; $i++) {
-            Hole::create([
-                'course_id' => $faker->numberBetween(1,20),
-                'number' => $faker->name,
-            ]);
+        for ($i = 1; $i < 16; $i++) {
+            for($j = 1; $j < 19; $j++){
+                Hole::create([
+                    'course_id' => $i,
+                    'number' => $j,
+                ]);
+            }
         }
     }
 }

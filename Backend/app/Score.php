@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Score extends Model
 {
-
+    protected $table = 'scores';
     public function holes()
     {
         $this->hasMany('App\Hole');
@@ -17,7 +17,7 @@ class Score extends Model
         $this->hasMany('App\Player');
     }
 
-    protected $table = 'scores';
+
     protected $fillable = [
         'player_id', 'hole_id', 'score',
     ];

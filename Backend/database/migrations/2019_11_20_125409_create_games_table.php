@@ -21,10 +21,6 @@ class CreateGamesTable extends Migration
             $table->dateTime('date');
             $table->timestamps();
         });
-
-        Schema::table('games', function ($table) {
-            $table->foreign("user_id")->references('id')->on('users');
-        });
     }
 
     /**
