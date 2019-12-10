@@ -3,7 +3,7 @@
     <div class="header">
       <h1 class="page-title display-3">Users</h1>
       <admin-action-create entity-name="user" class="admin-actions">
-        <user-form/>
+        <user-form />
       </admin-action-create>
     </div>
 
@@ -14,10 +14,10 @@
           label="Search"
           hint="Start typing a user name or email address"
           clearable
-        ></v-text-field>
+        />
       </v-col>
     </v-row>
-
+    
     <v-row v-if="results.length" justify="start">
       <v-col cols="10" class="ml-0 pl-0">
         <v-list rounded subheader dense>
@@ -43,7 +43,7 @@
 import Page from "../../components/Page";
 import UserListElement from "../../components/elements/UserListElement";
 import AdminActionCreate from "../../components/elements/buttons/AdminActionCreate";
-import UserForm from '../../components/elements/forms/UserForm';
+import UserForm from "../../components/elements/forms/UserForm";
 
 export default {
   components: { UserForm, AdminActionCreate, UserListElement, Page },
@@ -51,7 +51,7 @@ export default {
     query: null,
     createDialog: false,
     dialog: false,
-    results: [],
+    results: []
   }),
   methods: {
     create() {
@@ -72,15 +72,15 @@ export default {
         let email = i => i.email.toLowerCase().includes(query);
         this.results = this.results.filter(i => name(i) || email(i));
       }
-    },
+    }
   },
   computed: {
     isAdmin() {
       return true;
-    },
+    }
   },
   mounted() {
-    this.results = this.$store.state.users.data
+    this.results = this.$store.state.users.data;
   }
 };
 </script>
