@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Namshi\JOSE\JWT;
@@ -47,8 +48,7 @@ class AuthController extends Controller
         } catch (JWTException $e) {
             return response()->json( 'could_not_create_token', 500);
         }
-
-        return response()->json(compact('token'));
+        return response()->json(compact('token'), 200);
     }
 
     public function profile()
@@ -72,7 +72,9 @@ class AuthController extends Controller
             return response()->json('token_absent', $e->getStatusCode());
 
         }
-
-        return response()->json(compact('user'));
+        return UserResource::collection(User::with('games')
+                        ->where('id','=', $user->id)
+                        ->get())
+                        ->jsonSerialize()[0];
     }
 }

@@ -21,10 +21,10 @@ Route::resource('courses', 'CourseController');
 Route::resource('minigolfs', 'MinigolfController');
 Route::resource('games', 'GameController');
 Route::resource('holes', 'HoleController');
-
-Route::group(['middleware' => 'jwt.verify'], function () {
-    Route::resource('players', 'PlayerController');
-});
+Route::resource('players', 'PlayerController');
+//Route::group(['middleware' => 'jwt.verify'], function () {
+//
+//});
 Route::resource('scores', 'ScoreController');
 
 // Auth/token
