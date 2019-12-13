@@ -15,7 +15,9 @@ class GameController extends Controller
      */
     public function index()
     {
-        return GameResource::collection(Game::with('players','course')->get());
+        return GameResource::collection(Game::with('players','course')
+            ->get())
+            ->jsonSerialize();
     }
 
     /**
@@ -48,7 +50,10 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        return GameResource::collection(Game::with('players','course')->where('id','=', $game->id)->get());
+        return GameResource::collection(Game::with('players','course')
+            ->where('id','=', $game->id)
+            ->get())
+            ->jsonSerialize();
     }
 
     /**

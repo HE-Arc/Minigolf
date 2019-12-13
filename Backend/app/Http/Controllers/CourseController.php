@@ -15,7 +15,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return CourseResource::collection(Course::with('holes')->get());
+        return CourseResource::collection(Course::with('holes')
+            ->get())
+            ->jsonSerialize();
     }
 
     /**
@@ -48,7 +50,10 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return CourseResource::collection(Course::with('holes')->where('id','=', $course->id)->get());
+        return CourseResource::collection(Course::with('holes')
+            ->where('id','=', $course->id)
+            ->get())
+            ->jsonSerialize();
     }
 
     /**

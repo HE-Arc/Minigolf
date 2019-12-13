@@ -16,7 +16,9 @@ class MinigolfController extends Controller
      */
     public function index()
     {
-        return MinigolfResource::collection(Minigolf::with('courses')->get());
+        return MinigolfResource::collection(Minigolf::with('courses')
+            ->get())
+            ->jsonSerialize();
     }
 
     /**
@@ -49,7 +51,10 @@ class MinigolfController extends Controller
      */
     public function show(Minigolf $minigolf)
     {
-        return $minigolf;
+        return MinigolfResource::collection(Minigolf::with('minigolf')
+            ->where('id','=', $minigolf->id)
+            ->get())
+            ->jsonSerialize();
     }
 
     /**

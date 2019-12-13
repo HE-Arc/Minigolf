@@ -16,13 +16,13 @@ class GameResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'course_id' => $this->course_id,
+            'creator' => $this->user_id,
+            'course' => $this->course_id,
             'token' => $this->token,
             'date' => $this->date,
             'course' => $this->course->id,
             'minigolf' => $this->course->minigolf_id,
-            'players' => IdResource::collection($this->players),
+            'players' => UseridResource::collection($this->players),
         ];
     }
 }

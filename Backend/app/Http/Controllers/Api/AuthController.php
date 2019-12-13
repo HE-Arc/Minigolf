@@ -38,9 +38,9 @@ class AuthController extends Controller
 //            $userUp = User::create($user);
             User::UPDATED_AT;
 //            $userUp->save();
-            $success['role'] = $user->role;
-            $success['user'] = $user;
-            return response()->json($success, 200);
+//            $success['role'] = $user->role;
+//            $success['user'] = $user;
+            return response()->json(['success' => $success], 200);
         } else {
             return response()->json(['error' => 'Unauthorised'], 401);
         }
