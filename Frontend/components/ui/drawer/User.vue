@@ -42,17 +42,16 @@ export default {
       return this.$auth.loggedIn;
     },
     user() {
-      // return this.$store.state.auth.user;
       return this.$auth.user;
     }
   },
   methods: {
     async logout() {
       await this.$auth.logout();
-      // this.$store.commit("application/SET_DRAWER", false);
-      // this.$router.push("/");
+      this.$store.commit("application/SET_DRAWER", false);
+      this.$router.push("/");
       if (!this.$auth.loggedIn) {
-        // this.$notifications("success", `Vous êtes maintenant déconnecté.`);
+        this.$notifications("success", `Disconnected`);
       }
     }
   }
