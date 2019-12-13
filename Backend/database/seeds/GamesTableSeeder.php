@@ -17,6 +17,7 @@ class GamesTableSeeder extends Seeder
         for ($i = 0; $i < 180; $i++) {
             Game::create([
                 'user_id' => $faker->numberBetween(1,12),
+                'course_id' => 1,
             ]);
         }
     }

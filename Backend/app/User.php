@@ -12,6 +12,17 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
     protected $table = 'users';
+
+    public function games()
+    {
+        return $this->hasMany('App\Game');
+    }
+
+    public function players()
+    {
+        return $this->hasMany('App\Player');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -27,7 +38,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','created_at', 'update_at',
     ];
 
     /**
@@ -40,11 +51,11 @@ class User extends Authenticatable
     ];
 
 
-    public function generateToken()
-    {
-        $this->api_token = Str::random(60);
-        $this->save();
-
-        return $this->api_token;
-    }
+//    public function generateToken()
+//    {
+//        $this->api_token = Str::random(60);
+//        $this->save();
+//
+//        return $this->api_token;
+//    }
 }

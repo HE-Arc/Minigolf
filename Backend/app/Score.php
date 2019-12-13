@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Score extends Model
 {
     protected $table = 'scores';
+    protected $hidden =  ['created_at', 'updated_at'];
+
     public function holes()
     {
-        $this->hasMany('App\Hole');
+        $this->belongsToMany('App\Hole');
     }
 
     public function players()
     {
-        $this->hasMany('App\Player');
+        $this->belongsToMany('App\Player');
     }
 
 

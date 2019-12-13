@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Http\Resources\CourseResource;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -14,9 +15,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-//        return Course::all();
-        $course = Course::with('holes')->get();
-        return $course;
+        return CourseResource::collection(Course::with('holes')->get());
     }
 
     /**
@@ -49,7 +48,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return $course;
+        return CourseResource::collection(Course::with('holes')->where('id','=', $course->id)->get());
     }
 
     /**

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MinigolfResource;
 use App\Minigolf;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class MinigolfController extends Controller
@@ -14,10 +16,7 @@ class MinigolfController extends Controller
      */
     public function index()
     {
-//        $minigolf = Minigolf::with('courses', 'courses.holes')->get();
-//        return $minigolf;
-
-        return Minigolf::all();
+        return MinigolfResource::collection(Minigolf::with('courses')->get());
     }
 
     /**

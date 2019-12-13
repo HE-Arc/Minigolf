@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Hole extends Model
 {
     protected $table = 'holes';
+    protected $hidden =  ['created_at', 'updated_at'];
 
     public function scores()
     {
-        $this->hasMany('App\Scores');
+        return $this->hasMany('App\Scores');
     }
 
     public function course()
     {
-        return $this->hasOne('App\Course');
+        return $this->belongsTo('App\Course');
     }
 
     protected $fillable = [

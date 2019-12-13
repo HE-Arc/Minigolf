@@ -10,8 +10,6 @@ use Validator;
 
 class AuthController extends Controller
 {
-    public $successStatus = 200;
-
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -28,7 +26,7 @@ class AuthController extends Controller
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
         $success['token'] = $user->createToken('AppName')->accessToken;
-        return response()->json(['success' => $success], $this->successStatus);
+        return response()->json(['success' => $success], 200);
     }
 
 
@@ -36,16 +34,15 @@ class AuthController extends Controller
     {
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
-            $success['token'] = $user->createToken('AppName')->accessToken;
-            return response()->json(['success' => $success], $this->successStatus);
+            $success['token'] = $user->createToken('minigolf')->accessToken;
+//            $userUp = User::create($user);
+            User::UPDATED_AT;
+//            $userUp->save();
+            $success['role'] = $user->role;
+            $success['user'] = $user;
+            return response()->json($success, 200);
         } else {
             return response()->json(['error' => 'Unauthorised'], 401);
         }
-    }
-
-    public function getUser()
-    {
-        $user = Auth::user();
-        return response()->json(['success' => $user], $this->successStatus);
     }
 }

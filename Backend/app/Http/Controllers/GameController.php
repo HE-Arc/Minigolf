@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use App\Http\Resources\GameResource;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -14,7 +15,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        return Game::all();
+        return GameResource::collection(Game::with('players','course')->get());
     }
 
     /**
@@ -47,7 +48,7 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        return $game;
+        return GameResource::collection(Game::with('players','course')->where('id','=', $game->id)->get());
     }
 
     /**

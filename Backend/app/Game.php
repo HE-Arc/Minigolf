@@ -8,18 +8,25 @@ use Illuminate\Support\Str;
 class Game extends Model
 {
     protected $table = 'games';
-    public function user()
+    protected $hidden = ['created_at', 'updated_at'];
+
+    public function players()
     {
-        $this->hasOne('App\User');
+        return $this->hasMany('App\Player');
+    }
+
+    public function course()
+    {
+        return $this->belongsTo('App\Course');
     }
 
     protected $fillable = [
-        'user_id', 'token', 'date'
+        'user_id', 'course_id', 'token', 'date'
     ];
 
     protected $attributes = [
-            'isStarted' => false,
-        ];
+        'isStarted' => false,
+    ];
 
     protected $casts = [
         'date' => 'datetime',
@@ -27,7 +34,7 @@ class Game extends Model
 
     public function save(array $options = array())
     {
-        if(empty($this->id)) {
+        if (empty($this->id)) {
             $this->token = Str::upper(Str::random(6));
             $this->date = now();
         }

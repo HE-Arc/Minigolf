@@ -7,15 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class Player extends Model
 {
     protected $table = 'players';
+    protected $hidden =  ['created_at', 'updated_at'];
 
     public function users()
     {
-        $this->hasMany('App\User');
+        return $this->belongsTo('App\User');
+    }
+
+    public function scores()
+    {
+        return $this->hasMany('App\Score');
     }
 
     public function games()
     {
-        $this->hasMany('App\Game');
+        return $this->belongsToMany('App\Game');
     }
 
     protected $fillable = [
