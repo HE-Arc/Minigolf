@@ -2,7 +2,7 @@
   <base-form
     confirm-only
     buttons
-    confirm-text="Update"
+    confirm-text="Send"
     :disable-confirm="!isValid()"
     :form="getForm()"
     @confirm="confirm()"
@@ -16,11 +16,12 @@ import Minigolf from "../../../objects/models/Minigolf";
 
 export default {
   props: {
-    minigolf: { type: Object }
+    minigolf: { type: Object },
+    update: { type: Boolean, default: false }
   },
   data: () => ({
     form: null,
-    resetFlag: false,
+    resetFlag: false
   }),
   name: "MinigolfForm",
   components: { BaseForm },
@@ -36,10 +37,10 @@ export default {
       return form.isValid() && form.isDirty();
     },
     close() {
-      this.$emit('close');
+      this.$emit("close");
     },
     confirm() {
-      let action = `minigolfs/${this.minigolf ? 'update' : 'create'}`;
+      let action = `minigolfs/${this.minigolf ? "update" : "create"}`;
       this.$store.dispatch(action, this.form.getForm());
       this.close();
     }

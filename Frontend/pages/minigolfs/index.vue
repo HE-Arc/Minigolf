@@ -14,9 +14,8 @@
       />
     </template>
     <template v-slot:body>
-  
-      <v-row v-if="results.length">
-        <v-col cols="12" sm="6" v-for="minigolf in results" :key="minigolf.id">
+      <v-row v-if="minigolfs.length">
+        <v-col cols="12" sm="6" v-for="minigolf in minigolfs" :key="minigolf.id">
           <minigolf-card :minigolf="minigolf" />
         </v-col>
       </v-row>
@@ -38,31 +37,23 @@ import MinigolfForm from "../../components/elements/forms/MinigolfForm";
 export default {
   components: { MinigolfForm, AdminActionCreate, Page, MinigolfCard },
   data: () => ({
-    query: null,
-    results: []
+    query: null
   }),
   watch: {
-    query(value) {
-      this.results = this.$store.state.minigolfs.data;
-      if (this.query) {
-        let query = value.toLowerCase();
-        let name = i => i.name.toLowerCase().includes(query);
-        let city = i => i.city.toLowerCase().includes(query);
-        this.results = this.results.filter(i => name(i) || city(i));
-      }
+    query() {
+      return this.minigolfs;
     }
   },
   computed: {
+    minigolfs() {
+      let query = this.query ? this.query : "";
+      return this.$store.getters["minigolfs/filter"](query);
+    },
     isAdmin() {
       return true;
     }
   },
-  mounted() {
-    this.results = this.$store.state.minigolfs.data;
-  }
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

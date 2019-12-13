@@ -1,5 +1,5 @@
 <template>
-  <v-breadcrumbs class="pl-0" :items="breadCrumb" divider="-"/>
+  <v-breadcrumbs class="pl-0" :items="breadCrumb" divider="-" />
 </template>
 
 <script>
@@ -24,6 +24,7 @@ export default {
       return {
         text: route.name || route,
         to: route.path || null,
+        exact: true,
         disabled: !(route instanceof Object)
       };
     }

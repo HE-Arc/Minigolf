@@ -9,8 +9,8 @@ export default class Minigolf extends Model {
     this.name = data.name || "";
     this.city = data.city;
     this.address = data.address;
-    this.long = data.long;
-    this.lat = data.lat;
+    this.long = parseFloat(data.long);
+    this.lat = parseFloat(data.lat);
     this.zipcode = data.zipcode;
     this.phone = data.phone;
     this.email = data.email;
