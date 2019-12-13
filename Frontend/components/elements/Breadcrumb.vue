@@ -14,11 +14,9 @@ export default {
           ? this.$route.path.replace("/", "").split("/")
           : [];
 
-      let x = [{ path: "/", name: "home" }, ...list].map(name =>
+      return [{ path: "/", name: "home" }, ...list].map(name =>
         this.createNode(routes.find(route => route.name == name) || name)
       );
-      console.log(x);
-      return x;
     }
   },
   methods: {
