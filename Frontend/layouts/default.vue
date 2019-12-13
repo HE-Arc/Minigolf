@@ -61,6 +61,12 @@ export default {
         "--primary-color": this.$vuetify.theme.currentTheme.primary
       };
     }
+  },
+  
+  mounted() {
+    setTimeout(() => {
+      console.log(this.$auth.user)
+    }, 500);
   }
 };
 </script>
