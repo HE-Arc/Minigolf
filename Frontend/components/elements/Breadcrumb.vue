@@ -1,5 +1,5 @@
 <template>
-  <v-breadcrumbs class="pl-0" :items="breadCrumb" divider="-"/>
+  <v-breadcrumbs class="pl-0" :items="breadCrumb" divider="-" />
 </template>
 
 <script>
@@ -14,9 +14,11 @@ export default {
           ? this.$route.path.replace("/", "").split("/")
           : [];
 
-      return [{ path: "/", name: "home" }, ...list].map(name =>
+      let x = [{ path: "/", name: "home" }, ...list].map(name =>
         this.createNode(routes.find(route => route.name == name) || name)
       );
+      console.log(x);
+      return x;
     }
   },
   methods: {
@@ -24,6 +26,7 @@ export default {
       return {
         text: route.name || route,
         to: route.path || null,
+        exact: true,
         disabled: !(route instanceof Object)
       };
     }
