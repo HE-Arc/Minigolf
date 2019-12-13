@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::prefix('users')->group(function(){
+    Route::get('profile', 'Api\AuthController@profile');
+});
 
 Route::resource('users', 'UserController');
 Route::resource('courses', 'CourseController');

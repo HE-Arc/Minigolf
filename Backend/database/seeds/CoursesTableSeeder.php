@@ -14,9 +14,9 @@ class CoursesTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 1; $i < 16; $i++) {
+        for ($i = 1; $i < 30; $i++) {
             Course::create([
-                'minigolf_id' => $i,
+                'minigolf_id' => $faker->numberBetween(1, 16),
                 'name' => $faker->firstNameFemale,
             ]);
         }

@@ -53,7 +53,7 @@ class CourseController extends Controller
         return CourseResource::collection(Course::with('holes')
             ->where('id','=', $course->id)
             ->get())
-            ->jsonSerialize();
+            ->jsonSerialize()[0];
     }
 
     /**

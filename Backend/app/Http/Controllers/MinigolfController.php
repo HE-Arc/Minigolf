@@ -51,10 +51,10 @@ class MinigolfController extends Controller
      */
     public function show(Minigolf $minigolf)
     {
-        return MinigolfResource::collection(Minigolf::with('minigolf')
+        return MinigolfResource::collection(Minigolf::with('courses')
             ->where('id','=', $minigolf->id)
             ->get())
-            ->jsonSerialize();
+            ->jsonSerialize()[0];
     }
 
     /**

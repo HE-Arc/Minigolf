@@ -45,4 +45,8 @@ class AuthController extends Controller
             return response()->json(['error' => 'Unauthorised'], 401);
         }
     }
+
+    public function profile(){
+        return response()->json(Auth::user(), 200);
+    }
 }

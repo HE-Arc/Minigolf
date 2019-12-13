@@ -34,7 +34,7 @@ class UserController extends Controller
             return UserResource::collection(User::with('games')
                 ->where('id','=', $user->id)
                 ->get())
-                ->jsonSerialize();
+                ->jsonSerialize()[0];
         }
 
         public function store(Request $request)
