@@ -11,14 +11,16 @@
     </template>
 
     <template v-slot:body>
-      <v-row justify="center">
-        <v-col class="left pr-5" cols="">
-          <data-card title="Details" width="400">
+    <v-container fluid>
+      
+      <v-row>
+        <v-col>
+          <data-card title="Details">
             <data-list :list="attributes"/>
           </data-card>
         </v-col>
-        <v-col cols="">
-          <data-card title="Location">
+        <v-col>
+          <data-card min-width="366">
             <Map :locations="locations"/>
           </data-card>
         </v-col>
@@ -26,16 +28,18 @@
 
       <v-row>
         <v-col>
-          <data-card title="Highscores" width="400">
+          <data-card title="Highscores">
             <data-list :list="attributes"/>
           </data-card>
         </v-col>
         <v-col>
-          <data-card title="Scores" width="400">
+          <data-card title="Scores">
             <data-list :list="attributes"/>
           </data-card>
         </v-col>
       </v-row>
+      
+    </v-container>
     </template>
   </Page>
 </template>
