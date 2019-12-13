@@ -22,7 +22,7 @@ Route::resource('minigolfs', 'MinigolfController');
 Route::resource('games', 'GameController');
 Route::resource('holes', 'HoleController');
 
-Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'jwt.verify'], function () {
     Route::resource('players', 'PlayerController');
 });
 Route::resource('scores', 'ScoreController');

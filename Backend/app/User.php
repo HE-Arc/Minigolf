@@ -7,8 +7,9 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, Notifiable;
     protected $table = 'users';
@@ -38,7 +39,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','created_at', 'update_at',
+        'password', 'remember_token', 'created_at', 'update_at',
     ];
 
     /**
@@ -51,11 +52,13 @@ class User extends Authenticatable
     ];
 
 
-    public function generateToken()
+    public function getJWTIdentifier()
     {
-        $this->api_token = Str::random(60);
-        $this->save();
+        return $this->getKey();
+    }
 
-        return $this->api_token;
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

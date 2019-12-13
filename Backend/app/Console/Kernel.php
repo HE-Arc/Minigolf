@@ -15,6 +15,9 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //
     ];
+    protected $routeMiddleware = [
+        'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
+    ];
 
     /**
      * Define the application's command schedule.

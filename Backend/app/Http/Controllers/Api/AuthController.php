@@ -1,52 +1,78 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
+use JWTAuth;
+use Namshi\JOSE\JWT;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Http\Controllers\Controller;
 use App\User;
-use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(),
-            [
-                'name' => 'required',
-                'email' => 'required|email',
-                'password' => 'required',
-                'c_password' => 'required|same:password',
-            ]);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return response()->json($validator->errors()->toJson(), 400);
         }
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
-        $success['token'] = $user->createToken('AppName')->accessToken;
-        return response()->json(['success' => $success], 200);
+
+        $user = User::create([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password')),
+        ]);
+
+        $token = JWTAuth::fromUser($user);
+
+        return response()->json(compact('user', 'token'), 201);
     }
 
 
-    public function login()
+    public function login(Request $request)
     {
-        if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
-            $user = Auth::user();
-            $success['token'] = $user->createToken('minigolf')->accessToken;
-//            $userUp = User::create($user);
-            User::UPDATED_AT;
-//            $userUp->save();
-            $success['role'] = $user->role;
-            $success['user'] = $user;
-            return response()->json(['success' => $success], 200);
-        } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
+        $credentials = $request->only('email', 'password');
+
+        try {
+            if (!$token = JWTAuth::attempt($credentials)) {
+                return response()->json('invalid_credentials', 400);
+            }
+        } catch (JWTException $e) {
+            return response()->json( 'could_not_create_token', 500);
         }
+
+        return response()->json(compact('token'));
     }
 
-    public function profile(){
-        return response()->json(Auth::user(), 200);
+    public function profile()
+    {
+        try {
+
+            if (!$user = JWTAuth::parseToken()->authenticate()) {
+                return response()->json('user_not_found', 404);
+            }
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return response()->json('token_expired', $e->getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return response()->json('token_invalid', $e->getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+
+            return response()->json('token_absent', $e->getStatusCode());
+
+        }
+
+        return response()->json(compact('user'));
     }
 }
