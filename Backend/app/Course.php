@@ -16,7 +16,6 @@ class Course extends Model
 
     public function minigolf()
     {
-
         return $this->belongsTo('App\Minigolf');
     }
 

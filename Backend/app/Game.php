@@ -12,7 +12,7 @@ class Game extends Model
 
     public function players()
     {
-        return $this->hasMany('App\Player');
+        return $this->belongsToMany('App\User','players','game_id', 'user_id');
     }
 
     public function course()

@@ -16,16 +16,17 @@ Route::prefix('users')->group(function () {
     Route::get('profile', 'Api\AuthController@profile');
 });
 
+//Route::group(['middleware' => 'jwt.verify'], function () {
+//
+//});
 Route::resource('users', 'UserController');
 Route::resource('courses', 'CourseController');
 Route::resource('minigolfs', 'MinigolfController');
 Route::resource('games', 'GameController');
 Route::resource('holes', 'HoleController');
 Route::resource('players', 'PlayerController');
-//Route::group(['middleware' => 'jwt.verify'], function () {
-//
-//});
 Route::resource('scores', 'ScoreController');
+
 
 // Auth/token
 Route::prefix('auth')->group(function () {

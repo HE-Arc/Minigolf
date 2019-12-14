@@ -22,11 +22,11 @@ class DeleteOnCascade extends Migration
             $table->foreign('hole_id')->references('id')->on('holes')->onDelete('cascade');
         });
         Schema::table('games', function ($table) {
-            $table->foreign("user_id")->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign("user_id")->references('id')->on('users')->onDelete('set null');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('set null');
         });
         Schema::table('holes', function ($table) {
-            $table->foreign("course_id")->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign("course_id")->references('id')->on('courses')->onDelete('set null');
         });
         Schema::table('courses', function ($table) {
             $table->foreign('minigolf_id')->references('id')->on('minigolfs')->onDelete('cascade');
