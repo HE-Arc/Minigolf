@@ -13,6 +13,22 @@
           Logout
         </a>
       </v-list-item-subtitle>
+      <v-list-item-subtitle class="mt-1">
+        <a class="mt-2" @click="settingsDialog = true">
+          <v-icon small>mdi-settings</v-icon>
+          Settings
+        </a>
+        
+        <base-dialog
+          icon="mdi-pen"
+          :title="user.name"
+          :modal="settingsDialog"
+          @close="settingsDialog = false"
+        >
+          <user-form :user="user" @close="settingsDialog = false" />
+        </base-dialog>
+        
+      </v-list-item-subtitle>
     </v-list-item-content>
 
     <v-list-item-content v-else>
@@ -30,19 +46,22 @@
 
 <script>
 import LoginDialog from "../../elements/dialogs/LoginDialog";
+import UserForm from '../../elements/forms/UserForm';
+import BaseDialog from '../../elements/generics/BaseDialog';
 export default {
   name: "User",
-  components: { LoginDialog },
+  components: { BaseDialog, UserForm, LoginDialog },
   data: () => ({
     modal: false,
-    loginDialog: false
+    loginDialog: false,
+    settingsDialog: false,
   }),
   computed: {
     loggedIn() {
       return this.$auth.loggedIn;
     },
     user() {
-      return this.$auth.user;
+      return this.$store.getters['users/byId'](this.$auth.user.id);
     }
   },
   methods: {

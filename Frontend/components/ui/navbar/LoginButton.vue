@@ -11,13 +11,13 @@
           >
             <span class="caption">
 <!--              {{ $store.state.auth.user.name }}-->
-              {{ $auth.user.name }}
+              {{ user.name }}
             </span>
 
             <v-avatar class="ml-2" size="28px">
               <img
-                v-if="$auth.user.picture"
-                :src="$auth.user.picture"
+                v-if="user.picture"
+                :src="user.picture"
                 alt="Avatar"
               />
               <v-icon v-else color="green">mdi-account-circle </v-icon>
@@ -59,6 +59,11 @@ export default {
   data: () => ({
     loginDialog: false
   }),
+  computed: {
+    user() {
+      return this.$store.getters['users/byId'](this.$auth.user.id);
+    }
+  },
 };
 </script>
 

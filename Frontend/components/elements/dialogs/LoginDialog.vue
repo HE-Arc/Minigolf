@@ -66,13 +66,11 @@ export default {
     },
     async loginAction() {
       let form = this.form.getForm();
-      this.$auth.loginWith("local", { data: form });
       try {
         await this.$auth.loginWith("local", { data: form });
-        let name = this.$auth.user.name;
-        this.$notifications("success", `Welcome ${name}`);
+        this.$notifications("success", `Welcome ${ this.$auth.user.name}`);
       } catch (e) {
-        this.$notifications("error", e.response.message);
+        this.$notifications("error", e.response);
       }
     }
   }
