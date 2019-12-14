@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::prefix('users')->group(function(){
+Route::prefix('users')->group(function () {
     Route::get('profile', 'Api\AuthController@profile');
 });
 
@@ -28,7 +28,8 @@ Route::resource('players', 'PlayerController');
 Route::resource('scores', 'ScoreController');
 
 // Auth/token
-Route::prefix('auth')->group(function(){
- Route::post('login', 'Api\AuthController@login');
- Route::post('register', 'Api\AuthController@register');
+Route::prefix('auth')->group(function () {
+    Route::post('login', 'Api\AuthController@login');
+    Route::post('register', 'Api\AuthController@register');
 });
+

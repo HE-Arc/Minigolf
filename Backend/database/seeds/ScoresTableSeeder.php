@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use \App\Score;
+use \App\Player;
+use \App\Hole;
+use \App\Game;
 
 class ScoresTableSeeder extends Seeder
 {
@@ -12,15 +15,15 @@ class ScoresTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = \Faker\Factory::create();
-        for ($i = 1; $i < 541; $i++) {
-            for ($j = 1; $j < 19; $j++) {
-                Score::create([
-                    'player_id' => $i,
-                    'hole_id' => $j,
-                    'score' => $faker->numberBetween(1,12),
-                ]);
-            }
-        }
+//        $player_ids = Player::all();
+//        $course_ids = Course::with('holes')->get();
+    }
+
+    private function createScoreForHolePlayer($hole_id,$player_id)
+    {
+        factory(Score::class)->create([
+            'hole_id' => $hole_id,
+            'player_id' => $player_id
+        ]);
     }
 }

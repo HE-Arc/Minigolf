@@ -12,18 +12,6 @@ class MinigolfsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = \Faker\Factory::create();
-
-        for ($i = 0; $i < 15; $i++) {
-            Minigolf::create([
-                'name' => $faker->company,
-                'description' => $faker->text,
-                'city' => $faker->city,
-                'address' => $faker->address,
-                'zipcode' => $faker->numberBetween(1500,3000),
-                'phone' => $faker->phoneNumber,
-                'email' => $faker->email,
-            ]);
-        }
+        factory(Minigolf::class, 30)->create();
     }
 }

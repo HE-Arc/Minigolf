@@ -24,14 +24,17 @@ class UserController extends Controller
 
         public function index()
         {
-            return UserResource::collection(User::with('games')
+//            return User::with('players')->with('games')
+//                            ->get();
+            return UserResource::collection(User::with('players')
+                ->with('games')
                 ->get())
                 ->jsonSerialize();
         }
 
         public function show(User $user)
         {
-            return UserResource::collection(User::with('games')
+            return UserResource::collection(User::with('players')->with('games')
                 ->where('id','=', $user->id)
                 ->get())
                 ->jsonSerialize()[0];

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use JWTAuth;
-use Namshi\JOSE\JWT;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -35,7 +34,6 @@ class AuthController extends Controller
 
         return response()->json(compact('user', 'token'), 201);
     }
-
 
     public function login(Request $request)
     {

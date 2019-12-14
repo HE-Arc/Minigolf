@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Hole;
+use App\Course;
 
 class HolesTableSeeder extends Seeder
 {
@@ -12,15 +13,19 @@ class HolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = \Faker\Factory::create();
+        $course_ids = Course::all('id')->pluck('id')->toArray();
+        foreach ($course_ids as $id) {
+            $this->createHoleForCourseId($id);
+        }
+    }
 
-        for ($i = 1; $i < 16; $i++) {
-            for($j = 1; $j < 19; $j++){
-                Hole::create([
-                    'course_id' => $i,
-                    'number' => $j,
-                ]);
-            }
+    private function createHoleForCourseId($course_id)
+    {
+        foreach (range(1, 12) as $num) {
+            factory(Hole::class)->create([
+                'course_id' => $course_id,
+                'number' => $num
+            ]);
         }
     }
 }

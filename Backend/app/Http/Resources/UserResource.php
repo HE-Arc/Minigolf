@@ -19,7 +19,9 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email'  => $this->email,
             'role'  => $this->role,
-            'games'  => IdResource::collection($this->games),
+            'city' => $this->city,
+            'played'  => GameidResource::collection($this->players),
+            'owner' => IdResource::collection($this->games),
         ];
     }
 }
