@@ -49,6 +49,8 @@
               <Map :locations="locations" />
             </data-card>
           </v-col>
+        </v-row>
+        <v-row>
           <v-col class="px-0">
             <data-card title="Highscores">
               <data-list :list="attributes" />
@@ -96,7 +98,6 @@ export default {
       }
     ]
   }),
-
   computed: {
     minigolf() {
       let slug = this.$route.params.slug;
@@ -105,16 +106,42 @@ export default {
     attributes() {
       const minigolf = this.minigolf;
       return [
-        { name: "Name", value: minigolf.name },
-        { name: "Phone", value: minigolf.phone, icon: "mdi-phone" },
-        // PUT ADDRESS ON SAME ROW BUT ON TWO LINES
-        { name: "City", value: minigolf.city, icon: "mdi-city"},
-        { name: "Address", value: minigolf.address, icon: "mdi-city" },
-        { name: "Email", value: minigolf.email, icon: "mdi-email-outline" }
+        {
+          name: "City",
+          value: minigolf.city,
+          icon: "mdi-city",
+          second: minigolf.address
+        },
+        {
+          name: "Phone",
+          value: this.prettyPhone(minigolf.phone),
+          link: this.formatPhone(minigolf.phone),
+          icon: "mdi-phone"
+        },
+        {
+          name: "Email",
+          value: minigolf.email,
+          link: `mailto: ${minigolf.email}`,
+          icon: "mdi-email-outline"
+        }
       ];
     },
     locations() {
       return [{ lat: this.minigolf.lat, lng: this.minigolf.long }];
+    }
+  },
+  methods: {
+    prettyPhone(value) {
+      let formated = `0${value.slice(1, 3).toString()} ${value[4]}`;
+      for (let i = 4; i < value.length; i++) {
+        formated += `${value[i]}${i % 2 != 0 ? " " : ""}`;
+      }
+      return formated.trimEnd();
+    },
+    formatPhone(value) {
+      return `tel:${this.prettyPhone(value)
+        .split(" ")
+        .join("-")}`;
     }
   }
 };

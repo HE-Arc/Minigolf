@@ -1,6 +1,6 @@
 <template>
   <Page title="Users">
-    <template v-slot:header-side>
+    <template v-if="isStaff()" v-slot:header-side>
       <admin-action-create entity-name="user" class="admin-actions">
         <user-form />
       </admin-action-create>
@@ -58,6 +58,11 @@ export default {
         password: "lala"
       };
       this.$store.dispatch("users/create", user);
+    },
+    isStaff() {
+      return (
+        this.$auth.loggedIn && ["staff", "admin"].includes(this.$auth.user.role)
+      );
     }
   },
   watch: {
@@ -73,7 +78,7 @@ export default {
     isAdmin() {
       return true;
     }
-  },
+  }
 };
 </script>
 
@@ -87,6 +92,7 @@ export default {
   @media screen and (max-width: $mobile) {
     flex-direction: column;
   }
+
   .page-title {
     margin-right: auto;
   }

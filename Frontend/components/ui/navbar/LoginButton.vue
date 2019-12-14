@@ -34,7 +34,7 @@
           />
         </div>
       </template>
-      <span>Connect</span>
+      <span>{{ $auth.loggedIn ? 'More...' : 'Connect' }}</span>
     </v-tooltip>
   </div>
 </template>

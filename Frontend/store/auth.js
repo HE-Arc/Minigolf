@@ -9,7 +9,6 @@ export const mutations = {
 };
 
 export const actions = {
-
   async login({ commit, state }, data) {
     try {
       await this.$auth.loginWith("local", {data: data});
