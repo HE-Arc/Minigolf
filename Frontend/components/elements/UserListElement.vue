@@ -10,13 +10,13 @@
           <v-icon small>mdi-city</v-icon>
           {{ user.city }}
         </v-list-item-subtitle>
-        <v-list-item-subtitle v-if="isStaff()">
+        <v-list-item-subtitle v-if="$userIsStaff()">
           <v-icon small>mdi-email-outline</v-icon>
           {{ user.email }}
         </v-list-item-subtitle>
       </v-list-item-content>
       <div>
-        <admin-actions  v-if="isStaff()" :entity="user" @dialog="dialog = true">
+        <admin-actions  v-if="$userIsStaff()" :entity="user" @dialog="dialog = true">
           <template v-slot:dialog>
             <base-dialog
               icon="mdi-pen"
@@ -39,6 +39,7 @@ import AdminActions from "./buttons/AdminActions";
 import BaseDialog from "./generics/BaseDialog";
 import UserForm from "./forms/UserForm";
 export default {
+  name: "UserListElement",
   components: { UserForm, BaseDialog, AdminActions },
   props: {
     user: { type: Object }
@@ -46,15 +47,6 @@ export default {
   data: () => ({
     dialog: false
   }),
-  methods: {
-    isStaff() {
-      return (
-        this.$auth.loggedIn && ["staff", "admin"].includes(this.$auth.user.role)
-      );
-    }
-  },
-
-  name: "UserListElement"
 };
 </script>
 

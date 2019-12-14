@@ -10,7 +10,7 @@
 // export const mutations = {
 //   INIT(state, data) {
 //     data = data.data;
-//     data.forEach(i => state.data.push(new User(i)));
+//     data.forEach(i => state.data.push(new User(i).toPojo()));
 //   },
 //   CREATE(state, data) {
 //     state.data.push(new User(data));

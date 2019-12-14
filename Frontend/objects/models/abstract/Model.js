@@ -6,6 +6,12 @@ export default class Model {
     this.storeName = storeName;
   }
 
+  toPojo() {
+    let pojo = {};
+    Object.keys(this).forEach(i => pojo[i] = this[i]);
+    return pojo
+  }
+
   static getRandomImageUrl(width = 800, height = 600) {
     let min = 100;
     let max = 1000;

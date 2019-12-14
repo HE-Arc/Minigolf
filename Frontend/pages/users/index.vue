@@ -1,6 +1,6 @@
 <template>
   <Page title="Users">
-    <template v-if="isStaff()" v-slot:header-side>
+    <template v-if="$userIsStaff()" v-slot:header-side>
       <admin-action-create entity-name="user" class="admin-actions">
         <user-form />
       </admin-action-create>
@@ -59,11 +59,6 @@ export default {
       };
       this.$store.dispatch("users/create", user);
     },
-    isStaff() {
-      return (
-        this.$auth.loggedIn && ["staff", "admin"].includes(this.$auth.user.role)
-      );
-    }
   },
   watch: {
     query() {
@@ -75,9 +70,6 @@ export default {
       let query = this.query ? this.query : "";
       return this.$store.getters["users/filter"](query);
     },
-    isAdmin() {
-      return true;
-    }
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isAdmin" class="admin-actions">
+  <div class="admin-actions">
     <v-tooltip color="green" top>
       <template v-slot:activator="{ on }">
         <v-btn
@@ -38,11 +38,6 @@
     data: () => ({
       dialog: false
     }),
-    computed: {
-      isAdmin() {
-        return true;
-      },
-    }
   };
 </script>
 

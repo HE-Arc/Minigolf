@@ -16,7 +16,7 @@ export const getters = {
 
 export const mutations = {
   INIT(state, data) {
-    data.forEach(i => state.data.push(new Minigolf(i)));
+    data.forEach(i => state.data.push(new Minigolf(i).toPojo()));
   },
   CREATE(state, data) {
     state.data.push(new Minigolf(data));

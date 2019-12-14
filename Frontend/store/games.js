@@ -9,7 +9,7 @@ export const getters = {
 
 export const mutations = {
   INIT(state, data) {
-    data.forEach(i => state.data.push(new Game(i)));
+    data.forEach(i => state.data.push(new Game(i).toPojo()));
   },
   CREATE(state, data) {
     state.data.push(new Game(data));
