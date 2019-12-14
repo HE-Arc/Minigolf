@@ -10,9 +10,9 @@ $factory->define(Minigolf::class, function (Faker $faker) {
         'name' => $faker->lastName,
         'description' => $faker->text,
         'city' => $faker->city,
-        'address' => $faker->address,
+        'address' => preg_split('#\s+#', $faker->streetAddress, 2)[1],
         'zipcode' => $faker->numberBetween(1500,3000),
-        'phone' => $faker->phoneNumber,
+        'phone' => $faker->numerify(str_repeat('#',10)),
         'email' => $faker->email,
     ];
 });
