@@ -1,5 +1,5 @@
 <template>
-  <v-card :width="width" :min-width="minWidth">
+  <v-card :width="width" :min-width="minWidth" class="mx-5">
     <v-card-title v-if="title" class="subtitle-1 mt-3 mb-2">
       <v-divider class="mr-3" color="primary lighten-1" />
       <span class="font-weight-bold">{{ title }}</span>

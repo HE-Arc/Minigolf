@@ -39,25 +39,22 @@
       </p>
       <v-container fluid>
         <v-row>
-          <v-col class="mx-0 py-0">
+          <v-col class="py-0">
             <data-card title="Details">
               <data-list :list="attributes" />
             </data-card>
           </v-col>
-          <v-col>
+          <v-col class="px-0">
             <data-card min-width="366">
               <Map :locations="locations" />
             </data-card>
           </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col>
+          <v-col class="px-0">
             <data-card title="Highscores">
               <data-list :list="attributes" />
             </data-card>
           </v-col>
-          <v-col>
+          <v-col class="px-0">
             <data-card title="Scores">
               <data-list :list="attributes" />
             </data-card>
@@ -109,10 +106,11 @@ export default {
       const minigolf = this.minigolf;
       return [
         { name: "Name", value: minigolf.name },
-        { name: "City", value: minigolf.city },
-        { name: "Phone", value: minigolf.phone, icon: "" },
-        { name: "Address", value: minigolf.address, icon: "" },
-        { name: "Email", value: minigolf.email, icon: "" }
+        { name: "Phone", value: minigolf.phone, icon: "mdi-phone" },
+        // PUT ADDRESS ON SAME ROW BUT ON TWO LINES
+        { name: "City", value: minigolf.city, icon: "mdi-city"},
+        { name: "Address", value: minigolf.address, icon: "mdi-city" },
+        { name: "Email", value: minigolf.email, icon: "mdi-email-outline" }
       ];
     },
     locations() {

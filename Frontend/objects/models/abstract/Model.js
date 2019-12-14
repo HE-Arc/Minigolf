@@ -73,7 +73,7 @@ export default class Model {
       label: "Phone",
       type: "phone",
       required: true,
-      // rules: [Rules.len(10)]
+      rules: [Rules.len(10)]
     };
   }
   static descriptionField(value) {

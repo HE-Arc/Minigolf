@@ -15,6 +15,7 @@ export default class User extends Model {
   static createForm(entity) {
     let form = new Form(entity.id);
     form.createTextField(this.nameField(entity.name));
+    form.createTextField(this.emailField(entity.email));
     form.fieldByName("name").label = 'Displayed name';
     form.createTextField(this.cityField(entity.city));
     return form;
