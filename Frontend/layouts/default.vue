@@ -62,11 +62,6 @@ export default {
       };
     }
   },
-  mounted() {
-    setTimeout(() => {
-      console.log(this.$auth)
-    }, 500);
-  }
 };
 </script>
 

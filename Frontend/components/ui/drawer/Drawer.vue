@@ -1,20 +1,7 @@
 <template>
   <v-navigation-drawer app right absolute temporary v-model="drawer">
     <User />
-
-<!--    <v-divider />-->
-
-<!--    <v-list-item to="/search">-->
-<!--      <v-list-item-action>-->
-<!--        <v-icon>mdi-magnify</v-icon>-->
-<!--      </v-list-item-action>-->
-<!--      <v-list-item-content>-->
-<!--        <v-list-item-title>Search</v-list-item-title>-->
-<!--      </v-list-item-content>-->
-<!--    </v-list-item>-->
-
     <v-divider />
-
     <v-list>
       <v-list-item v-for="page in pages" :key="page.name" :to="page.to">
         <v-list-item-content>

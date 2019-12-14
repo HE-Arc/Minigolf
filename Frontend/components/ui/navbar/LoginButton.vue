@@ -9,18 +9,9 @@
             color="primary"
             @click="$store.commit('application/SET_DRAWER', true)"
           >
-            <span class="caption">
-<!--              {{ $store.state.auth.user.name }}-->
-              {{ $auth.user.name }}
-            </span>
-
+            <span class="caption">{{ user.name }}</span>
             <v-avatar class="ml-2" size="28px">
-              <img
-                v-if="$auth.user.picture"
-                :src="$auth.user.picture"
-                alt="Avatar"
-              />
-              <v-icon v-else color="green">mdi-account-circle </v-icon>
+              <v-icon color="green">mdi-account-circle </v-icon>
             </v-avatar>
           </v-btn>
 
@@ -34,9 +25,7 @@
             <v-avatar size="28px">
               <v-icon>mdi-account-outline</v-icon>
             </v-avatar>
-            <span class="caption pr-0 ml-2">
-              Login
-            </span>
+            <span class="caption pr-0 ml-2">Login</span>
           </v-btn>
 
           <login-dialog
@@ -59,6 +48,11 @@ export default {
   data: () => ({
     loginDialog: false
   }),
+  computed: {
+    user() {
+      return this.$auth.user
+    }
+  }
 };
 </script>
 
