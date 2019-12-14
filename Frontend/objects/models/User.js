@@ -7,6 +7,7 @@ export default class User extends Model {
     super("users", data.id);
     this.name = data.name;
     this.email = data.email;
+    // this.city = data.city;
     this.role = data.role;
     this.games = data.games;
   }
@@ -15,7 +16,8 @@ export default class User extends Model {
     let form = new Form(entity.id);
     form.createTextField(this.nameField(entity.name));
     form.fieldByName("name").label = 'Displayed name';
-    // form.createTextField(this.emailField(entity.email));
+
+    // form.createTextField(this.cityField(entity.city));
     return form;
   }
 

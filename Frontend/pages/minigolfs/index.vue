@@ -1,6 +1,6 @@
 <template>
   <Page title="Affiliated minigolfs">
-    <template v-slot:header-side>
+    <template v-if="$auth.loggedIn" v-slot:header-side>
       <admin-action-create entity-name="minigolf" class="admin-actions">
         <minigolf-form />
       </admin-action-create>
@@ -49,9 +49,6 @@ export default {
       let query = this.query ? this.query : "";
       return this.$store.getters["minigolfs/filter"](query);
     },
-    isAdmin() {
-      return true;
-    }
   },
 };
 </script>

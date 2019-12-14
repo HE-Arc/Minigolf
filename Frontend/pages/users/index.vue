@@ -9,7 +9,7 @@
       <v-text-field
         v-model="query"
         label="Search"
-        hint="Start typing a user name or email address"
+        hint="Start typing a user name, email address or city name"
         clearable
       />
     </template>

@@ -2,76 +2,123 @@
   <Page>
     <template v-slot:header>
       <v-img
-              class="image display-1 white--text align-end"
-              :src="minigolf.image"
-              height="300"
+        class="image headline white--text align-end"
+        :src="minigolf.image"
+        alt="Venue picture"
+        height="300"
       >
         <h1 class="image-header">{{ minigolf.name }}</h1>
       </v-img>
     </template>
 
-    <template v-slot:body>
-    <v-container fluid>
-      
-      <v-row>
-        <v-col>
-          <data-card title="Details">
-            <data-list :list="attributes"/>
-          </data-card>
-        </v-col>
-        <v-col>
-          <data-card min-width="366">
-            <Map :locations="locations"/>
-          </data-card>
-        </v-col>
-      </v-row>
+    <template v-slot:sub-header>
+      <div class="my-3 social">
+        <div v-for="item in social">
+          <v-tooltip :color="item.color" top>
+            <template v-slot:activator="{ on }">
+              <v-btn
+                class="social-link"
+                :href="`https://${item.url}`"
+                v-on="on"
+                elevation="2"
+                fab
+                small
+              >
+                <v-icon :color="item.color">{{ item.icon }}</v-icon>
+              </v-btn>
+            </template>
+            <span>Follow {{ minigolf.name }} on {{ item.name }}</span>
+          </v-tooltip>
+        </div>
+      </div>
+    </template>
 
-      <v-row>
-        <v-col>
-          <data-card title="Highscores">
-            <data-list :list="attributes"/>
-          </data-card>
-        </v-col>
-        <v-col>
-          <data-card title="Scores">
-            <data-list :list="attributes"/>
-          </data-card>
-        </v-col>
-      </v-row>
-      
-    </v-container>
+    <template v-slot:body>
+      <p class="subtitle-1">
+        {{ minigolf.description }}
+      </p>
+      <v-container fluid>
+        <v-row>
+          <v-col class="mx-0 py-0">
+            <data-card title="Details">
+              <data-list :list="attributes" />
+            </data-card>
+          </v-col>
+          <v-col>
+            <data-card min-width="366">
+              <Map :locations="locations" />
+            </data-card>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col>
+            <data-card title="Highscores">
+              <data-list :list="attributes" />
+            </data-card>
+          </v-col>
+          <v-col>
+            <data-card title="Scores">
+              <data-list :list="attributes" />
+            </data-card>
+          </v-col>
+        </v-row>
+      </v-container>
     </template>
   </Page>
 </template>
 
 <script>
-import Page from '../../components/Page';
-import DataList from '../../components/elements/generics/containers/DataList';
-import DataCard from '../../components/elements/generics/containers/DataCard';
-import Map from '../../components/Map';
+import Page from "../../components/Page";
+import DataList from "../../components/elements/generics/containers/DataList";
+import DataCard from "../../components/elements/generics/containers/DataCard";
+import Map from "../../components/Map";
 
 export default {
-  name: 'user',
+  name: "user",
   components: { Map, DataCard, DataList, Page },
+  data: () => ({
+    social: [
+      {
+        name: "facebook",
+        icon: "mdi-facebook",
+        color: "blue",
+        url: "facebook.com"
+      },
+      {
+        name: "twitter",
+        icon: "mdi-twitter",
+        color: "#657786",
+        url: "twitter.com"
+      },
+      {
+        name: "instagram",
+        icon: "mdi-instagram",
+        color: "#833AB4",
+        url: "instagram.com"
+      }
+    ]
+  }),
+
   computed: {
     minigolf() {
       let slug = this.$route.params.slug;
-      return this.$store.getters['minigolfs/bySlug'](slug);
+      return this.$store.getters["minigolfs/bySlug"](slug);
     },
     attributes() {
       const minigolf = this.minigolf;
       return [
-        { name: 'Name', value: minigolf.name },
-        { name: 'City', value: minigolf.city },
-        { name: 'Phone', value: minigolf.phone, icon: '' },
-        { name: 'Address', value: minigolf.address, icon: '' },
-        { name: 'Email', value: minigolf.email, icon: '' },
+        { name: "Name", value: minigolf.name },
+        { name: "City", value: minigolf.city },
+        { name: "Phone", value: minigolf.phone, icon: "" },
+        { name: "Address", value: minigolf.address, icon: "" },
+        { name: "Email", value: minigolf.email, icon: "" }
       ];
     },
     locations() {
       return [{ lat: this.minigolf.lat, lng: this.minigolf.long }];
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -84,8 +131,19 @@ export default {
 .image-header {
   font-weight: 900;
   text-shadow: 3px 2px #000;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   padding-left: 20px;
+  line-height: 1em;
+}
+
+.social {
+  display: flex;
+  /*justify-content: space-around;*/
+  max-width: 300px;
+
+  .social-link {
+    margin-right: 20px;
+  }
 }
 
 .map {

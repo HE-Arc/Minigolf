@@ -64,14 +64,8 @@ export default {
       this.form = form;
       return form;
     },
-    async loginAction() {
-      let form = this.form.getForm();
-      try {
-        await this.$auth.loginWith("local", { data: form });
-        this.$notifications("success", `Welcome ${ this.$auth.user.name}`);
-      } catch (e) {
-        this.$notifications("error", e.response);
-      }
+    loginAction() {
+      this.$store.dispatch("auth/login", this.form.getForm());
     }
   }
 };

@@ -14,6 +14,7 @@
             :src="minigolf.image"
           >
             <admin-actions
+              v-if="$auth.loggedIn"
               class="admin-actions"
               :entity="minigolf"
               @dialog="dialog = true"
@@ -90,7 +91,7 @@ export default {
     minigolf: { type: Object }
   },
   data: () => ({
-    dialog: false
+    dialog: false,
   }),
   methods: {
     link(slug) {

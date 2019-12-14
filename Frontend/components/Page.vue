@@ -31,6 +31,10 @@ export default {
 .wrapper {
   margin-top: 30px;
   margin-bottom: 150px;
+  min-height: 720px;
+  @media screen and (max-width: $mobile) {
+    min-height: auto;
+  }
 }
 
 .header {
