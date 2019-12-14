@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Player extends Model
+class Player extends Pivot
 {
     protected $table = 'players';
     protected $hidden =  ['created_at', 'updated_at'];

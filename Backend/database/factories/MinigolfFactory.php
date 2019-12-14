@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Minigolf::class, function (Faker $faker) {
     return [
-        'name' => $faker->company,
+        'name' => $faker->lastName,
         'description' => $faker->text,
         'city' => $faker->city,
         'address' => $faker->address,

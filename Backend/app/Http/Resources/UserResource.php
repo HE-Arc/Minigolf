@@ -20,8 +20,8 @@ class UserResource extends JsonResource
             'email'  => $this->email,
             'role'  => $this->role,
             'city' => $this->city,
-            'played'  => GameidResource::collection($this->players),
-            'owner' => IdResource::collection($this->games),
+            'played'  => IdResource::collection($this->players),
+            'created' => IdResource::collection($this->games),
         ];
     }
 }
