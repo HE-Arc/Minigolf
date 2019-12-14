@@ -15,7 +15,7 @@
             <v-icon color="blue">mdi-pen</v-icon>
           </v-btn>
         </template>
-        <span>Edit</span>
+        <span>Edit {{ entity.name }}</span>
       </v-tooltip>
       
       <v-tooltip color="red" top>
@@ -31,7 +31,7 @@
             <v-icon color="red">mdi-close</v-icon>
           </v-btn>
         </template>
-        <span>Delete</span>
+        <span>Delete {{ entity.name }}</span>
       </v-tooltip>
     </div>
     <slot name="dialog"></slot>

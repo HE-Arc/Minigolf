@@ -11,7 +11,7 @@ export const getters = {
     let name = i => i.name.toLowerCase().includes(q);
     let email = i => i.email.toLowerCase().includes(q);
     let city = i => i.city.toLowerCase().includes(q);
-    return state.data.filter(i => name(i) || email(i));
+    return state.data.filter(i => name(i) || email(i) || city(i));
   }
 };
 

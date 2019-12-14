@@ -18,6 +18,8 @@ export default class Minigolf extends Model {
     this.image = data.image;
 
 
+    this.courses = data.courses;
+
 
     this.slug = this.name.split(" ").join("-");
     // this.image = Model.getRandomImageUrl();

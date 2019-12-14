@@ -4,8 +4,15 @@
       <v-icon>mdi-account-circle</v-icon>
     </v-list-item-icon>
     <v-list-item-content>
-      <v-list-item-title v-text="user.name"/>
-      <v-list-item-subtitle v-text="user.email"/>
+      <v-list-item-title>{{ user.name }}</v-list-item-title>
+      <v-list-item-subtitle>
+        <v-icon small>mdi-city</v-icon>
+        {{ user.city }}
+      </v-list-item-subtitle>
+      <v-list-item-subtitle>
+        <v-icon small>mdi-email-outline</v-icon>
+        {{ user.email }}
+      </v-list-item-subtitle>
     </v-list-item-content>
     <div>
       <admin-actions :entity="user" @dialog="dialog = true">

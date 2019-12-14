@@ -1,11 +1,11 @@
 <template>
-  <h1>About</h1>
+  <h1>Download</h1>
 </template>
 
 <script>
   export default {
     layout: "default",
-    name: 'about',
+    name: 'download',
   };
 </script>
 
