@@ -8,8 +8,8 @@ export default class Course extends Model {
     this.name = data.name || "";
     this.description = data.description;
     this.minigolf = data.minigolf;
-    this.holes = data.holes;
 
+    this.holes = data.holes;
     this.image = Course.getRandomImageUrl();
   }
 

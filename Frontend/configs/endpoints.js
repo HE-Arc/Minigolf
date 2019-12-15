@@ -3,6 +3,7 @@ export default {
   users: "users",
   games: "games",
   holes: "holes",
+  scores: "scores",
   courses: "courses",
   minigolfs: "minigolfs",
 }
