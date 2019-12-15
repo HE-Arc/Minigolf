@@ -15,6 +15,7 @@ export default class Hole extends Model {
     this.count = data.count || randint(10, 1000);
 
     this.course = data.course;
+    this.minigolf = data.minigolf;
   }
 
   static endpoint(id = false) {

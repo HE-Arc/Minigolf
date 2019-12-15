@@ -1,13 +1,12 @@
 <template>
   <data-card class="pb-5" title="Courses" :loading="loading">
     <v-tabs v-model="currentTab">
-      <v-tab v-for="course in courses" :key="course.id">{{
-        course.name
-      }}</v-tab>
+      <v-tab v-for="course in courses" :key="course.id">
+        {{course.name}}
+      </v-tab>
       <admin-action-create v-if="$loggedIn()" class="mr-4" entity-name="course">
-        <course-form :course="course"/>
+        <course-form/>
       </admin-action-create>
-      
     </v-tabs>
 
     <v-tabs-items v-model="currentTab">
@@ -47,7 +46,7 @@
                 <base-dialog
                   icon="mdi-pen"
                   :title="course.name"
-                  :modal="dialog"
+                  :dialog="dialog"
                   @close="dialog = false"
                 >
                   <minigolf-form :minigolf="course" @close="dialog = false" />
@@ -83,7 +82,7 @@ export default {
   },
   data: () => ({
     currentTab: null,
-    modal: false
+    dialog: false
   }),
   methods: {
     link(id) {
