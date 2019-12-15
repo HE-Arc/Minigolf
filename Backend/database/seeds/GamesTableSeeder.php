@@ -16,9 +16,10 @@ class GamesTableSeeder extends Seeder
     {
         $user_ids = User::all('id')->pluck('id')->toArray();
         $course_ids = Course::all('id')->pluck('id')->toArray();
-        foreach (range(0,200) as $i) {
+        foreach ($course_ids as $id) {
             $user_id = $user_ids[random_int(1,count($user_ids)-1)];
-            $course_id = $course_ids[random_int(1,count($course_ids)-1)];
+            $course_id = $id;
+//            $course_id = $course_ids[random_int(1,count($course_ids)-1)];
             $this->createGameForCourseUser($user_id, $course_id);
         }
     }

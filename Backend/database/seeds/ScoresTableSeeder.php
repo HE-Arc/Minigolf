@@ -14,7 +14,6 @@ class ScoresTableSeeder extends Seeder
      */
     public function run()
     {
-
         $games = Game::with('players')->get();
         foreach ($games as $game) {
             $this->createScoreForHolePlayer($game);

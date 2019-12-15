@@ -52,7 +52,7 @@ class HoleController extends Controller
         return HolestatResource::collection(Hole::with('scores')
             ->where('id', '=', $hole)
             ->get())
-            ->jsonSerialize();
+            ->jsonSerialize()[0];
     }
 
     /**
