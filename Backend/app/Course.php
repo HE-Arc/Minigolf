@@ -10,7 +10,7 @@ class Course extends Model
     protected $table = 'courses';
     protected $guarded = ['id'];
     protected $fillable = [
-        'minigolf_id', 'name',
+        'minigolf_id', 'name', 'description',
     ];
     protected $hidden =  ['created_at', 'updated_at'];
 
