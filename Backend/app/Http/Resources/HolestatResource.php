@@ -15,12 +15,12 @@ class HolestatResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+//        return parent::toArray($request);
         return [
             'id' => $this->id,
             'number' => $this->number,
             'course' => $this->course_id,
-            'minigolf' => $course->minigolf_id,
+            'minigolf' => $this->course->minigolf_id,
             'best' => $this->scores->min('score'),
             'worse' => $this->scores->max('score'),
             'average' => $this->scores->avg('score'),

@@ -15,6 +15,5 @@ class IdResource extends JsonResource
     public function toArray($request)
     {
         return $this->id;
-        
     }
 }
