@@ -18,11 +18,12 @@ class GameResource extends JsonResource
             'id' => $this->id,
             'creator' => $this->user_id,
             'course' => $this->course_id,
+            'started' => $this->isStarted,
             'token' => $this->token,
             'date' => $this->date,
             'course' => $this->course != null ? $this->course->id : null,
             'minigolf' => $this->course != null ? $this->course->minigolf_id : null,
-            'players' => IdResource::collection($this->players),
+            'players' => IdResource::collection($this->users),
         ];
     }
 }

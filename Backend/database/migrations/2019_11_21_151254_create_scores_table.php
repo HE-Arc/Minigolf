@@ -17,7 +17,7 @@ class CreateScoresTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('player_id')->unsigned();
             $table->bigInteger('hole_id')->unsigned();
-            $table->integer('score');
+            $table->integer('score')->nullable();
             $table->timestamps();
         });
     }

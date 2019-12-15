@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Hole;
+use App\Http\Resources\HolestatResource;
+use App\Score;
 use Illuminate\Http\Request;
 
 class HoleController extends Controller
@@ -45,9 +47,12 @@ class HoleController extends Controller
      * @param  \App\Hole $party
      * @return \Illuminate\Http\Response
      */
-    public function show(Hole $hole)
+    public function show($hole)
     {
-        return $hole;
+        return HolestatResource::collection(Hole::with('scores')
+            ->where('id', '=', $hole)
+            ->get())
+            ->jsonSerialize();
     }
 
     /**
