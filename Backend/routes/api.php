@@ -19,6 +19,9 @@ Route::prefix('users')->group(function () {
 //Route::group(['middleware' => 'jwt.verify'], function () {
 //
 //});
+
+Route::get('gamesscores', 'ScoreGameController@index');
+Route::get('gamesscores/{id}', 'ScoreGameController@show');
 Route::resource('users', 'UserController');
 Route::resource('courses', 'CourseController');
 Route::resource('minigolfs', 'MinigolfController');
