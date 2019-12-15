@@ -38,25 +38,33 @@
         {{ minigolf.description }}
       </p>
       <v-container fluid>
+        
+        
         <v-row>
-          <v-col class="py-0">
-            <data-card title="Details">
-              <data-list :list="attributes" />
-            </data-card>
+          <v-col>
+            <courses-tabs :minigolf="minigolf"/>
+
           </v-col>
-          <v-col class="px-0">
-            <data-card min-width="366">
-              <Map :locations="locations" />
+          <v-col>
+            <data-card title="Location" min-width="366">
+              <Map class="pa-1" :locations="locations" />
             </data-card>
           </v-col>
         </v-row>
-        <v-row>
-          <v-col class="px-0">
+        
+        
+        <v-row class="my-5">
+          <v-col>
+            <data-card title="Contact">
+              <data-list :list="attributes" />
+            </data-card>
+          </v-col>
+          <v-col>
             <data-card title="Highscores">
               <data-list :list="attributes" />
             </data-card>
           </v-col>
-          <v-col class="px-0">
+          <v-col>
             <data-card title="Scores">
               <data-list :list="attributes" />
             </data-card>
@@ -72,10 +80,11 @@ import Page from "../../components/Page";
 import DataList from "../../components/elements/generics/containers/DataList";
 import DataCard from "../../components/elements/generics/containers/DataCard";
 import Map from "../../components/Map";
+import CoursesTabs from '../../components/elements/CoursesTabs';
 
 export default {
   name: "user",
-  components: { Map, DataCard, DataList, Page },
+  components: { CoursesTabs, Map, DataCard, DataList, Page },
   data: () => ({
     social: [
       {
@@ -104,24 +113,23 @@ export default {
       return this.$store.getters["minigolfs/bySlug"](slug);
     },
     attributes() {
-      const minigolf = this.minigolf;
       return [
         {
           name: "City",
-          value: minigolf.city,
+          value: this.minigolf.city,
           icon: "mdi-city",
-          second: minigolf.address
+          second: this.minigolf.address
         },
         {
           name: "Phone",
-          value: this.prettyPhone(minigolf.phone),
-          link: this.formatPhone(minigolf.phone),
+          value: this.prettyPhone(this.minigolf.phone),
+          link: this.formatPhone(this.minigolf.phone),
           icon: "mdi-phone"
         },
         {
           name: "Email",
-          value: minigolf.email,
-          link: `mailto: ${minigolf.email}`,
+          value: this.minigolf.email,
+          link: `mailto: ${this.minigolf.email}`,
           icon: "mdi-email-outline"
         }
       ];
@@ -163,7 +171,6 @@ export default {
 
 .social {
   display: flex;
-  /*justify-content: space-around;*/
   max-width: 300px;
 
   .social-link {

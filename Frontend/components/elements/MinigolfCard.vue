@@ -43,15 +43,10 @@
             <v-list-item three-line class="title-container">
               <v-list-item-content>
                 <v-list-item-subtitle class="body-1 font-weight-light">
-                  <span v-if="minigolf.discription">
+                  <span v-if="minigolf.description">
                     {{ minigolf.description }}
                   </span>
-                  <span v-else>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Alias eum illo repellat suscipit tempora. A at, dicta,
-                    dignissimos enim fuga hic impedit maxime nemo quia repellat
-                    sapiente soluta unde voluptatum!
-                  </span>
+                  <span v-else>...</span>
                 </v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
@@ -68,10 +63,10 @@
               <template v-slot:activator="{ on }">
                 <v-chip class="mr-2" color="blue" v-on="on">
                   <v-icon color="white" left>mdi-golf</v-icon>
-                  <span style="color: white">{{ minigolf.courts }}</span>
+                  <span style="color: white">{{ minigolf.courses.length }}</span>
                 </v-chip>
               </template>
-              <span>Courts number</span>
+              <span>Courses number</span>
             </v-tooltip>
           </v-card-text>
         </v-card>

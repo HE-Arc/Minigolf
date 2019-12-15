@@ -19,7 +19,7 @@ export const mutations = {
     data.forEach(i => state.data.push(new Minigolf(i).toPojo()));
   },
   CREATE(state, data) {
-    state.data.push(new Minigolf(data));
+    state.data.push(new Minigolf(data).toPojo());
     this.$notifications('success', `${ Minigolf.name } created`);
   },
   UPDATE(state, data) {

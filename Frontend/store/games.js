@@ -12,7 +12,7 @@ export const mutations = {
     data.forEach(i => state.data.push(new Game(i).toPojo()));
   },
   CREATE(state, data) {
-    state.data.push(new Game(data));
+    state.data.push(new Game(data).toPojo());
     this.$notifications('success', `${ Game.name } created`);
   },
   UPDATE(state, data) {

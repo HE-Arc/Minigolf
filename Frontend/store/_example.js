@@ -13,7 +13,7 @@
 //     data.forEach(i => state.data.push(new User(i).toPojo()));
 //   },
 //   CREATE(state, data) {
-//     state.data.push(new User(data));
+//     state.data.push(new User(data).toPojo());
 //     this.$notifications('success', `${ User.name } created`);
 //   },
 //   UPDATE(state, data) {
