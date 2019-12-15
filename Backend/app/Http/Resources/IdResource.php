@@ -3,7 +3,6 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use phpDocumentor\Reflection\Types\Parent_;
 
 class IdResource extends JsonResource
 {
@@ -16,5 +15,6 @@ class IdResource extends JsonResource
     public function toArray($request)
     {
         return $this->id;
+        
     }
 }
