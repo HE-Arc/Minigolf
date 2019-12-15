@@ -10,9 +10,15 @@ class Game extends Model
     protected $table = 'games';
     protected $hidden = ['created_at', 'updated_at'];
 
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'players', 'game_id', 'user_id')
+            ->withPivot('id');
+    }
+
     public function players()
     {
-        return $this->belongsToMany('App\User','players','game_id', 'user_id');
+        return $this->hasMany('App\Player');
     }
 
     public function course()

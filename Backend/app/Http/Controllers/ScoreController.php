@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ScoreResource;
 use App\Score;
+use App\Game;
+use App\Player;
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
@@ -48,6 +51,11 @@ class ScoreController extends Controller
     public function show(Score $score)
     {
         return $score;
+        return ScoreResource::collection(Game::with('players.scores')
+                    ->where('games.id','=',$gameId)
+                    ->get())
+                    ->jsonSerialize();
+
     }
 
     /**

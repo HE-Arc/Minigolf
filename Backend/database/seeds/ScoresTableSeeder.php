@@ -2,8 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use \App\Score;
-use \App\Player;
-use \App\Hole;
+use \App\Course;
 use \App\Game;
 
 class ScoresTableSeeder extends Seeder
@@ -15,15 +14,27 @@ class ScoresTableSeeder extends Seeder
      */
     public function run()
     {
-//        $player_ids = Player::all();
-//        $course_ids = Course::with('holes')->get();
+
+        $games = Game::with('players')->get();
+        foreach ($games as $game) {
+            $this->createScoreForHolePlayer($game);
+        }
     }
 
-    private function createScoreForHolePlayer($hole_id,$player_id)
+    private function createScoreForHolePlayer($game)
     {
-        factory(Score::class)->create([
-            'hole_id' => $hole_id,
-            'player_id' => $player_id
-        ]);
+        $holes = Course::with('holes')
+            ->where('id', "=", $game->course_id)
+            ->get();
+
+        foreach ($game->players as $player) {
+            foreach ($holes as $hole){
+                factory(Score::class)->create([
+                    'hole_id' => $hole->id,
+                    'player_id' => $player->id
+                ]);
+            }
+        }
+
     }
 }

@@ -3,23 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Score extends Pivot
+class Score extends Model
 {
     protected $table = 'scores';
     protected $hidden =  ['created_at', 'updated_at'];
 
-    public function holes()
+    public function hole()
     {
-        $this->belongsToMany('App\Hole');
+        return $this->belongsTo('App\Hole');
     }
 
-    public function players()
+    public function player()
     {
-        $this->belongsToMany('App\Player');
+        return $this->belongsTo('App\Player');
     }
-
 
     protected $fillable = [
         'player_id', 'hole_id', 'score',

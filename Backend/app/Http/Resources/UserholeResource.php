@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Resources;
-use App\Score;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class HoleResource extends JsonResource
+class UserholeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +14,10 @@ class HoleResource extends JsonResource
      */
     public function toArray($request)
     {
-        return $this;
+//        return parent::toArray($request);
         return [
-            'id' => $this->hole_id,
-            'number' => $this->hole->number,
-            'score' => $this->score,
+            'user' => $this->user_id,
+            'holes' => HoleResource::collection($this->scores)
         ];
     }
 }
