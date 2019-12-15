@@ -12,7 +12,7 @@ export default class Game extends Model {
     this.token = data.token;
 
 
-    this.slug = this.name.split(" ").join("-");
+    // this.slug = this.name.split(" ").join("-");
   }
 
   // static createForm(entity) {

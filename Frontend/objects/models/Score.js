@@ -5,9 +5,9 @@ import endpoints from "../../configs/endpoints";
 export default class Score extends Model {
   constructor(data = {}) {
     super("users", data.id);
-    this.user = data.user_id;
-    this.hole = data.hole_id;
-    this.game = data.game_id;
+    this.user = data.user;
+    this.hole = data.hole;
+    this.game = data.game;
     this.score = data.score;
 
   }

@@ -20,13 +20,12 @@
 export default {
   name: "Pages",
   props: {
-    pages: { type: Array },
+    pages: { type: Array }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
-  .pages {
-  }
+.pages {
+}
 </style>
