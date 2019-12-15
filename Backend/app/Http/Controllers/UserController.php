@@ -24,8 +24,6 @@ class UserController extends Controller
 
         public function index()
         {
-//            return User::with('players')->with('games')
-//                            ->get();
             return UserResource::collection(User::with('players')
                 ->with('games')
                 ->get())

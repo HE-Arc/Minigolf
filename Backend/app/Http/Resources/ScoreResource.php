@@ -14,8 +14,6 @@ class ScoreResource extends JsonResource
      */
     public function toArray($request)
     {
-//        return parent::toArray($request);
-
         return [
             'id' => $this->id,
             'hole' => $this->hole_id,

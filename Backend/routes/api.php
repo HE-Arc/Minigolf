@@ -24,7 +24,7 @@ Route::resource('courses', 'CourseController');
 Route::resource('minigolfs', 'MinigolfController');
 Route::resource('games', 'GameController');
 Route::resource('holes', 'HoleController');
-Route::resource('players', 'PlayerController');
+//Route::resource('players', 'PlayerController');
 Route::resource('scores', 'ScoreController');
 
 

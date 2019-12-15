@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ScoreResource;
 use App\Score;
-use App\Game;
-use App\Player;
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
@@ -20,16 +18,6 @@ class ScoreController extends Controller
         return ScoreResource::collection(Score::with('player')
                 ->get())
                 ->jsonSerialize();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -56,17 +44,6 @@ class ScoreController extends Controller
                     ->where('scores.id', $gameId)
                     ->get())
                     ->jsonSerialize()[0];
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Score $party
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Score $score)
-    {
-        //
     }
 
     /**

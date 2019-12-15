@@ -17,15 +17,6 @@ class PlayerController extends Controller
         return Player::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -48,17 +39,6 @@ class PlayerController extends Controller
     public function show(Player $player)
     {
         return $player;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Player $party
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Player $player)
-    {
-        //
     }
 
     /**
