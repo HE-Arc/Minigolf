@@ -42,7 +42,7 @@ class Game extends Model
     {
         if (empty($this->id)) {
             $this->token = Str::upper(Str::random(6));
-            $this->date = now();
+//            $this->date = now();
         }
         return parent::save($options);
     }
