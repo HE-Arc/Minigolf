@@ -20,6 +20,6 @@ class ScoreGameController extends Controller
         return ScoregameResource::collection(Game::with('players.scores.hole')
                 ->where('games.id', $id)
                 ->get())
-                ->jsonSerialize();
+                ->jsonSerialize()[0];
     }
 }
