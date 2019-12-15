@@ -1,12 +1,10 @@
 <template>
-  <Page :title="`${$user().name}'s scores`">
-    
+  <Page title="My scores">
     <template v-slot:body>
-      
       <div v-if="$loggedIn()">
-        <user-score :games="games"/>
+        <user-score :games="games" />
       </div>
-      
+
       <div v-else>
         Download the app and
         <v-btn @click="loginDialog = true" color="primary" text x-small>
@@ -14,12 +12,7 @@
         </v-btn>
         to see your scores.
       </div>
-      
     </template>
-    
-    
-    
-
 
     <login-dialog :dialog-flag="loginDialog" @close="loginDialog = false" />
   </Page>
@@ -27,8 +20,8 @@
 
 <script>
 import LoginDialog from "../components/elements/dialogs/LoginDialog";
-import UserScore from '../components/ranking/UserScore';
-import Page from '../components/Page';
+import UserScore from "../components/ranking/UserScore";
+import Page from "../components/Page";
 
 export default {
   name: "scores",
@@ -39,9 +32,16 @@ export default {
   computed: {
     games() {
       let games = this.$store.getters["games/byUserId"](this.$user().id);
+      games.forEach(game => {
+        this.$axios
+            .get(`games-scores/${game.id}`)
+            .then(res => {console.log(res.data[0]);
+        });
+      });
+
       return games.sort((a, b) => -(new Date(a.date) - new Date(b.date)));
     }
-  },
+  }
 };
 </script>
 

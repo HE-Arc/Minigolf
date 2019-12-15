@@ -11,7 +11,7 @@
       <score-card
         title="Your score:"
         :player="$user()"
-        :scores="userScores(game)"
+        :scores="playerScores($user().id, game)"
       />
       <br />
       <b>Players:</b>
@@ -64,13 +64,12 @@
       show: false ,
     }),
     methods: {
-      userScores(game) {
+      playerScores(player, game) {
         let scores = this.$store.getters["scores/byGameId"](game.id);
-        return scores.filter(i => i.user == this.$user().id);
+        return scores.filter(i => i.user == player);
       },
       players(game) {
-        let x = game.players.map(id => this.$store.getters["users/byId"](id));
-        return x;
+        return game.players.map(id => this.$store.getters["users/byId"](id));
       },
     }
   };
