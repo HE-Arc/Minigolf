@@ -20,6 +20,7 @@
         labore magnam modi necessitatibus nisi quia reiciendis sapiente soluta
         sunt unde.
       </p>
+      <course-laderboard :holesIds="course.holes"></course-laderboard>
     </template>
   </Page>
 </template>
@@ -30,17 +31,23 @@ import DataList from "../../components/elements/generics/containers/DataList";
 import DataCard from "../../components/elements/generics/containers/DataCard";
 import Map from "../../components/Map";
 import CoursesTabs from "../../components/elements/CoursesTabs";
+import CourseLaderboard from '../../components/ranking/CourseLaderboard';
 
 export default {
   name: "course",
-  components: { CoursesTabs, Map, DataCard, DataList, Page },
-
-  data: () => ({}),
+  components: { CourseLaderboard, CoursesTabs, Map, DataCard, DataList, Page },
+  data: () => ({
+  }),
   computed: {
+    id() {
+      return this.$route.params.id;
+    },
     course() {
-      let id = this.$route.params.id;
-      return this.$store.getters["courses/byId"](id);
+      return this.$store.getters["courses/byId"](this.id);
     }
+  },
+  mounted() {
+    this.$store.dispatch("courses/fetchList", [this.id]);
   }
 };
 </script>
