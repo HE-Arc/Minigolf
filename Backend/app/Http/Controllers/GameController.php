@@ -50,8 +50,8 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        return GameResource::collection(Game::with('players','course')
-            ->where('id','=', $game->id)
+        return GameResource::collection(Game::with('players')
+            ->where('id', $game->id)
             ->get())
             ->jsonSerialize()[0];
     }

@@ -14,6 +14,7 @@ class GameResource extends JsonResource
      */
     public function toArray($request)
     {
+
         return [
             'id' => $this->id,
             'creator' => $this->user_id,

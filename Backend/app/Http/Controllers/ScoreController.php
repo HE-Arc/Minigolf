@@ -17,7 +17,9 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        return Score::all();
+        return ScoreResource::collection(Score::with('player')
+                ->get())
+                ->jsonSerialize();
     }
 
     /**
@@ -48,14 +50,12 @@ class ScoreController extends Controller
      * @param  \App\Score $party
      * @return \Illuminate\Http\Response
      */
-    public function show(Score $score)
+    public function show($gameId)
     {
-        return $score;
-        return ScoreResource::collection(Game::with('players.scores')
-                    ->where('games.id','=',$gameId)
+        return ScoreResource::collection(Score::with('player')
+                    ->where('scores.id', $gameId)
                     ->get())
-                    ->jsonSerialize();
-
+                    ->jsonSerialize()[0];
     }
 
     /**

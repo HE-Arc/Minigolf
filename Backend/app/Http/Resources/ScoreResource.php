@@ -15,10 +15,13 @@ class ScoreResource extends JsonResource
     public function toArray($request)
     {
 //        return parent::toArray($request);
+
         return [
-            'game' => $this->id,
-            'course' => $this->course_id,
-            'scores' => UserholeResource::collection($this->players)
+            'id' => $this->id,
+            'hole' => $this->hole_id,
+            'user' => $this->player->user_id,
+            'game' => $this->player->game_id,
+            'score' => $this->score
         ];
     }
 }

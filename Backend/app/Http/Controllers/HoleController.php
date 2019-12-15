@@ -50,7 +50,7 @@ class HoleController extends Controller
     public function show($hole)
     {
         return HolestatResource::collection(Hole::with('scores')
-            ->where('id', '=', $hole)
+            ->where('id', $hole)
             ->get())
             ->jsonSerialize()[0];
     }

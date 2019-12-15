@@ -17,7 +17,8 @@ class UserholeResource extends JsonResource
 //        return parent::toArray($request);
         return [
             'user' => $this->user_id,
-            'holes' => HoleResource::collection($this->scores)
+            'scores' => $this->scores
+//            'holes' => HoleResource::collection($this->scores)
         ];
     }
 }

@@ -15,7 +15,7 @@ class HolestatResource extends JsonResource
      */
     public function toArray($request)
     {
-        $course = Course::where('id',$this->course_id)->get()[0];
+        return parent::toArray($request);
         return [
             'id' => $this->id,
             'number' => $this->number,

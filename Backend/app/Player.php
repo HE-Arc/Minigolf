@@ -16,7 +16,7 @@ class Player extends Model
 
     public function scores()
     {
-        return $this->hasMany('App\Score');
+        return $this->hasMany('App\Score','player_id','id');
     }
 
     public function game()

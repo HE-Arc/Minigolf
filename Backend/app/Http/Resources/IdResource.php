@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use phpDocumentor\Reflection\Types\Parent_;
 
 class IdResource extends JsonResource
 {
