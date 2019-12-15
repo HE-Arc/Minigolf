@@ -20,8 +20,8 @@ Route::prefix('users')->group(function () {
 //
 //});
 
-Route::get('gamesscores', 'ScoreGameController@index');
-Route::get('gamesscores/{id}', 'ScoreGameController@show');
+Route::get('games-scores', 'ScoreGameController@index');
+Route::get('games-scores/{id}', 'ScoreGameController@show');
 Route::resource('users', 'UserController');
 Route::resource('courses', 'CourseController');
 Route::resource('minigolfs', 'MinigolfController');
