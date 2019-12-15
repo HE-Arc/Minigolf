@@ -14,8 +14,8 @@ class DeleteOnCascade extends Migration
     public function up()
     {
         Schema::table('players', function($table) {
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('game_id')->references('id')->on('games');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
         });
         Schema::table('scores', function($table) {
             $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
