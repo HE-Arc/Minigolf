@@ -22,7 +22,7 @@ class GamesTableSeeder extends Seeder
             $this->createGameForCourseUser($user_id, $course_id);
         }
 
-        foreach (range(0, random_int(0,200)) as $item) {
+        foreach (range(0, 200) as $item) {
             $course_id = $course_ids[random_int(1,count($course_ids)-1)];
             $user_id = $user_ids[random_int(1,count($user_ids)-1)];
             $this->createGameForCourseUser($user_id, $course_id);
