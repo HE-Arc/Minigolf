@@ -16,16 +16,26 @@ class UsersTableSeeder extends Seeder
     {
         factory(User::class)->create([
             'name' => 'admin',
-            'role' => 'staff',
+            'role' => 'admin',
             'email' => 'admin@test.com',
         ]);
 
         factory(User::class)->create([
             'name' => 'nath',
-            'role' => 'staff',
+            'role' => 'admin',
             'email' => 'nath@test.com',
         ]);
 
+        factory(User::class)->create([
+            'name' => 'sol',
+            'role' => 'admin',
+            'email' => 'sol@test.com',
+        ]);
+
+        factory(User::class)->create([
+            'name' => 'Pierre',
+            'email' => 'pierre@test.com',
+        ]);
         factory(User::class, 50)->create();
     }
 }

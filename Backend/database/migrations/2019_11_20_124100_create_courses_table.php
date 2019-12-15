@@ -17,6 +17,7 @@ class CreateCoursesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('minigolf_id')->unsigned();
             $table->string('name');
+            $table->text('image');
             $table->text('description');
             $table->timestamps();
         });

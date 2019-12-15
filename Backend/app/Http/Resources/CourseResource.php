@@ -19,6 +19,7 @@ class CourseResource extends JsonResource
             'name'=> $this->name,
             'minigolf' => $this->minigolf_id,
             'description' => $this->description,
+            'image' => $this->image,
             'holes' => IdResource::collection($this->holes),
         ];
     }
