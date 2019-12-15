@@ -14,6 +14,8 @@ export const actions = {
       await this.$auth.loginWith("local", {data: data});
       commit("SET_USER", this.getters["users/byId"](this.$auth.user.id));
       this.$notifications("success", `Welcome ${state.user.name}`);
+      this.dispatch("games/fetchList", this.$auth.user.played);
+      // this.$router
     } catch (e) {
       this.$notifications("error", e.response);
     }

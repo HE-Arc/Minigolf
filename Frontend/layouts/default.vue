@@ -48,9 +48,10 @@ export default {
     pages: [
       { name: "Minigolfs", to: "/minigolfs" },
       { name: "Users", to: "/users" },
-      { name: "Laderboard", to: "/laderboard" },
-      { name: "Download", to: "/download" },
       { name: "About", to: "/about" },
+      { name: "My scores", to: "/scores" },
+      // { name: "Laderboard", to: "/laderboard" },
+      // { name: "Download", to: "/download" },
     ]
   }),
 

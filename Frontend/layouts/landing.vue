@@ -45,18 +45,21 @@ export default {
     pages: [
       { name: "Minigolfs", to: "/minigolfs" },
       { name: "Users", to: "/users" },
-      { name: "Laderboard", to: "/laderboard" },
-      { name: "Download", to: "/download" },
       { name: "About", to: "/about" },
+      { name: "My scores", to: "/scores" },
     ]
   }),
-
   computed: {
     appStyle() {
       return {
         "background-color": this.$vuetify.theme.currentTheme.background,
         "--primary-color": this.$vuetify.theme.currentTheme.primary
       };
+    }
+  },
+  mounted() {
+    if (this.$loggedIn()) {
+      this.$store.dispatch("games/fetchList", this.$user().played);
     }
   }
 };
