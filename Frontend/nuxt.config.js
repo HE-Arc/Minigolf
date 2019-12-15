@@ -32,6 +32,7 @@ export default {
   plugins: [
     "~/plugins/axios.js",
     "~/plugins/vuetify.js",
+    "~/plugins/injections.js",
     "~/plugins/vue-scrollto.js",
     "~/plugins/notifications.js",
     { src: '~/plugins/vue-shortkey.js', mode: 'client' },

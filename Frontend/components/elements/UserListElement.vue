@@ -1,34 +1,37 @@
 <template>
-  <v-list-item inactive>
-    <v-list-item-icon>
-      <v-icon>mdi-account-circle</v-icon>
-    </v-list-item-icon>
-    <v-list-item-content>
-      <v-list-item-title>{{ user.name }}</v-list-item-title>
-      <v-list-item-subtitle>
-        <v-icon small>mdi-city</v-icon>
-        {{ user.city }}
-      </v-list-item-subtitle>
-      <v-list-item-subtitle>
-        <v-icon small>mdi-email-outline</v-icon>
-        {{ user.email }}
-      </v-list-item-subtitle>
-    </v-list-item-content>
-    <div>
-      <admin-actions :entity="user" @dialog="dialog = true">
-        <template v-slot:dialog>
-          <base-dialog
-            icon="mdi-pen"
-            :title="user.name"
-            :modal="dialog"
-            @close="dialog = false"
-          >
-            <user-form :user="user" @close="dialog = false" />
-          </base-dialog>
-        </template>
-      </admin-actions>
-    </div>
-  </v-list-item>
+  <div>
+    <v-list-item inactive>
+      <v-list-item-icon>
+        <v-icon>mdi-account-circle</v-icon>
+      </v-list-item-icon>
+      <v-list-item-content>
+        <v-list-item-title>{{ user.name }}</v-list-item-title>
+        <v-list-item-subtitle>
+          <v-icon small>mdi-city</v-icon>
+          {{ user.city }}
+        </v-list-item-subtitle>
+        <v-list-item-subtitle v-if="$userIsStaff()">
+          <v-icon small>mdi-email-outline</v-icon>
+          {{ user.email }}
+        </v-list-item-subtitle>
+      </v-list-item-content>
+      <div>
+        <admin-actions  v-if="$userIsStaff()" :entity="user" @dialog="dialog = true">
+          <template v-slot:dialog>
+            <base-dialog
+              icon="mdi-pen"
+              :title="user.name"
+              :modal="dialog"
+              @close="dialog = false"
+            >
+              <user-form :user="user" @close="dialog = false" />
+            </base-dialog>
+          </template>
+        </admin-actions>
+      </div>
+    </v-list-item>
+    <v-divider></v-divider>
+  </div>
 </template>
 
 <script>
@@ -36,6 +39,7 @@ import AdminActions from "./buttons/AdminActions";
 import BaseDialog from "./generics/BaseDialog";
 import UserForm from "./forms/UserForm";
 export default {
+  name: "UserListElement",
   components: { UserForm, BaseDialog, AdminActions },
   props: {
     user: { type: Object }
@@ -43,8 +47,6 @@ export default {
   data: () => ({
     dialog: false
   }),
-
-  name: "UserListElement"
 };
 </script>
 

@@ -38,23 +38,33 @@
         {{ minigolf.description }}
       </p>
       <v-container fluid>
+        
+        
         <v-row>
-          <v-col class="py-0">
-            <data-card title="Details">
+          <v-col>
+            <courses-tabs :minigolf="minigolf"/>
+
+          </v-col>
+          <v-col>
+            <data-card title="Location" min-width="366">
+              <Map class="pa-1" :locations="locations" />
+            </data-card>
+          </v-col>
+        </v-row>
+        
+        
+        <v-row class="my-5">
+          <v-col>
+            <data-card title="Contact">
               <data-list :list="attributes" />
             </data-card>
           </v-col>
-          <v-col class="px-0">
-            <data-card min-width="366">
-              <Map :locations="locations" />
-            </data-card>
-          </v-col>
-          <v-col class="px-0">
+          <v-col>
             <data-card title="Highscores">
               <data-list :list="attributes" />
             </data-card>
           </v-col>
-          <v-col class="px-0">
+          <v-col>
             <data-card title="Scores">
               <data-list :list="attributes" />
             </data-card>
@@ -70,10 +80,11 @@ import Page from "../../components/Page";
 import DataList from "../../components/elements/generics/containers/DataList";
 import DataCard from "../../components/elements/generics/containers/DataCard";
 import Map from "../../components/Map";
+import CoursesTabs from '../../components/elements/CoursesTabs';
 
 export default {
   name: "user",
-  components: { Map, DataCard, DataList, Page },
+  components: { CoursesTabs, Map, DataCard, DataList, Page },
   data: () => ({
     social: [
       {
@@ -96,25 +107,49 @@ export default {
       }
     ]
   }),
-
   computed: {
     minigolf() {
       let slug = this.$route.params.slug;
       return this.$store.getters["minigolfs/bySlug"](slug);
     },
     attributes() {
-      const minigolf = this.minigolf;
       return [
-        { name: "Name", value: minigolf.name },
-        { name: "Phone", value: minigolf.phone, icon: "mdi-phone" },
-        // PUT ADDRESS ON SAME ROW BUT ON TWO LINES
-        { name: "City", value: minigolf.city, icon: "mdi-city"},
-        { name: "Address", value: minigolf.address, icon: "mdi-city" },
-        { name: "Email", value: minigolf.email, icon: "mdi-email-outline" }
+        {
+          name: "City",
+          value: this.minigolf.city,
+          icon: "mdi-city",
+          second: this.minigolf.address
+        },
+        {
+          name: "Phone",
+          value: this.prettyPhone(this.minigolf.phone),
+          link: this.formatPhone(this.minigolf.phone),
+          icon: "mdi-phone"
+        },
+        {
+          name: "Email",
+          value: this.minigolf.email,
+          link: `mailto: ${this.minigolf.email}`,
+          icon: "mdi-email-outline"
+        }
       ];
     },
     locations() {
       return [{ lat: this.minigolf.lat, lng: this.minigolf.long }];
+    }
+  },
+  methods: {
+    prettyPhone(value) {
+      let formated = `0${value.slice(1, 3).toString()} ${value[4]}`;
+      for (let i = 4; i < value.length; i++) {
+        formated += `${value[i]}${i % 2 != 0 ? " " : ""}`;
+      }
+      return formated.trimEnd();
+    },
+    formatPhone(value) {
+      return `tel:${this.prettyPhone(value)
+        .split(" ")
+        .join("-")}`;
     }
   }
 };
@@ -136,7 +171,6 @@ export default {
 
 .social {
   display: flex;
-  /*justify-content: space-around;*/
   max-width: 300px;
 
   .social-link {

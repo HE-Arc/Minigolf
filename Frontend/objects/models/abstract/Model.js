@@ -6,7 +6,13 @@ export default class Model {
     this.storeName = storeName;
   }
 
-  static getRandomImageUrl(width = 800, height = 600) {
+  toPojo() {
+    let pojo = {};
+    Object.keys(this).forEach(i => pojo[i] = this[i]);
+    return pojo
+  }
+
+  static getRandomImageUrl(width = 400, height = 300) {
     let min = 100;
     let max = 1000;
     let rand = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -20,6 +26,18 @@ export default class Model {
       label: "Name",
       min: 3,
       required: true
+    };
+  }
+  static holesField(value) {
+    return {
+      value: value,
+      field: "holes",
+      label: "Holes",
+      type: "number",
+      hint: "Number of holes of this course",
+      min: 1,
+      cols: 12,
+      required: true,
     };
   }
   static emailField(value) {

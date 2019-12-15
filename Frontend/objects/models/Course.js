@@ -7,18 +7,17 @@ export default class Course extends Model {
     super('courses', data.id);
     this.name = data.name || "";
     this.description = data.description;
-    this.image = data.image;
+    this.minigolf = data.minigolf;
+    this.holes = data.holes;
 
-
-
-    this.slug = this.name.split(" ").join("-");
-    this.courts = Math.floor(Math.random() * 5) + 1;
+    this.image = Course.getRandomImageUrl();
   }
 
   static createForm(entity) {
     let form = new Form(entity.id);
     form.createTextField(Model.nameField(entity.name));
     form.createTextArea(Model.descriptionField(entity.description));
+    form.createTextField(Model.holesField(entity.holes));
     return form;
   }
 

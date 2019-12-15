@@ -22,7 +22,6 @@ export default class Minigolf extends Model {
 
 
     this.slug = this.name.split(" ").join("-");
-    // this.image = Model.getRandomImageUrl();
     this.courts = Math.floor(Math.random() * 5) + 1;
   }
 

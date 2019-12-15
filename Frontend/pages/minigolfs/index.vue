@@ -1,6 +1,6 @@
 <template>
   <Page title="Affiliated minigolfs">
-    <template v-if="$auth.loggedIn" v-slot:header-side>
+    <template v-if="$loggedIn()" v-slot:header-side>
       <admin-action-create entity-name="minigolf" class="admin-actions">
         <minigolf-form />
       </admin-action-create>
