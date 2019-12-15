@@ -10,6 +10,7 @@ export default class User extends Model {
     this.city = data.city;
     this.role = data.role;
     this.games = data.games;
+    this.created = data.created;
 
   }
 

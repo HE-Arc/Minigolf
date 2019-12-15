@@ -1,4 +1,4 @@
-import Game from '../objects/models/Game';
+import Score from '../objects/models/Score';
 
 export const state = () => ({
   data: [],
@@ -12,25 +12,25 @@ export const getters = {
 
 export const mutations = {
   INIT(state, data) {
-    data.forEach(i => state.data.push(new Game(i).toPojo()));
+    data.forEach(i => state.data.push(new Score(i).toPojo()));
   },
   CREATE(state, data) {
-    state.data.push(new Game(data).toPojo());
-    this.$notifications('success', `${ Game.name } created`);
+    state.data.push(new Score(data).toPojo());
+    this.$notifications('success', `${ Score.name } created`);
   },
   ADD(state, data) {
-    state.data.push(new Game(data).toPojo());
+    state.data.push(new Score(data).toPojo());
   },
   UPDATE(state, data) {
     let object = state.data.find(i => i.id === data.id);
     Object.getOwnPropertyNames(data).forEach(
       i => (object[i] = data[i]),
     );
-    this.$notifications('success', `${ Game.name } updated`);
+    this.$notifications('success', `${ Score.name } updated`);
   },
   DELETE(state, id) {
     state.data = state.data.filter(i => i.id !== id);
-    this.$notifications('success', `${ Game.name } deleted`);
+    this.$notifications('success', `${ Score.name } deleted`);
   },
   SET_LOADING(state, value) {
     state.loading = value;
@@ -40,7 +40,7 @@ export const mutations = {
 export const actions = {
   async fetch({ commit }) {
     await this.$axios
-              .get(Game.endpoint())
+              .get(Score.endpoint())
               .then(res => commit('INIT', res.data))
               .catch(err => this.$notifications('error'));
   },
@@ -49,7 +49,7 @@ export const actions = {
     for (let id of data) {
       if (getters.byId(id) == undefined) {
         this.$axios
-          .get(`${Game.endpoint()}/${id}`)
+          .get(`${Score.endpoint()}/${id}`)
           .then(res => commit("ADD", res.data))
           .catch(err => this.$notifications("error"))
           .finally(() => {
@@ -64,19 +64,19 @@ export const actions = {
   },
   create({ commit }, data) {
     this.$axios
-        .post(Game.endpoint(), data)
+        .post(Score.endpoint(), data)
         .then(res => commit('CREATE', res.data))
         .catch(err => this.$notifications('error'));
   },
   update({ commit }, data) {
     this.$axios
-        .patch(Game.endpoint(data.id), data)
+        .patch(Score.endpoint(data.id), data)
         .then(res => commit('UPDATE', res.data))
         .catch(err => this.$notifications('error'));
   },
   delete({ commit }, data) {
     this.$axios
-        .delete(Game.endpoint(data.id))
+        .delete(Score.endpoint(data.id))
         .then(res => commit('DELETE', data.id))
         .catch(err => this.$notifications('error'));
   },
