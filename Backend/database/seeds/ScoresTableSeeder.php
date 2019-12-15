@@ -18,16 +18,16 @@ class ScoresTableSeeder extends Seeder
         foreach ($games as $game) {
             $this->createScoreForHolePlayer($game);
         }
+
     }
 
     private function createScoreForHolePlayer($game)
     {
-        $holes = Course::with('holes')
-            ->where('id', "=", $game->course_id)
-            ->get();
-
+        $courses = Course::with('holes')
+            ->where('courses.id', $game->course_id)
+            ->get()[0];
         foreach ($game->players as $player) {
-            foreach ($holes as $hole){
+            foreach ($courses->holes as $hole){
                 factory(Score::class)->create([
                     'hole_id' => $hole->id,
                     'player_id' => $player->id

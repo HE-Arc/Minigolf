@@ -19,7 +19,12 @@ class GamesTableSeeder extends Seeder
         foreach ($course_ids as $id) {
             $user_id = $user_ids[random_int(1,count($user_ids)-1)];
             $course_id = $id;
-//            $course_id = $course_ids[random_int(1,count($course_ids)-1)];
+            $this->createGameForCourseUser($user_id, $course_id);
+        }
+
+        foreach (range(0, random_int(0,400)) as $item) {
+            $course_id = $course_ids[random_int(1,count($course_ids)-1)];
+            $user_id = $user_ids[random_int(1,count($user_ids)-1)];
             $this->createGameForCourseUser($user_id, $course_id);
         }
     }

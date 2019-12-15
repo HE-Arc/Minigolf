@@ -16,7 +16,9 @@ class HoleController extends Controller
      */
     public function index()
     {
-        return Hole::all();
+        return HolestatResource::collection(Hole::with('scores.player','course')
+                    ->get())
+                    ->jsonSerialize();
     }
 
     /**
@@ -49,7 +51,7 @@ class HoleController extends Controller
      */
     public function show($hole)
     {
-        return HolestatResource::collection(Hole::with('scores','course')
+        return HolestatResource::collection(Hole::with('scores.player','course')
             ->where('id', $hole)
             ->get())
             ->jsonSerialize()[0];

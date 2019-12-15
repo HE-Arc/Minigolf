@@ -10,5 +10,6 @@ $factory->define(Score::class, function (Faker $faker) {
         'player_id' => 1,
         'hole_id' => 1,
         'score' => $faker->numberBetween(1, 12),
+        'date' => now()
     ];
 });

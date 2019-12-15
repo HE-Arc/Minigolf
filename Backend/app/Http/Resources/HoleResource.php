@@ -15,10 +15,10 @@ class HoleResource extends JsonResource
      */
     public function toArray($request)
     {
-        return $this;
         return [
-            'id' => $this->hole_id,
-            'number' => $this->hole->number,
+            'id' => $this->id,
+            'user' => $this->player->user_id,
+            'game' => $this->player->game_id,
             'score' => $this->score,
         ];
     }
