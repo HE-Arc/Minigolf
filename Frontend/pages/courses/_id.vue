@@ -14,12 +14,7 @@
     <template v-slot:sub-header> </template>
 
     <template v-slot:body>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi,
-        commodi cupiditate dolores, dolorum eius expedita, facilis illum impedit
-        labore magnam modi necessitatibus nisi quia reiciendis sapiente soluta
-        sunt unde.
-      </p>
+      <p>{{ course.description }}</p>
       <course-laderboard :holesIds="course.holes"></course-laderboard>
     </template>
   </Page>

@@ -55,10 +55,7 @@
             </admin-actions>
           </v-card-title>
           <v-card-text>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam,
-            aut ea eveniet incidunt laboriosam saepe sit ullam vero voluptas.
-            Delectus nam officiis unde. Accusantium atque doloremque esse
-            inventore voluptatem.
+            {{ course.description }}
           </v-card-text>
         </v-card>
       </v-tab-item>

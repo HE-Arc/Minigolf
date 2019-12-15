@@ -8,6 +8,7 @@ export const state = () => ({
 export const getters = {
   byId: state => id => state.data.find(i => i.id == id),
   byUserId: state => id => state.data.filter(i => i.user == id),
+  byGameId: state => id => state.data.filter(i => i.game == id),
   byIdList: state => ids => state.data.filter(i => ids.includes(i.id))
 };
 

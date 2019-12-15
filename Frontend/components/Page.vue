@@ -2,7 +2,7 @@
   <div class="wrapper">
     <v-row v-if="title">
       <v-col class="header">
-        <h1 class="page-title display-3">{{ title }}</h1>
+        <h1 class="page-title display-2">{{ title }}</h1>
         <slot name="header-side"></slot>
       </v-col>
     </v-row>

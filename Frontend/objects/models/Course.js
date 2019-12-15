@@ -10,7 +10,7 @@ export default class Course extends Model {
     this.minigolf = data.minigolf;
 
     this.holes = data.holes;
-    this.image = Course.getRandomImageUrl();
+    this.image = data.image;
   }
 
   static createForm(entity) {
