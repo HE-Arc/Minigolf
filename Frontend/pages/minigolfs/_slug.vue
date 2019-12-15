@@ -43,7 +43,6 @@
         <v-row>
           <v-col>
             <courses-tabs :minigolf="minigolf"/>
-
           </v-col>
           <v-col>
             <data-card title="Location" min-width="366">
