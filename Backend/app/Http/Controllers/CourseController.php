@@ -21,16 +21,6 @@ class CourseController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
@@ -57,17 +47,6 @@ class CourseController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Course $course
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Course $course)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
@@ -89,7 +68,6 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $course->delete();
-
         return response()->json(null, 204);
     }
 }

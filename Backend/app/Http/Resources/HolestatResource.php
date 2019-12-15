@@ -23,8 +23,8 @@ class HolestatResource extends JsonResource
             'course' => $this->course_id,
             'best' => $this->scores->min('score'),
             'worse' => $this->scores->max('score'),
-            'average' =>$this->scores->avg('score'),
-            'median' => $this->scores->median('score'),
+            'average' => round($this->scores->avg('score'),2),
+            'median' => round($this->scores->median('score'),2),
             'count' => $this->scores->count('score'),
             'scores' => HoleResource::collection($this->scores)
         ];
