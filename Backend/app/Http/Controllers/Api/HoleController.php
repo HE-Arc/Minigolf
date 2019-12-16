@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Http\Resources\ScoreResource;
-use App\Score;
+use App\Hole;
+use App\Http\Resources\HolestatResource;
 use Illuminate\Http\Request;
 
-class ScoreController extends Controller
+class HoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        return ScoreResource::collection(Score::with('player')
-                ->get())
-                ->jsonSerialize();
+        return HolestatResource::collection(Hole::with('scores.player','course')
+                    ->get())
+                    ->jsonSerialize();
     }
 
     /**
@@ -28,47 +28,47 @@ class ScoreController extends Controller
      */
     public function store(Request $request)
     {
-        $score = Score::create($request->all());
-        return response()->json($score, 201);
+        $hole = Hole::create($request->all());
+        return response()->json($hole, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Score $party
+     * @param  \App\Hole $party
      * @return \Illuminate\Http\Response
      */
-    public function show($gameId)
+    public function show($hole)
     {
-        return ScoreResource::collection(Score::with('player')
-                    ->where('scores.id', $gameId)
-                    ->get())
-                    ->jsonSerialize()[0];
+        return HolestatResource::collection(Hole::with('scores.player','course')
+            ->where('id', $hole)
+            ->get())
+            ->jsonSerialize()[0];
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Score $party
+     * @param  \App\Hole $party
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Score $score)
+    public function update(Request $request, Hole $hole)
     {
-        $score->update($request->all());
+        $hole->update($request->all());
 
-        return $score;
+        return $hole;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Score $score
+     * @param  \App\Hole $party
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Score $score)
+    public function destroy(Hole $hole)
     {
-        $score->delete();
+        $hole->delete();
 
         return response()->json(null, 204);
     }

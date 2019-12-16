@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Course;
-use App\Http\Resources\CourseResource;
+use App\Http\Resources\ScoreResource;
+use App\Score;
 use Illuminate\Http\Request;
 
-class CourseController extends Controller
+class ScoreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return CourseResource::collection(Course::with('holes')
-            ->get())
-            ->jsonSerialize();
+        return ScoreResource::collection(Score::with('player')
+                ->get())
+                ->jsonSerialize();
     }
 
     /**
@@ -28,46 +28,48 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        $course = Course::create($request->all());
-        return response()->json($course, 201);
+        $score = Score::create($request->all());
+        return response()->json($score, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Course $course
+     * @param  \App\Score $party
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show($gameId)
     {
-        return CourseResource::collection(Course::with('holes')
-            ->where('id','=', $course->id)
-            ->get())
-            ->jsonSerialize()[0];
+        return ScoreResource::collection(Score::with('player')
+                    ->where('scores.id', $gameId)
+                    ->get())
+                    ->jsonSerialize()[0];
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Course $course
+     * @param  \App\Score $party
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, Score $score)
     {
-        $course->update($request->all());
-        return $course;
+        $score->update($request->all());
+
+        return $score;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Course $course
+     * @param  \App\Score $score
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(Score $score)
     {
-        $course->delete();
+        $score->delete();
+
         return response()->json(null, 204);
     }
 }

@@ -5,8 +5,17 @@ namespace App;
 use App\Http\Resources\HoleCollection;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @OA\Schema(type="object")
+ */
 class Course extends Model
 {
+    /**
+     * @OA\Property(property="minigolf_id",type="integer",format="associated minigolf",description="id minigolf"),
+     * @OA\Property(property="name",type="string",description="Course name",example="Lava course"),
+     * @OA\Property(property="description",type="string",description="Course description",example="This course is great"),
+     * @OA\Property(property="image",type="string",description="Url image",example="https://valley.jpg"),
+     */
     protected $table = 'courses';
     protected $guarded = ['id'];
     protected $fillable = [

@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Hole;
-use App\Http\Resources\HolestatResource;
-use App\Score;
+use App\Game;
+use App\Http\Resources\GameResource;
 use Illuminate\Http\Request;
 
-class HoleController extends Controller
+class GameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,9 @@ class HoleController extends Controller
      */
     public function index()
     {
-        return HolestatResource::collection(Hole::with('scores.player','course')
-                    ->get())
-                    ->jsonSerialize();
+        return GameResource::collection(Game::with('users','course')
+            ->get())
+            ->jsonSerialize();
     }
 
     /**
@@ -29,20 +28,20 @@ class HoleController extends Controller
      */
     public function store(Request $request)
     {
-        $hole = Hole::create($request->all());
-        return response()->json($hole, 201);
+        $game = Game::create($request->all());
+        return response()->json($game, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Hole $party
+     * @param  \App\Game $game
      * @return \Illuminate\Http\Response
      */
-    public function show($hole)
+    public function show(Game $game)
     {
-        return HolestatResource::collection(Hole::with('scores.player','course')
-            ->where('id', $hole)
+        return GameResource::collection(Game::with('players')
+            ->where('id', $game->id)
             ->get())
             ->jsonSerialize()[0];
     }
@@ -51,25 +50,25 @@ class HoleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Hole $party
+     * @param  \App\Game $game
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hole $hole)
+    public function update(Request $request, Game $game)
     {
-        $hole->update($request->all());
+        $game->update($request->all());
 
-        return $hole;
+        return $game;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Hole $party
+     * @param  \App\Game $game
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hole $hole)
+    public function destroy(Game $game)
     {
-        $hole->delete();
+        $game->delete();
 
         return response()->json(null, 204);
     }
