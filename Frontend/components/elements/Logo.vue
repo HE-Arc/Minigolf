@@ -40,7 +40,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css?family=Work+Sans&display=swap");
 
 .logo-wrapper {
   text-decoration: none;
