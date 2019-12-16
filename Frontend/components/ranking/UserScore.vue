@@ -46,11 +46,6 @@ export default {
       return this.$store.state.scores.loading;
     }
   },
-  watch: {
-    loading(newValue, oldValue) {
-      console.log(newValue);
-    }
-  },
   methods: {
     minigolf(game) {
       return this.$store.getters["minigolfs/byId"](game.minigolf);

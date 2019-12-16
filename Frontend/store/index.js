@@ -5,7 +5,7 @@ export const actions = {
     if (request.$auth.loggedIn) {
       const role = request.$auth.user.role;
 
-      await dispatch("scores/fetch");
+      // await dispatch("scores/fetch");
 
       if (role == "staff" || role == "admin") {
         await dispatch("pages/setStaffPages");

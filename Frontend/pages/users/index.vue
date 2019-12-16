@@ -74,9 +74,6 @@ export default {
       return this.$store.getters["users/filter"](query);
     }
   },
-  mounted() {
-    console.log(this.$auth.user)
-  }
 };
 </script>
 
