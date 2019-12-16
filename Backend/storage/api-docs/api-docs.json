@@ -2,13 +2,6 @@
     "openapi": "3.0.0",
     "info": {
         "title": "IGolf Api",
-        "contact": {
-            "name": "Nathan Latino",
-            "email": "nathan.latino@gmail.com"
-        },
-        "license": {
-            "name": "Unlicense"
-        },
         "version": "1.0"
     },
     "servers": [
@@ -50,15 +43,16 @@
                 ],
                 "summary": "Create new course",
                 "operationId": "App\\Http\\Controllers\\Api\\CourseController::store",
-                "parameters": [
-                    {
-                        "name": "course",
-                        "in": "query",
-                        "schema": {
-                            "$ref": "#/components/schemas/Course"
+                "requestBody": {
+                    "request": "Course",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Course"
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "201": {
                         "description": "A newly-created course",
@@ -142,15 +136,18 @@
                         "in": "path",
                         "description": "Id course",
                         "required": true
-                    },
-                    {
-                        "name": "course",
-                        "in": "query",
-                        "schema": {
-                            "$ref": "#/components/schemas/Course"
-                        }
                     }
                 ],
+                "requestBody": {
+                    "request": "Course",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Course"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "List of courses",
@@ -193,6 +190,166 @@
                         "description": "Url image",
                         "type": "string",
                         "example": "https://valley.jpg"
+                    }
+                },
+                "type": "object"
+            },
+            "Game": {
+                "properties": {
+                    "user_id": {
+                        "description": "owner",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "course_id": {
+                        "description": "associated minigolf",
+                        "type": "integer",
+                        "example": "1"
+                    },
+                    "token": {
+                        "description": "game token",
+                        "type": "string",
+                        "example": "LJS5D1"
+                    },
+                    "date": {
+                        "description": "date of game creation",
+                        "type": "string",
+                        "example": "2019-11-12T10:10:49"
+                    },
+                    "isStarted": {
+                        "description": "game started",
+                        "type": "boolean",
+                        "example": "0"
+                    }
+                },
+                "type": "object"
+            },
+            "Hole": {
+                "properties": {
+                    "course_id": {
+                        "description": "associated minigolf",
+                        "type": "integer",
+                        "example": "2"
+                    },
+                    "number": {
+                        "description": "associated minigolf",
+                        "type": "string",
+                        "example": "1"
+                    }
+                },
+                "type": "object"
+            },
+            "Minigolf": {
+                "properties": {
+                    "name": {
+                        "description": "minigolf name",
+                        "type": "string",
+                        "example": "Minigolf World"
+                    },
+                    "description": {
+                        "description": "minigolf description",
+                        "type": "string",
+                        "example": "This minigolf is awesome!"
+                    },
+                    "address": {
+                        "description": "minigolf address",
+                        "type": "string",
+                        "example": "Rue du Tertre 10"
+                    },
+                    "city": {
+                        "description": "minigolf city",
+                        "type": "string",
+                        "example": "Neuchâtel"
+                    },
+                    "zipcode": {
+                        "description": "minigolf zipcode",
+                        "type": "string",
+                        "example": "2000"
+                    },
+                    "phone": {
+                        "description": "minigolf phone",
+                        "type": "string",
+                        "example": "0793214392"
+                    },
+                    "email": {
+                        "description": "minigolf email",
+                        "type": "string",
+                        "example": "minigolf.world@gmail.com"
+                    },
+                    "long": {
+                        "description": "minigolf longitude",
+                        "type": "number",
+                        "example": "6.930877"
+                    },
+                    "lat": {
+                        "description": "minigolf latitude",
+                        "type": "number",
+                        "example": "46.994679"
+                    },
+                    "image": {
+                        "description": "Url image",
+                        "type": "string",
+                        "example": "https://valley.jpg"
+                    }
+                },
+                "type": "object"
+            },
+            "Player": {
+                "properties": {
+                    "user_id": {
+                        "description": "associed user",
+                        "type": "integer",
+                        "example": "3"
+                    },
+                    "game_id": {
+                        "description": "associed game",
+                        "type": "integer",
+                        "example": "2"
+                    }
+                },
+                "type": "object"
+            },
+            "Score": {
+                "properties": {
+                    "player_id": {
+                        "description": "associed player",
+                        "type": "integer",
+                        "example": "3"
+                    },
+                    "hole_id": {
+                        "description": "associed hole",
+                        "type": "integer",
+                        "example": "2"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "properties": {
+                    "name": {
+                        "description": "user name",
+                        "type": "string",
+                        "example": "Eric Zemmour"
+                    },
+                    "email": {
+                        "description": "minigolf email",
+                        "type": "string",
+                        "example": "eric.zemour@gmail.com"
+                    },
+                    "role": {
+                        "description": "user role",
+                        "type": "string",
+                        "example": "user"
+                    },
+                    "city": {
+                        "description": "minigolf city",
+                        "type": "string",
+                        "example": "Neuchâtel"
+                    },
+                    "password": {
+                        "description": "user password",
+                        "type": "string",
+                        "example": "test1234"
                     }
                 },
                 "type": "object"

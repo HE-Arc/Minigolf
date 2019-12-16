@@ -12,8 +12,6 @@ use Illuminate\Routing\Controller as BaseController;
  * @OA\Info(
  *      title="IGolf Api",
  *      version="1.0",
- *       @OA\Contact(name="Nathan Latino",email="nathan.latino@gmail.com"),
- *       @OA\License(name="Unlicense"),
  *  ),
  *  @OA\PathItem(path="/api", @OA\Response(response="default"))
  */

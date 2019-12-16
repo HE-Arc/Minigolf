@@ -17,11 +17,9 @@ class Course extends Model
      * @OA\Property(property="image",type="string",description="Url image",example="https://valley.jpg"),
      */
     protected $table = 'courses';
-    protected $guarded = ['id'];
-    protected $fillable = [
-        'minigolf_id', 'name', 'description', 'image'
-    ];
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $guarded = ['id',];
+    protected $fillable = ['minigolf_id', 'name', 'description', 'image',];
+    protected $hidden = ['created_at', 'updated_at',];
 
     public function minigolf()
     {

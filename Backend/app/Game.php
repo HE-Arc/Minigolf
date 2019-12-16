@@ -5,11 +5,25 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+/**
+ * @OA\Schema(type="object")
+ */
 class Game extends Model
 {
+    /**
+     * @OA\Property(property="user_id",type="integer",description="owner",example="2"),
+     * @OA\Property(property="course_id",type="integer",description="associated minigolf",example="1"),
+     * @OA\Property(property="token",type="string",description="game token",example="LJS5D1"),
+     * @OA\Property(property="date",type="string",description="date of game creation",example="2019-11-12T10:10:49"),
+     * @OA\Property(property="isStarted",type="boolean",description="game started",example="0"),
+     */
     protected $table = 'games';
     protected $guarded = ['id'];
+    protected $fillable = ['user_id', 'course_id', 'token', 'date'];
+    protected $attributes = ['isStarted' => false,];
+    protected $casts = ['date' => 'datetime',];
     protected $hidden = ['created_at', 'updated_at'];
+
 
     public function users()
     {
@@ -26,18 +40,6 @@ class Game extends Model
     {
         return $this->belongsTo('App\Course');
     }
-
-    protected $fillable = [
-        'user_id', 'course_id', 'token', 'date'
-    ];
-
-    protected $attributes = [
-        'isStarted' => false,
-    ];
-
-    protected $casts = [
-        'date' => 'datetime',
-    ];
 
     public function save(array $options = array())
     {

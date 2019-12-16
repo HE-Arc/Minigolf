@@ -67,10 +67,9 @@ class CourseController extends Controller
      *     path="/courses",
      *     tags={"Courses"},
      *     summary="Create new course",
-     *     @OA\parameter(
-     *          name="course",
-     *          in="query",
-     *          @OA\Schema(ref="#/components/schemas/Course"),
+     *      @OA\RequestBody(
+     *          request="Course",
+     *          @OA\JsonContent(ref="#/components/schemas/Course"),
      *      ),
      *      @OA\Response(
      *          response=201,
@@ -105,11 +104,10 @@ class CourseController extends Controller
      *          required=true,
      *          description="Id course",
      *      ),
-     *      @OA\parameter(
-     *          name="course",
-     *          in="query",
-     *          @OA\Schema(ref="#/components/schemas/Course"),
-     *      ),
+     *      @OA\RequestBody(
+     *          request="Course",
+     *          @OA\JsonContent(ref="#/components/schemas/Course"),
+     *       ),
      *      @OA\Response(
      *          response=200,
      *          description="List of courses",

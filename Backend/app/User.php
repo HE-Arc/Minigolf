@@ -10,14 +10,25 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
+
+/**
+ * @OA\Schema(type="object")
+ */
 class User extends Authenticatable implements JWTSubject
 {
+    /**
+     * @OA\Property(property="name",type="string",description="user name",example="Eric Zemmour"),
+     * @OA\Property(property="email",type="string",description="minigolf email",example="eric.zemour@gmail.com"),
+     * @OA\Property(property="role",type="string",description="user role",example="user"),
+     * @OA\Property(property="city",type="string",description="minigolf city",example="Neuchâtel"),
+     * @OA\Property(property="password",type="string",description="user password",example="test1234"),
+     */
     use Notifiable;
     protected $table = 'users';
-    protected $guarded = ['id'];
+    protected $guarded = ['id',];
 
     protected $fillable = [
-        'name', 'email', 'role', 'password', 'city'
+        'name', 'email', 'role', 'password', 'city',
     ];
     protected $hidden = [
         'password', 'remember_token', 'created_at', 'update_at',
