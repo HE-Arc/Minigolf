@@ -15,14 +15,15 @@
 <script>
 import User from "./User";
 import DarkmodeSwitch from "../navbar/DarkmodeSwitch";
+import links from "../../../configs/links"
+
 export default {
   name: "Drawer",
   components: { DarkmodeSwitch, User },
-  props: {
-    pages: { type: Array }
-  },
-  data: () => ({}),
   computed: {
+    pages() {
+      return links;
+    },
     drawer: {
       get() {
         return this.$store.state.application.drawer;

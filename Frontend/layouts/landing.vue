@@ -1,18 +1,25 @@
 <template>
   <v-app id="app" :style="appStyle">
-    <drawer :pages="pages" />
+    <drawer />
 
     <v-content class="main-content">
       <div class="logo-container">
         <Logo class="main-logo" />
       </div>
-      <app-bar :pages="pages" />
+      <app-bar />
       <v-container fluid>
+        
+        
         <v-row class="main-row pa-0" align="start" justify="center">
           <v-col class="ma-0 pa-0">
             <nuxt />
           </v-col>
         </v-row>
+        
+        
+        
+        
+        
       </v-container>
     </v-content>
     <Footer class="footer" />
@@ -41,14 +48,6 @@ export default {
     Logo,
     AppBar
   },
-  data: () => ({
-    pages: [
-      { name: "Minigolfs", to: "/minigolfs" },
-      { name: "Users", to: "/users" },
-      { name: "About", to: "/about" },
-      { name: "My scores", to: "/scores" },
-    ]
-  }),
   computed: {
     appStyle() {
       return {

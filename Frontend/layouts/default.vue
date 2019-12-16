@@ -1,13 +1,15 @@
 <template>
   <v-app id="app" :style="appStyle">
-    <drawer :pages="pages"/>
+    <drawer />
 
     <v-content class="main-content">
       <div class="logo-container">
         <Logo class="main-logo" />
       </div>
-      <app-bar :pages="pages"/>
+      <app-bar />
       <v-container fluid>
+        
+        
         <v-row class="main-row" align="start" justify="center">
           <v-col cols="12" xs="12" sm="11" md="10" lg="7">
             <Breadcrumb class="breadcrumb" />
@@ -16,11 +18,12 @@
             <nuxt />
           </v-col>
         </v-row>
+        
+        
       </v-container>
     </v-content>
     <Footer class="footer" />
 
-    
     <delete-dialog />
   </v-app>
 </template>
@@ -44,17 +47,6 @@ export default {
     Logo,
     AppBar
   },
-  data: () => ({
-    pages: [
-      { name: "Minigolfs", to: "/minigolfs" },
-      { name: "Users", to: "/users" },
-      { name: "About", to: "/about" },
-      { name: "My scores", to: "/scores" },
-      // { name: "Laderboard", to: "/laderboard" },
-      // { name: "Download", to: "/download" },
-    ]
-  }),
-
   computed: {
     appStyle() {
       return {
@@ -62,7 +54,7 @@ export default {
         "--primary-color": this.$vuetify.theme.currentTheme.primary
       };
     }
-  },
+  }
 };
 </script>
 
@@ -79,7 +71,7 @@ export default {
   .main-row {
     margin-top: 200px;
   }
-  
+
   .breadcrumb {
     margin-top: 30px;
   }

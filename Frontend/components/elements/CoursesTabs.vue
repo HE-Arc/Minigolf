@@ -1,5 +1,5 @@
 <template>
-  <data-card class="pb-5" title="Courses" :loading="loading">
+  <data-card v-if="courses.length" class="pb-5" title="Courses" :loading="loading">
     <v-tabs v-model="currentTab">
       <v-tab v-for="course in courses" :key="course.id">
         {{course.name}}
@@ -60,6 +60,14 @@
         </v-card>
       </v-tab-item>
     </v-tabs-items>
+  </data-card>
+  
+  <data-card v-else class="pb-5" title="Courses" height="460">
+    <v-card flat>
+      <v-card-text>
+        <p>This minigolf doesn't have any course registered.</p>
+      </v-card-text>
+    </v-card>
   </data-card>
 </template>
 
