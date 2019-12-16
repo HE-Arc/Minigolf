@@ -6,6 +6,7 @@
         class="pt-0"
         cols="12"
         md="4"
+        lg="3"
         v-for="column in columns"
         :key="column.title"
       >
@@ -44,19 +45,19 @@ export default {
         title: "Reach the world",
         icon: "mdi-earth",
         content:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam assumenda blanditiis dolor esse ex fuga id ipsum iure molestiae, mollitia nostrum, numquam omnis perferendis quaerat tenetur unde ut, voluptas voluptatem. "
+          "Ready to show your golf skills to the world ? This app is used by the most famouse players around the world. Think you can do better than them ?"
       },
       {
         title: "Save the planet",
         icon: "mdi-tree-outline",
         content:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam assumenda blanditiis dolor esse ex fuga id ipsum iure molestiae, mollitia nostrum, numquam omnis perferendis quaerat tenetur unde ut, voluptas voluptatem. "
+          "No more paper to write down your scores. You and your friends can now play in a Eco-friendly manner and save the planet !"
       },
       {
         title: "Meet new people",
         icon: "mdi-share-variant",
         content:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam assumenda blanditiis dolor esse ex fuga id ipsum iure molestiae, mollitia nostrum, numquam omnis perferendis quaerat tenetur unde ut, voluptas voluptatem. "
+          "iGolf is the best way to meet new people that share the same interest for the game. Login and browse the players in your region."
       }
     ]
   })

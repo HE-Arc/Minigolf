@@ -27,7 +27,7 @@
           </div>
 
           <div class="copyright">
-            Copyright &copy; {{ new Date().getFullYear() }} JrosK
+            Copyright &copy; {{ new Date().getFullYear() }} <b>iGolf</b>
             <br />
             Design & code:
             <a class="link" href="mailto:jrosk.managment@gmail.com">
