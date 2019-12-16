@@ -9,15 +9,22 @@
             {{ formatDate(game) }}
           </v-col>
           <v-col class="subtitle-2 py-0">
-            <v-icon small left>mdi-at</v-icon>
-            {{ place(game).name }}
+            <v-btn
+              text
+              small
+              color="primary"
+              @click.stop="$router.push(`minigolfs/${place(game).slug}`)"
+            >
+              <v-icon small left>mdi-at</v-icon>
+              {{ place(game).name }}
+            </v-btn>
           </v-col>
         </v-row>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
         <v-row>
           <v-col>
-            <game-recap-card :game="game"/>
+            <game-recap-card :game="game" />
           </v-col>
         </v-row>
       </v-expansion-panel-content>
@@ -27,21 +34,19 @@
 
 <script>
 import ScoreCard from "./UserScoreCard";
-import GameRecapCard from './GameRecapCard';
+import GameRecapCard from "./GameRecapCard";
 export default {
   name: "UserScoreCard",
   components: { GameRecapCard, ScoreCard },
   props: {
     games: { type: Array }
   },
-  data: () => ({
-  }),
   methods: {
     place(game) {
-      return this.$store.getters["minigolfs/byId"](game.minigolf)
+      return this.$store.getters["minigolfs/byId"](game.minigolf);
     },
     course(game) {
-      return this.$store.course["course/byId"](game.course)
+      return this.$store.course["course/byId"](game.course);
     },
     formatDate(game) {
       let options = {
@@ -54,9 +59,6 @@ export default {
       return new Date(game.date).toLocaleDateString("en-EN", options);
     }
   },
-  mounted() {
-    console.log(this.games)
-  }
 };
 </script>
 
