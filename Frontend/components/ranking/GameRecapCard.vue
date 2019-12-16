@@ -4,48 +4,48 @@
       <v-row align="center">
         <v-col>Game id: {{ game.id }}</v-col>
         <v-spacer />
-        <v-col class="subtitle-2">Token: {{ game.token }}</v-col>
+        <v-col>
+          <v-chip class="ma-2" color="primary" outlined label>
+            <v-icon left>mdi-barcode-scan</v-icon>
+            {{ game.token }}
+          </v-chip>
+        </v-col>
       </v-row>
     </v-card-title>
     <v-card-text>
-      <score-card
+      <user-score-card
         title="Your score:"
         :player="$user()"
-        :scores="userScores(game)"
+        :scores="playerScores($user().id)"
       />
       <br />
       <b>Players:</b>
       <v-chip
-        v-for="player in players(game)"
+        v-for="player in players"
         :key="player.id"
         class="ma-2"
         color="info"
-        outlined
+        :outlined="!isWinner(player)"
         pill
       >
         {{ player.name }}
-        <v-icon right>mdi-account-outline</v-icon>
+        <v-icon v-if="!isWinner(player)" right>mdi-account-outline</v-icon>
+        <v-icon v-else color="orange" right>mdi-crown-outline</v-icon>
       </v-chip>
     </v-card-text>
     <v-card-actions>
-      <v-btn
-        text
-        x-small
-        color="primary"
-        @click="show = !show"
-      >
-       Full score sheet
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-        
+      <v-btn text x-small color="primary" @click="show = !show">
+        Full score sheet
+        <v-icon>{{ show ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
       </v-btn>
     </v-card-actions>
 
     <v-expand-transition>
       <div v-show="show">
-        <v-divider></v-divider>
+        <v-divider />
 
         <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+          <all-scores-card :scores="allScores" />
         </v-card-text>
       </div>
     </v-expand-transition>
@@ -53,29 +53,54 @@
 </template>
 
 <script>
-  import ScoreCard from './ScoreCard';
-  export default {
-    name: 'GameRecapCard',
-    components: { ScoreCard },
-    props: {
-      game: { type: Object },
+import UserScoreCard from "./UserScoreCard";
+import AllScoresCard from "./AllScoresCard";
+
+export default {
+  name: "GameRecapCard",
+  components: { AllScoresCard, UserScoreCard },
+  props: {
+    game: { type: Object }
+  },
+  data: () => ({
+    show: false
+  }),
+  computed: {
+    players() {
+      return this.game.players.map(id => this.$store.getters["users/byId"](id));
     },
-    data: () => ({
-      show: false ,
-    }),
-    methods: {
-      userScores(game) {
-        let scores = this.$store.getters["scores/byGameId"](game.id);
-        return scores.filter(i => i.user == this.$user().id);
-      },
-      players(game) {
-        let x = game.players.map(id => this.$store.getters["users/byId"](id));
-        return x;
-      },
+    allScores() {
+      let allScores = {players: null, winner: null};
+      let bestScore = 1000;
+      allScores.players = this.players.map(i => {
+        return { player: i.name, scores: this.playerScores(i.id) };
+      });
+      allScores.players.forEach(scores => {
+        let t = 0;
+        scores.scores.forEach(score => {
+          t += score.score;
+        });
+        if (t < bestScore) {
+          bestScore = t;
+          allScores.winner = scores.player
+        }
+        scores['total'] = t;
+        t = 0;
+      });
+      return allScores;
+      
     }
-  };
+  },
+  methods: {
+    isWinner(player) {
+      return this.allScores.winner == player.name;
+    },
+    playerScores(player) {
+      let scores = this.$store.getters["scores/byGameId"](this.game.id);
+      return scores.filter(i => i.user == player);
+    },
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

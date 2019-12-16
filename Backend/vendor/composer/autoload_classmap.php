@@ -18,6 +18,7 @@ return array(
     'App\\Http\\Controllers\\HoleController' => $baseDir . '/app/Http/Controllers/HoleController.php',
     'App\\Http\\Controllers\\MinigolfController' => $baseDir . '/app/Http/Controllers/MinigolfController.php',
     'App\\Http\\Controllers\\PlayerController' => $baseDir . '/app/Http/Controllers/PlayerController.php',
+    'App\\Http\\Controllers\\SampleController' => $baseDir . '/app/Http/Controllers/SampleController.php',
     'App\\Http\\Controllers\\ScoreController' => $baseDir . '/app/Http/Controllers/ScoreController.php',
     'App\\Http\\Controllers\\ScoreGameController' => $baseDir . '/app/Http/Controllers/ScoreGameController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',

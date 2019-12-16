@@ -2,8 +2,17 @@
   <v-expansion-panels>
     <v-expansion-panel v-for="(game, c) in games" :key="game.id">
       <v-expansion-panel-header>
-        <span class="number">#{{ games.length - c }}</span>
-        <span class="date">{{ formatDate(game.date) }}</span>
+        <v-row dense>
+          <v-col class="number">{{ games.length - c }}</v-col>
+          <v-col class="date">
+            <v-icon small left>mdi-calendar</v-icon>
+            {{ formatDate(game) }}
+          </v-col>
+          <v-col class="subtitle-2 py-0">
+            <v-icon small left>mdi-at</v-icon>
+            {{ place(game).name }}
+          </v-col>
+        </v-row>
       </v-expansion-panel-header>
       <v-expansion-panel-content>
         <v-row>
@@ -17,10 +26,10 @@
 </template>
 
 <script>
-import ScoreCard from "./ScoreCard";
+import ScoreCard from "./UserScoreCard";
 import GameRecapCard from './GameRecapCard';
 export default {
-  name: "UserScore",
+  name: "UserScoreCard",
   components: { GameRecapCard, ScoreCard },
   props: {
     games: { type: Array }
@@ -28,7 +37,13 @@ export default {
   data: () => ({
   }),
   methods: {
-    formatDate(date) {
+    place(game) {
+      return this.$store.getters["minigolfs/byId"](game.minigolf)
+    },
+    course(game) {
+      return this.$store.course["course/byId"](game.course)
+    },
+    formatDate(game) {
       let options = {
         weekday: "long",
         year: "numeric",
@@ -36,15 +51,23 @@ export default {
         day: "numeric",
         hour12: false
       };
-      return new Date(date).toLocaleDateString("en-EN", options);
+      return new Date(game.date).toLocaleDateString("en-EN", options);
     }
   },
-  mounted() {}
+  mounted() {
+    console.log(this.games)
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .number {
   max-width: 60px;
+  &:before {
+    content: "#";
+    font-weight: bold;
+    font-style: italic;
+    color: lightgray;
+  }
 }
 </style>

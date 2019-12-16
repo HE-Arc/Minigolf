@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite2b657ae88a6379a017efc6f5d81ff6c
+class ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -467,6 +467,7 @@ class ComposerStaticInite2b657ae88a6379a017efc6f5d81ff6c
         'App\\Http\\Controllers\\HoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/HoleController.php',
         'App\\Http\\Controllers\\MinigolfController' => __DIR__ . '/../..' . '/app/Http/Controllers/MinigolfController.php',
         'App\\Http\\Controllers\\PlayerController' => __DIR__ . '/../..' . '/app/Http/Controllers/PlayerController.php',
+        'App\\Http\\Controllers\\SampleController' => __DIR__ . '/../..' . '/app/Http/Controllers/SampleController.php',
         'App\\Http\\Controllers\\ScoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScoreController.php',
         'App\\Http\\Controllers\\ScoreGameController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScoreGameController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
@@ -4596,10 +4597,10 @@ class ComposerStaticInite2b657ae88a6379a017efc6f5d81ff6c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite2b657ae88a6379a017efc6f5d81ff6c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite2b657ae88a6379a017efc6f5d81ff6c::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInite2b657ae88a6379a017efc6f5d81ff6c::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInite2b657ae88a6379a017efc6f5d81ff6c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de::$classMap;
 
         }, null, ClassLoader::class);
     }
