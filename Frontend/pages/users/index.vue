@@ -44,6 +44,9 @@ import UserForm from "../../components/elements/forms/UserForm";
 
 export default {
   components: { UserForm, AdminActionCreate, UserListElement, Page },
+  async fetch({ store }) {
+    await store.dispatch("users/fetch");
+  },
   data: () => ({
     query: null,
     createDialog: false,
@@ -58,7 +61,7 @@ export default {
         password: "lala"
       };
       this.$store.dispatch("users/create", user);
-    },
+    }
   },
   watch: {
     query() {
@@ -69,7 +72,7 @@ export default {
     users() {
       let query = this.query ? this.query : "";
       return this.$store.getters["users/filter"](query);
-    },
+    }
   }
 };
 </script>

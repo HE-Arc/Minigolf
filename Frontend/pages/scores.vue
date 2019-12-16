@@ -2,7 +2,10 @@
   <Page title="My scores">
     <template v-slot:body>
       <div v-if="$auth.loggedIn">
-        <user-score :games="games" />
+        <user-score v-if="games.length" :games="games" />
+        <div v-else>
+          It seems that you didn't played any game... yet.
+        </div>
       </div>
       <div v-else>
         Download the app and
