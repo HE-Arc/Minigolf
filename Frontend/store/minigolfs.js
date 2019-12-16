@@ -5,6 +5,7 @@ export const state = () => ({
 });
 
 export const getters = {
+  byId: state => id => state.data.find(i => i.id == id),
   bySlug: state => slug => state.data.find(i => i.slug === slug),
   filter: state => query => {
     let q = query.toLowerCase();

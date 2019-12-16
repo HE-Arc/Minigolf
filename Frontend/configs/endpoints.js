@@ -6,5 +6,5 @@ export default {
   scores: "scores",
   courses: "courses",
   minigolfs: "minigolfs",
-  gameScore: "games-scores"
+  gamesScore: "games-scores"
 }

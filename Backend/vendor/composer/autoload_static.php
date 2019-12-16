@@ -467,6 +467,7 @@ class ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de
         'App\\Http\\Controllers\\HoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/HoleController.php',
         'App\\Http\\Controllers\\MinigolfController' => __DIR__ . '/../..' . '/app/Http/Controllers/MinigolfController.php',
         'App\\Http\\Controllers\\PlayerController' => __DIR__ . '/../..' . '/app/Http/Controllers/PlayerController.php',
+        'App\\Http\\Controllers\\SampleController' => __DIR__ . '/../..' . '/app/Http/Controllers/SampleController.php',
         'App\\Http\\Controllers\\ScoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScoreController.php',
         'App\\Http\\Controllers\\ScoreGameController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScoreGameController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',

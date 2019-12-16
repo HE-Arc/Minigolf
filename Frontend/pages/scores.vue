@@ -32,13 +32,6 @@ export default {
   computed: {
     games() {
       let games = this.$store.getters["games/byUserId"](this.$user().id);
-      games.forEach(game => {
-        this.$axios
-            .get(`games-scores/${game.id}`)
-            .then(res => {console.log(res.data[0]);
-        });
-      });
-
       return games.sort((a, b) => -(new Date(a.date) - new Date(b.date)));
     }
   }

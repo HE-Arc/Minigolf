@@ -12,13 +12,6 @@ export default class Model {
     return pojo
   }
 
-  static getRandomImageUrl(width = 400, height = 300) {
-    let min = 100;
-    let max = 1000;
-    let rand = Math.floor(Math.random() * (max - min + 1)) + min;
-    return `https://picsum.photos/id/${rand}/${width}/${height}`;
-  }
-
   static nameField(value) {
     return {
       value: value,

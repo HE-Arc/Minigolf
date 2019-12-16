@@ -3,13 +3,14 @@
     <v-row>
       <v-col>
         <v-card>
+<!--          single-select-->
+<!--          show-select-->
           <v-data-table
             dense
             v-model="selected"
             disable-pagination
             hide-default-footer
-            single-select
-            show-select
+
             :sort-by="['number']"
             :loading="loading"
             :headers="headers"
@@ -21,20 +22,20 @@
         </v-card>
       </v-col>
 
-      <v-col>
-        <v-card>
-          <v-data-table
-            dense
-            disable-pagination
-            hide-default-footer
-            :sort-by="['number']"
-            :loading="loading"
-            :headers="headers"
-            :items="holes"
-            class="elevation-1 py-5 px-1"
-          ></v-data-table>
-        </v-card>
-      </v-col>
+<!--      <v-col>-->
+<!--        <v-card>-->
+<!--          <v-data-table-->
+<!--            dense-->
+<!--            disable-pagination-->
+<!--            hide-default-footer-->
+<!--            :sort-by="['number']"-->
+<!--            :loading="loading"-->
+<!--            :headers="headers"-->
+<!--            :items="holes"-->
+<!--            class="elevation-1 py-5 px-1"-->
+<!--          ></v-data-table>-->
+<!--        </v-card>-->
+<!--      </v-col>-->
     </v-row>
   </v-container>
 </template>
