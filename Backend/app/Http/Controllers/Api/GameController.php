@@ -13,15 +13,52 @@ class GameController extends Controller
         $this->middleware('jwt.verify')->except(['index', 'show']);
     }
 
-
+    /**
+     * @OA\Get(
+     *     path="/games",
+     *     tags={"Games"},
+     *     summary="List games",
+     *     @OA\Response(
+     *          response=200,
+     *          description="List of games",
+     *          @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/Game"))
+     *      ),
+     *     @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
+     */
     public function index()
     {
-        return GameResource::collection(Game::with('users','course')
+        return GameResource::collection(Game::with('users', 'game')
             ->get())
             ->jsonSerialize();
     }
 
 
+    /**
+     * @OA\Get(
+     *     path="/games/{id}",
+     *     tags={"Games"},
+     *     summary="Show a game",
+     *     @OA\Parameter(
+     *           name="id",
+     *           in="path",
+     *           required=true,
+     *           description="Id game",
+     *          ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="A game",
+     *          @OA\JsonContent(ref="#/components/schemas/Game")
+     *      ),
+     *     @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
+     */
     public function show(Game $game)
     {
         return GameResource::collection(Game::with('players')
@@ -29,11 +66,26 @@ class GameController extends Controller
             ->get())
             ->jsonSerialize()[0];
     }
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @OA\Post(
+     *     path="/games",
+     *     tags={"Games"},
+     *     summary="Create new game",
+     *      @OA\RequestBody(
+     *          request="Game",
+     *          @OA\JsonContent(ref="#/components/schemas/Game"),
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="A newly-created game",
+     *          @OA\JsonContent(ref="#/components/schemas/Game")
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
      */
     public function store(Request $request)
     {
@@ -42,19 +94,30 @@ class GameController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Game $game
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Game $game
-     * @return \Illuminate\Http\Response
+     * @OA\Patch(
+     *     path="/games/{id}",
+     *     tags={"Games"},
+     *     summary="Update game",
+     *      @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="Id game",
+     *      ),
+     *      @OA\RequestBody(
+     *          request="Game",
+     *          @OA\JsonContent(ref="#/components/schemas/Game"),
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="List of games",
+     *          @OA\JsonContent(ref="#/components/schemas/Game")
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
      */
     public function update(Request $request, Game $game)
     {
@@ -64,10 +127,25 @@ class GameController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Game $game
-     * @return \Illuminate\Http\Response
+     * @OA\Delete(
+     *     path="/games/{id}",
+     *     tags={"Games"},
+     *     summary="Delete game",
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="Id game",
+     *       ),
+     *     @OA\Response(
+     *          response=204,
+     *          description="delete a game",
+     *      ),
+     *     @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * )
      */
     public function destroy(Game $game)
     {

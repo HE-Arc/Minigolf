@@ -9,26 +9,82 @@ use Illuminate\Http\Request;
 class ScoreController extends Controller
 {
     public function __construct()
-        {
-            $this->middleware('jwt.verify')->except(['index', 'show']);
-        }
+    {
+        $this->middleware('jwt.verify')->except(['index', 'show']);
+    }
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *     path="/scores",
+     *     tags={"Scores"},
+     *     summary="List scores",
+     *     @OA\Response(
+     *          response=200,
+     *          description="List of scores",
+     *          @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/Score"))
+     *      ),
+     *     @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
      */
     public function index()
     {
         return ScoreResource::collection(Score::with('player')
-                ->get())
-                ->jsonSerialize();
+            ->get())
+            ->jsonSerialize();
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *     path="/scores/{id}",
+     *     tags={"Scores"},
+     *     summary="Show a score",
+     *     @OA\Parameter(
+     *           name="id",
+     *           in="path",
+     *           required=true,
+     *           description="Id score",
+     *          ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="A score",
+     *          @OA\JsonContent(ref="#/components/schemas/Score")
+     *      ),
+     *     @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
+     */
+    public function show($gameId)
+    {
+        return ScoreResource::collection(Score::with('player')
+            ->where('scores.id', $gameId)
+            ->get())
+            ->jsonSerialize()[0];
+    }
+
+    /**
+     * @OA\Post(
+     *     path="/scores",
+     *     tags={"Scores"},
+     *     summary="Create new score",
+     *      @OA\RequestBody(
+     *          request="Score",
+     *          @OA\JsonContent(ref="#/components/schemas/Score"),
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="A newly-created score",
+     *          @OA\JsonContent(ref="#/components/schemas/Score")
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
      */
     public function store(Request $request)
     {
@@ -36,26 +92,32 @@ class ScoreController extends Controller
         return response()->json($score, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Score $party
-     * @return \Illuminate\Http\Response
-     */
-    public function show($gameId)
-    {
-        return ScoreResource::collection(Score::with('player')
-                    ->where('scores.id', $gameId)
-                    ->get())
-                    ->jsonSerialize()[0];
-    }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Score $party
-     * @return \Illuminate\Http\Response
+     * @OA\Patch(
+     *     path="/scores/{id}",
+     *     tags={"Scores"},
+     *     summary="Update score",
+     *      @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="Id score",
+     *      ),
+     *      @OA\RequestBody(
+     *          request="Score",
+     *          @OA\JsonContent(ref="#/components/schemas/Score"),
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="List of scores",
+     *          @OA\JsonContent(ref="#/components/schemas/Score")
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
      */
     public function update(Request $request, Score $score)
     {
@@ -65,10 +127,25 @@ class ScoreController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Score $score
-     * @return \Illuminate\Http\Response
+     * @OA\Delete(
+     *     path="/scores/{id}",
+     *     tags={"Scores"},
+     *     summary="Delete score",
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="Id score",
+     *       ),
+     *     @OA\Response(
+     *          response=204,
+     *          description="delete a score",
+     *      ),
+     *     @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * )
      */
     public function destroy(Score $score)
     {

@@ -9,26 +9,82 @@ use Illuminate\Http\Request;
 class HoleController extends Controller
 {
     public function __construct()
-        {
-            $this->middleware('jwt.verify')->except(['index', 'show']);
-        }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
     {
-        return HolestatResource::collection(Hole::with('scores.player','course')
-                    ->get())
-                    ->jsonSerialize();
+        $this->middleware('jwt.verify')->except(['index', 'show']);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *     path="/holes",
+     *     tags={"Holes"},
+     *     summary="List holes",
+     *     @OA\Response(
+     *          response=200,
+     *          description="List of holes",
+     *          @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/Hole"))
+     *      ),
+     *     @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
+     */
+    public function index()
+    {
+        return HolestatResource::collection(Hole::with('scores.player', 'hole')
+            ->get())
+            ->jsonSerialize();
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/holes/{id}",
+     *     tags={"Holes"},
+     *     summary="Show a hole",
+     *     @OA\Parameter(
+     *           name="id",
+     *           in="path",
+     *           required=true,
+     *           description="Id hole",
+     *          ),
+     *     @OA\Response(
+     *          response=200,
+     *          description="A hole",
+     *          @OA\JsonContent(ref="#/components/schemas/Hole")
+     *      ),
+     *     @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
+     */
+    public function show($hole)
+    {
+        return HolestatResource::collection(Hole::with('scores.player', 'course')
+            ->where('id', $hole)
+            ->get())
+            ->jsonSerialize()[0];
+    }
+
+    /**
+     * @OA\Post(
+     *     path="/holes",
+     *     tags={"Holes"},
+     *     summary="Create new hole",
+     *      @OA\RequestBody(
+     *          request="Hole",
+     *          @OA\JsonContent(ref="#/components/schemas/Hole"),
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="A newly-created hole",
+     *          @OA\JsonContent(ref="#/components/schemas/Hole")
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
      */
     public function store(Request $request)
     {
@@ -37,25 +93,30 @@ class HoleController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Hole $party
-     * @return \Illuminate\Http\Response
-     */
-    public function show($hole)
-    {
-        return HolestatResource::collection(Hole::with('scores.player','course')
-            ->where('id', $hole)
-            ->get())
-            ->jsonSerialize()[0];
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Hole $party
-     * @return \Illuminate\Http\Response
+     * @OA\Patch(
+     *     path="/holes/{id}",
+     *     tags={"Holes"},
+     *     summary="Update hole",
+     *      @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="Id hole",
+     *      ),
+     *      @OA\RequestBody(
+     *          request="Hole",
+     *          @OA\JsonContent(ref="#/components/schemas/Hole"),
+     *       ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="List of holes",
+     *          @OA\JsonContent(ref="#/components/schemas/Hole")
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
      */
     public function update(Request $request, Hole $hole)
     {
@@ -65,10 +126,25 @@ class HoleController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Hole $party
-     * @return \Illuminate\Http\Response
+     * @OA\Delete(
+     *     path="/holes/{id}",
+     *     tags={"Holes"},
+     *     summary="Delete hole",
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="Id hole",
+     *       ),
+     *     @OA\Response(
+     *          response=204,
+     *          description="delete a hole",
+     *      ),
+     *     @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * )
      */
     public function destroy(Hole $hole)
     {

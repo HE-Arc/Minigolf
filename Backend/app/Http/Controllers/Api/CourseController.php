@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     public function __construct()
-        {
-            $this->middleware('jwt.verify')->except(['index', 'show']);
-        }
+    {
+        $this->middleware('jwt.verify')->except(['index', 'show']);
+    }
+
     /**
      * @OA\Get(
      *     path="/courses",
@@ -90,7 +91,7 @@ class CourseController extends Controller
     {
         $course = Course::create($request->all());
         $course = CourseResource::collection(Course::with('holes')
-            ->where('id',$course->id)
+            ->where('id', $course->id)
             ->get())
             ->jsonSerialize()[0];
         return response()->json($course, 201);

@@ -21,6 +21,16 @@ class PlayerController extends Controller
         return Player::all();
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Player $party
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Player $player)
+    {
+        return $player;
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,16 +44,6 @@ class PlayerController extends Controller
         return response()->json($player, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Player $party
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Player $player)
-    {
-        return $player;
-    }
 
     /**
      * Update the specified resource in storage.
