@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 class Game extends Model
 {
     protected $table = 'games';
+    protected $guarded = ['id'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function users()

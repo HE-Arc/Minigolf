@@ -31,6 +31,10 @@ class MinigolfController extends Controller
     function store(Request $request)
     {
         $minigolf = Minigolf::create($request->all());
+        $minigolf = MinigolfResource::collection(Minigolf::with('courses')
+            ->where('id', '=', $minigolf->id)
+            ->get())
+            ->jsonSerialize()[0];
         return response()->json($minigolf, 201);
     }
 
@@ -58,7 +62,10 @@ class MinigolfController extends Controller
     public function update(Request $request, Minigolf $minigolf)
     {
         $minigolf->update($request->all());
-        return $minigolf;
+        return MinigolfResource::collection(Minigolf::with('courses')
+            ->where('id', '=', $minigolf->id)
+            ->get())
+            ->jsonSerialize()[0];
     }
 
     /**

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     /**
-     * @OA\Property(property="minigolf_id",type="integer",format="associated minigolf",description="id minigolf"),
+     * @OA\Property(property="minigolf_id",type="integer",format="associated minigolf",description="id minigolf",example="1"),
      * @OA\Property(property="name",type="string",description="Course name",example="Lava course"),
      * @OA\Property(property="description",type="string",description="Course description",example="This course is great"),
      * @OA\Property(property="image",type="string",description="Url image",example="https://valley.jpg"),

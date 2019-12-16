@@ -14,6 +14,17 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
     protected $table = 'users';
+    protected $guarded = ['id'];
+
+    protected $fillable = [
+        'name', 'email', 'role', 'password', 'city'
+    ];
+    protected $hidden = [
+        'password', 'remember_token', 'created_at', 'update_at',
+    ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
     public function games()
     {
@@ -24,34 +35,6 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->belongsToMany('App\Game','players','user_id', 'game_id');
     }
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'role', 'password', 'city'
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token', 'created_at', 'update_at',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
 
     public function getJWTIdentifier()
     {

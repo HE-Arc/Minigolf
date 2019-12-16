@@ -27,7 +27,17 @@
                 "operationId": "App\\Http\\Controllers\\Api\\CourseController::index",
                 "responses": {
                     "200": {
-                        "description": "List of courses"
+                        "description": "List of courses",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Course"
+                                    }
+                                }
+                            }
+                        }
                     },
                     "default": {
                         "description": "error"
@@ -42,35 +52,23 @@
                 "operationId": "App\\Http\\Controllers\\Api\\CourseController::store",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "course",
                         "in": "query",
-                        "description": "UUID",
-                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/Course"
+                            "$ref": "#/components/schemas/Course"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "A newly-created course"
-                    },
-                    "default": {
-                        "description": "error"
-                    }
-                }
-            }
-        },
-        "/courses/{$id}": {
-            "get": {
-                "tags": [
-                    "Courses"
-                ],
-                "summary": "Show a course",
-                "operationId": "App\\Http\\Controllers\\Api\\CourseController::show",
-                "responses": {
-                    "200": {
-                        "description": "An courses"
+                        "description": "A newly-created course",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Course"
+                                }
+                            }
+                        }
                     },
                     "default": {
                         "description": "error"
@@ -79,15 +77,30 @@
             }
         },
         "/courses/{id}": {
-            "post": {
+            "get": {
                 "tags": [
                     "Courses"
                 ],
-                "summary": "Update course",
-                "operationId": "App\\Http\\Controllers\\Api\\CourseController::update",
+                "summary": "Show a course",
+                "operationId": "App\\Http\\Controllers\\Api\\CourseController::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id course",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "List of courses"
+                        "description": "A course",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Course"
+                                }
+                            }
+                        }
                     },
                     "default": {
                         "description": "error"
@@ -100,9 +113,54 @@
                 ],
                 "summary": "Delete course",
                 "operationId": "App\\Http\\Controllers\\Api\\CourseController::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id course",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "204": {
                         "description": "delete a course"
+                    },
+                    "default": {
+                        "description": "error"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Update course",
+                "operationId": "App\\Http\\Controllers\\Api\\CourseController::update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id course",
+                        "required": true
+                    },
+                    {
+                        "name": "course",
+                        "in": "query",
+                        "schema": {
+                            "$ref": "#/components/schemas/Course"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of courses",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Course"
+                                }
+                            }
+                        }
                     },
                     "default": {
                         "description": "error"
@@ -118,7 +176,8 @@
                     "minigolf_id": {
                         "description": "id minigolf",
                         "type": "integer",
-                        "format": "associated minigolf"
+                        "format": "associated minigolf",
+                        "example": "1"
                     },
                     "name": {
                         "description": "Course name",

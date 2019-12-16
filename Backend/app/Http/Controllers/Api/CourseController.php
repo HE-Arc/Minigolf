@@ -7,7 +7,6 @@ use App\Http\Resources\CourseResource;
 use Illuminate\Http\Request;
 
 
-
 class CourseController extends Controller
 {
     /**
@@ -18,13 +17,13 @@ class CourseController extends Controller
      *     @OA\Response(
      *          response=200,
      *          description="List of courses",
-     *          @OA\Schema(ref="#/definitions/Course")
+     *          @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/Course"))
      *      ),
      *     @OA\Response(
      *          response="default",
      *          description="error",
      *   )
-     * )
+     * ),
      */
     public function index()
     {
@@ -34,78 +33,101 @@ class CourseController extends Controller
     }
 
     /**
-     * @OA\Post(
-     *     path="/courses",
-     *     tags={"Courses"},
-     *     summary="Create new course",
-     *     @OA\Parameter(
-     *                  name="id",
-     *                  in="query",
-     *          schema={"$ref": "#/definitions/Course"},
-     *                      required=true,
-     *                      description="UUID",
-     *          ),
-     *     @OA\Response(
-     *          response=201,
-     *          description="A newly-created course",
-     *          @OA\Schema(ref="#/definitions/Course")
-     *      ),
-     *     @OA\Response(
-     *          response="default",
-     *          description="error",
-     *   )
-     * )
-     */
-    public function store(Request $request)
-    {
-        $course = Course::create($request->all());
-        return response()->json($course, 201);
-    }
-
-    /**
      * @OA\Get(
-     *     path="/courses/{$id}",
+     *     path="/courses/{id}",
      *     tags={"Courses"},
      *     summary="Show a course",
+     *     @OA\Parameter(
+     *           name="id",
+     *           in="path",
+     *           required=true,
+     *           description="Id course",
+     *          ),
      *     @OA\Response(
      *          response=200,
-     *          description="An courses",
-     *          @OA\Schema(ref="#/shema/Course")
+     *          description="A course",
+     *          @OA\JsonContent(ref="#/components/schemas/Course")
      *      ),
      *     @OA\Response(
      *          response="default",
      *          description="error",
      *   )
-     * )
+     * ),
      */
     public function show(Course $course)
     {
         return CourseResource::collection(Course::with('holes')
-            ->where('id', '=', $course->id)
+            ->where('id', $course->id)
             ->get())
             ->jsonSerialize()[0];
     }
 
     /**
      * @OA\Post(
-     *     path="/courses/{id}",
+     *     path="/courses",
      *     tags={"Courses"},
-     *     summary="Update course",
-     *     @OA\Response(
-     *          response=200,
-     *          description="List of courses",
-     *          @OA\Schema(ref="#/definitions/Course")
+     *     summary="Create new course",
+     *     @OA\parameter(
+     *          name="course",
+     *          in="query",
+     *          @OA\Schema(ref="#/components/schemas/Course"),
      *      ),
-     *     @OA\Response(
+     *      @OA\Response(
+     *          response=201,
+     *          description="A newly-created course",
+     *          @OA\JsonContent(ref="#/components/schemas/Course")
+     *      ),
+     *      @OA\Response(
      *          response="default",
      *          description="error",
      *   )
-     * )
+     * ),
+     */
+    public function store(Request $request)
+    {
+        $course = Course::create($request->all());
+        $course = CourseResource::collection(Course::with('holes')
+            ->where('id',$course->id)
+            ->get())
+            ->jsonSerialize()[0];
+        return response()->json($course, 201);
+    }
+
+
+    /**
+     * @OA\Patch(
+     *     path="/courses/{id}",
+     *     tags={"Courses"},
+     *     summary="Update course",
+     *      @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="Id course",
+     *      ),
+     *      @OA\parameter(
+     *          name="course",
+     *          in="query",
+     *          @OA\Schema(ref="#/components/schemas/Course"),
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="List of courses",
+     *          @OA\JsonContent(ref="#/components/schemas/Course")
+     *      ),
+     *      @OA\Response(
+     *          response="default",
+     *          description="error",
+     *   )
+     * ),
      */
     public function update(Request $request, Course $course)
     {
         $course->update($request->all());
-        return $course;
+        return CourseResource::collection(Course::with('holes')
+            ->where('id', $course->id)
+            ->get())
+            ->jsonSerialize()[0];
     }
 
     /**
@@ -113,10 +135,15 @@ class CourseController extends Controller
      *     path="/courses/{id}",
      *     tags={"Courses"},
      *     summary="Delete course",
+     *     @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="Id course",
+     *       ),
      *     @OA\Response(
      *          response=204,
      *          description="delete a course",
-     *          @OA\Schema(ref="#/definitions/Course")
      *      ),
      *     @OA\Response(
      *          response="default",

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Player extends Model
 {
     protected $table = 'players';
+    protected $guarded = ['id'];
     protected $hidden =  ['created_at', 'updated_at'];
 
     public function users()
