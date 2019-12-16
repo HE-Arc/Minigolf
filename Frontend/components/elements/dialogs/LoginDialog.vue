@@ -42,7 +42,7 @@ export default {
 
       let form = new Form();
       form.createTextField({
-        value: "nath@test.com",
+        value: "admin@test.com",
         field: "email",
         label: "Email",
         type: "email",

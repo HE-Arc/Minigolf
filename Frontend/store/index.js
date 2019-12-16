@@ -7,7 +7,7 @@ export const actions = {
 
       await dispatch("scores/fetch");
 
-      if (role == "staff" || "admin") {
+      if (role == "staff" || role == "admin") {
         await dispatch("pages/setStaffPages");
       } else {
         await dispatch("pages/setUserPages");

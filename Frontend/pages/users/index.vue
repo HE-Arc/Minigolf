@@ -73,6 +73,9 @@ export default {
       let query = this.query ? this.query : "";
       return this.$store.getters["users/filter"](query);
     }
+  },
+  mounted() {
+    console.log(this.$auth.user)
   }
 };
 </script>
