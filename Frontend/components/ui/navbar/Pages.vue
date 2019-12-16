@@ -17,15 +17,17 @@
 </template>
 
 <script>
+  import links from "../../../configs/links"
+  
 export default {
   name: "Pages",
-  props: {
-    pages: { type: Array }
+  computed: {
+    pages() {
+      return links;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.pages {
-}
 </style>

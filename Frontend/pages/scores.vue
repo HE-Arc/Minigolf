@@ -4,7 +4,6 @@
       <div v-if="$loggedIn()">
         <user-score :games="games" />
       </div>
-
       <div v-else>
         Download the app and
         <v-btn @click="loginDialog = true" color="primary" text x-small>

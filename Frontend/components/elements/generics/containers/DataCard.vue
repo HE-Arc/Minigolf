@@ -1,5 +1,10 @@
 <template>
-  <v-card :width="width" :min-width="minWidth" :loading="loading">
+  <v-card
+    :height="height"
+    :width="width"
+    :min-width="minWidth"
+    :loading="loading"
+  >
     <v-card-title v-if="title" class="subtitle-1">
       <v-divider class="mr-3" color="primary lighten-1" />
       <span class="font-weight-bold">{{ title }}</span>
@@ -12,17 +17,16 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      title: { type: String },
-      width: { type: String },
-      minWidth: { type: String },
-      loading: { type: Boolean, default: false },
-    },
-    name: 'DataCard',
-  };
+export default {
+  props: {
+    title: { type: String },
+    height: { type: String },
+    width: { type: String },
+    minWidth: { type: String },
+    loading: { type: Boolean, default: false }
+  },
+  name: "DataCard"
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

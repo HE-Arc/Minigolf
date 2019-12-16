@@ -18,10 +18,10 @@
 
 <script>
 export default {
+  name: "Page",
   props: {
     title: { type: String }
   },
-  name: "Page"
 };
 </script>
 
@@ -30,7 +30,7 @@ export default {
 
 .wrapper {
   margin-top: 30px;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
   min-height: 720px;
   @media screen and (max-width: $mobile) {
     min-height: auto;

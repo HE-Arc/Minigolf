@@ -9,7 +9,7 @@
   >
     <div class="nav-elements">
       <nav-logo class="nav-logo" :show="sticky" />
-      <pages class="pages" :pages="pages" />
+      <pages class="pages" />
       <login-button class="login-button" />
       <darkmode-switch class="dark-mode-switch" />
       <v-app-bar-nav-icon class="mobile-button" @click="toggleDrawer" />
@@ -27,9 +27,6 @@ import LoginButton from "./LoginButton";
 export default {
   name: "AppBar",
   components: { LoginButton, NavLogo, DarkmodeSwitch, Pages, Logo },
-  props: {
-    pages: { type: Array }
-  },
   data: () => ({
     elevate: true,
     sticky: false,

@@ -55,7 +55,7 @@ tbody {
 
   .winner {
     background-color: rgba(144, 238, 144, 0.65);
-    padding-left: 10px;
+    padding-left: 7px;
     border-radius: 15px;
   }
 }

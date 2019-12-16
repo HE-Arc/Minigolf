@@ -21,7 +21,6 @@ export const mutations = {
     this.$notifications('success', `${ Score.name } created`);
   },
   ADD(state, data) {
-    console.log(data)
     state.data.push(new Score(data).toPojo());
   },
   UPDATE(state, data) {

@@ -48,7 +48,6 @@ export default {
       "mdi-facebook",
       "mdi-twitter",
       "mdi-gmail",
-      "mdi-linkedin",
       "mdi-instagram"
     ]
   })
