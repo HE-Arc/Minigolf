@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('jwt.verify')->except(['index', 'show']);
+    }
     /**
      * Display a listing of the resource.
      *

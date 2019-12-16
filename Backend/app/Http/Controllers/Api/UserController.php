@@ -12,8 +12,7 @@ class UserController extends Controller
 
     public function __construct()
         {
-//            $this->middleware('auth:api')->except('index');
-//            $this->middleware('auth:api')->except(['index', 'delete', 'show']);
+            $this->middleware('jwt.verify')->except(['show','index']);
         }
 
         public function index()
