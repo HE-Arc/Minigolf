@@ -15,6 +15,16 @@ use Illuminate\Http\Request;
 //
 $except = ['create','edit'];
 
+// JWT
+Route::prefix('users')->group(function () {
+    Route::get('profile', 'Api\AuthController@profile');
+});
+
+Route::prefix('auth')->group(function () {
+    Route::post('login', 'Api\AuthController@login');
+    Route::post('register', 'Api\AuthController@register');
+});
+
 Route::resource('games-scores', 'Api\ScoreGameController',['only' => [
     'index', 'show'
 ]]);
@@ -28,12 +38,6 @@ Route::resource('holes', 'Api\HoleController',['except' => $except]);
 Route::resource('scores', 'Api\ScoreController',['except' => $except]);
 
 
-// JWT
-Route::prefix('users')->group(function () {
-    Route::get('profile', 'Api\AuthController@profile');
-});
-Route::prefix('auth')->group(function () {
-    Route::post('login', 'Api\AuthController@login');
-    Route::post('register', 'Api\AuthController@register');
-});
+
+
 
