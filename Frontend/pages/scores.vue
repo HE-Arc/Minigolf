@@ -30,7 +30,7 @@ export default {
   components: { Page, UserScore, LoginDialog },
   async fetch( { store }) {
     if (store.$auth.loggedIn) {
-      await store.dispatch("minigolfs/fetch");
+      await store.dispatch("scores/fetch");
       await store.dispatch("games/fetchList", store.$auth.user.played);
     }
   },
