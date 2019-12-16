@@ -14,7 +14,7 @@
             :src="minigolf.image"
           >
             <admin-actions
-              v-if="$loggedIn()"
+              v-if="$auth.loggedIn"
               class="admin-actions"
               :entity="minigolf"
               @dialog="dialog = true"

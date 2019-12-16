@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     userStyle(user) {
-      if (user == this.$user().name) {
+      if (user == this.$auth.user.name) {
         return {
           borderBottom: "1px solid #9575CD",
           borderTop: "1px solid #9575CD"

@@ -4,7 +4,7 @@
       <v-tab v-for="course in courses" :key="course.id">
         {{course.name}}
       </v-tab>
-      <admin-action-create v-if="$loggedIn()" class="mr-4" entity-name="course">
+      <admin-action-create v-if="$auth.loggedIn" class="mr-4" entity-name="course">
         <course-form/>
       </admin-action-create>
     </v-tabs>
@@ -37,7 +37,7 @@
             {{ course.holes.length }}
 
             <admin-actions
-              v-if="$loggedIn()"
+              v-if="$auth.loggedIn"
               class="admin-actions"
               :entity="course"
               @dialog="dialog = true"

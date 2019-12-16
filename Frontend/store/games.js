@@ -45,7 +45,7 @@ export const actions = {
       .then(res => commit("INIT", res.data))
       .catch(err => this.$notifications("error"));
   },
-  fetchList({ commit, getters }, data) {
+  async fetchList({ commit, getters }, data) {
     commit("SET_LOADING", true);
     for (let id of data) {
       if (getters.byId(id) == undefined) {

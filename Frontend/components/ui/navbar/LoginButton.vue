@@ -5,11 +5,12 @@
         <div v-on="on">
           <v-btn
             text
-            v-if="$loggedIn()"
+            v-if="$auth.loggedIn"
             color="primary"
             @click="$store.commit('application/SET_DRAWER', true)"
           >
             <span class="caption">{{ $auth.user.name }}</span>
+            
             <v-avatar class="ml-2" size="28px">
               <v-icon color="green">mdi-account-circle </v-icon>
             </v-avatar>
@@ -34,7 +35,7 @@
           />
         </div>
       </template>
-      <span>{{ $loggedIn() ? 'More...' : 'Connect' }}</span>
+      <span>{{ $auth.loggedIn ? 'More...' : 'Connect' }}</span>
     </v-tooltip>
   </div>
 </template>

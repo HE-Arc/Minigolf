@@ -1,23 +1,20 @@
 export const state = () => ({
-  user: null
 });
 
 export const mutations = {
-  SET_USER(state, data) {
-    state.user = data;
-  },
 };
 
 export const actions = {
   async login({ commit, state }, data) {
     try {
       await this.$auth.loginWith("local", {data: data});
-      commit("SET_USER", this.getters["users/byId"](this.$auth.user.id));
-      this.$notifications("success", `Welcome ${state.user.name}`);
-      this.dispatch("games/fetchList", this.$auth.user.played);
-      // this.$router
+
+      if (this.$auth.user) {
+        this.$notifications("success", `Welcome ${this.$auth.user.name}`);
+      }
+      this.dispatch("pages/setStaffPages")
     } catch (e) {
-      this.$notifications("error", e.response);
+      this.$notifications("error");
     }
   },
 
@@ -25,9 +22,9 @@ export const actions = {
     try {
       await this.$auth.logout();
       this.$notifications("success", `See you later !`);
-      commit("SET_USER", null);
+      this.dispatch("pages/setGuestPages")
     } catch (e) {
-      this.$notifications("error", e.response);
+      this.$notifications("error");
     }
   },
 };
