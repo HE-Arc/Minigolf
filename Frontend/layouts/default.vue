@@ -7,19 +7,8 @@
         <Logo class="main-logo" />
       </div>
       <app-bar />
-      <v-container fluid>
-        
-        
-        <v-row class="main-row" align="start" justify="center">
-          <v-col cols="12" xs="12" sm="11" md="10" lg="7">
-            <Breadcrumb class="breadcrumb" />
-          </v-col>
-          <v-col cols="12" xs="12" sm="11" md="10" lg="7">
-            <nuxt />
-          </v-col>
-        </v-row>
-        
-        
+      <v-container class="main-container" fluid>
+        <nuxt />
       </v-container>
     </v-content>
     <Footer class="footer" />
@@ -54,27 +43,27 @@ export default {
         "--primary-color": this.$vuetify.theme.currentTheme.primary
       };
     }
+  },
+  mounted() {
+    if (this.$loggedIn()) {
+      this.$store.dispatch("games/fetchList", this.$user().played);
+    }
   }
 };
 </script>
 
 <style lang="scss">
+.logo-container {
+  margin-top: 40px;
+  position: absolute;
+  margin-left: 5vw;
+}
 .main-content {
   min-height: 1200px;
+}
 
-  .logo-container {
-    margin-top: 40px;
-    position: absolute;
-    margin-left: 5vw;
-  }
-
-  .main-row {
-    margin-top: 200px;
-  }
-
-  .breadcrumb {
-    margin-top: 30px;
-  }
+.main-container {
+  margin-top: 100px;
 }
 
 .footer {
