@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class HoleController extends Controller
 {
+    public function __construct()
+        {
+            $this->middleware('jwt.verify')->except(['index', 'show']);
+        }
     /**
      * Display a listing of the resource.
      *

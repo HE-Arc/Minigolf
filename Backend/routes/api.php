@@ -12,26 +12,26 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//
+$except = ['create','edit'];
+
+Route::resource('games-scores', 'Api\ScoreGameController',['only' => [
+    'index', 'show'
+]]);
+
+Route::resource('users', 'Api\UserController',['except' => $except]);
+Route::resource('courses', 'Api\CourseController',['except' => $except]);
+Route::resource('minigolfs', 'Api\MinigolfController',['except' => $except]);
+Route::resource('games', 'Api\GameController',['except' => $except]);
+Route::resource('holes', 'Api\HoleController',['except' => $except]);
+//Route::resource('players', 'Api\PlayerController',['except' => $except]);
+Route::resource('scores', 'Api\ScoreController',['except' => $except]);
+
+
+// JWT
 Route::prefix('users')->group(function () {
     Route::get('profile', 'Api\AuthController@profile');
 });
-
-//Route::group(['middleware' => 'jwt.verify'], function () {
-//
-//});
-
-Route::get('games-scores', 'Api\ScoreGameController@index');
-Route::get('games-scores/{id}', 'Api\ScoreGameController@show');
-Route::resource('users', 'Api\UserController');
-Route::resource('courses', 'Api\CourseController');
-Route::resource('minigolfs', 'Api\MinigolfController');
-Route::resource('games', 'Api\GameController');
-Route::resource('holes', 'Api\HoleController');
-//Route::resource('players', 'PlayerController');
-Route::resource('scores', 'Api\ScoreController');
-
-
-// Auth/token
 Route::prefix('auth')->group(function () {
     Route::post('login', 'Api\AuthController@login');
     Route::post('register', 'Api\AuthController@register');

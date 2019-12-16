@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('jwt.verify')->except(['index', 'show']);
+    }
+
+
     public function index()
     {
         return GameResource::collection(Game::with('users','course')
@@ -20,6 +21,14 @@ class GameController extends Controller
             ->jsonSerialize();
     }
 
+
+    public function show(Game $game)
+    {
+        return GameResource::collection(Game::with('players')
+            ->where('id', $game->id)
+            ->get())
+            ->jsonSerialize()[0];
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -38,13 +47,7 @@ class GameController extends Controller
      * @param  \App\Game $game
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $game)
-    {
-        return GameResource::collection(Game::with('players')
-            ->where('id', $game->id)
-            ->get())
-            ->jsonSerialize()[0];
-    }
+
 
     /**
      * Update the specified resource in storage.

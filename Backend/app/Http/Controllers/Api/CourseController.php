@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    public function __construct()
+        {
+            $this->middleware('jwt.verify')->except(['index', 'show']);
+        }
     /**
      * @OA\Get(
      *     path="/courses",
