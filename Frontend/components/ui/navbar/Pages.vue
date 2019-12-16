@@ -17,13 +17,12 @@
 </template>
 
 <script>
-  import links from "../../../configs/links"
-  
+
 export default {
   name: "Pages",
   computed: {
     pages() {
-      return links;
+      return this.$store.state.pages.data;
     },
   },
 };

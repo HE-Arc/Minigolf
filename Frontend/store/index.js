@@ -1,10 +1,21 @@
 
 export const actions = {
   async nuxtServerInit({ dispatch }, request) {
-    await dispatch("users/fetch");
-    await dispatch("minigolfs/fetch");
-    await dispatch("scores/fetch");
-    // await dispatch("games/fetch");
+
+    if (request.$auth.loggedIn) {
+      const role = request.$auth.user.role;
+
+      await dispatch("scores/fetch");
+
+      if (role == "staff" || "admin") {
+        await dispatch("users/fetch");
+        await dispatch("pages/setStaffPages");
+      } else {
+        await dispatch("pages/setUserPages");
+      }
+    } else {
+        await dispatch("pages/setGuestPages")
+    }
   }
 };
 

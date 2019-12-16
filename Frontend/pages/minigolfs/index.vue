@@ -1,6 +1,6 @@
 <template>
   <Page title="Affiliated minigolfs">
-    <template v-if="$loggedIn()" v-slot:header-side>
+    <template v-if="$auth.loggedIn" v-slot:header-side>
       <admin-action-create entity-name="minigolf" class="admin-actions">
         <minigolf-form />
       </admin-action-create>
@@ -15,7 +15,12 @@
     </template>
     <template v-slot:body>
       <v-row v-if="minigolfs.length">
-        <v-col cols="12" sm="6" v-for="minigolf in minigolfs" :key="minigolf.id">
+        <v-col
+          cols="12"
+          sm="6"
+          v-for="minigolf in minigolfs"
+          :key="minigolf.id"
+        >
           <minigolf-card :minigolf="minigolf" />
         </v-col>
       </v-row>
@@ -36,6 +41,9 @@ import MinigolfForm from "../../components/elements/forms/MinigolfForm";
 
 export default {
   components: { MinigolfForm, AdminActionCreate, Page, MinigolfCard },
+  async fetch({ store }) {
+    await store.dispatch("minigolfs/fetch");
+  },
   data: () => ({
     query: null
   }),
@@ -48,8 +56,8 @@ export default {
     minigolfs() {
       let query = this.query ? this.query : "";
       return this.$store.getters["minigolfs/filter"](query);
-    },
-  },
+    }
+  }
 };
 </script>
 

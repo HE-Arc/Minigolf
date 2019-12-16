@@ -5,6 +5,7 @@ export const state = () => ({
 });
 
 export const getters = {
+  all: state => state.data,
   byId: state => id => state.data.find(i => i.id == id),
   bySlug: state => slug => state.data.find(i => i.slug === slug),
   filter: state => query => {
@@ -37,7 +38,8 @@ export const mutations = {
 };
 
 export const actions = {
-  async fetch({ commit }) {
+  async fetch({ commit, getters }) {
+    if (getters.all.length) return;
     await this.$axios
               .get(Minigolf.endpoint())
               .then(res => commit('INIT', res.data))

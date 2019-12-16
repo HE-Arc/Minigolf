@@ -5,6 +5,7 @@ export const state = () => ({
 });
 
 export const getters = {
+  all: state => state.data,
   byId: state => id => state.data.find(i => i.id === id),
   filter: state => query => {
     let q = query.toLowerCase();
@@ -35,7 +36,8 @@ export const mutations = {
 };
 
 export const actions = {
-  async fetch({ commit }) {
+  async fetch({ commit, getters }) {
+    if (getters.all.length) return;
     await this.$axios
       .get(User.endpoint())
       .then(res => commit("INIT", res.data))

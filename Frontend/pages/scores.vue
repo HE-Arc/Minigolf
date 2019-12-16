@@ -1,7 +1,7 @@
 <template>
   <Page title="My scores">
     <template v-slot:body>
-      <div v-if="$loggedIn()">
+      <div v-if="$auth.loggedIn">
         <user-score :games="games" />
       </div>
       <div v-else>
@@ -25,12 +25,18 @@ import Page from "../components/Page";
 export default {
   name: "scores",
   components: { Page, UserScore, LoginDialog },
+  async fetch( { store }) {
+    if (store.$auth.loggedIn) {
+      await store.dispatch("minigolfs/fetch");
+      await store.dispatch("games/fetchList", store.$auth.user.played);
+    }
+  },
   data: () => ({
     loginDialog: false
   }),
   computed: {
     games() {
-      let games = this.$store.getters["games/byUserId"](this.$user().id);
+      let games = this.$store.getters["games/byUserId"](this.$auth.user.id);
       return games.sort((a, b) => -(new Date(a.date) - new Date(b.date)));
     }
   }

@@ -17,8 +17,8 @@
         <v-card-text>
           <user-score-card
             title="Your scores"
-            :player="$user()"
-            :scores="playerScores($user().id)"
+            :player="$auth.user"
+            :scores="playerScores($auth.user.id)"
           />
         </v-card-text>
       </v-card>

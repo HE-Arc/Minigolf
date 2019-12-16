@@ -1,6 +1,6 @@
 <template>
   <Page title="Users">
-    <template v-if="$userIsStaff()" v-slot:header-side>
+    <template v-if="$isStaff()" v-slot:header-side>
       <admin-action-create entity-name="user" class="admin-actions">
         <user-form />
       </admin-action-create>

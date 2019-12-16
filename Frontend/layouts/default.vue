@@ -25,7 +25,7 @@ import Footer from "../components/ui/Footer";
 import AppBar from "../components/ui/navbar/AppBar";
 
 import DeleteDialog from "../components/elements/dialogs/DeleteDialog";
-import Drawer from "../components/ui/drawer/Drawer";
+import Drawer from "../components/ui/Drawer";
 
 export default {
   components: {
@@ -44,11 +44,6 @@ export default {
       };
     }
   },
-  mounted() {
-    if (this.$loggedIn()) {
-      this.$store.dispatch("games/fetchList", this.$user().played);
-    }
-  }
 };
 </script>
 

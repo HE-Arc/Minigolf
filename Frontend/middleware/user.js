@@ -1,5 +1,5 @@
 export default function({ store, redirect }) {
-  // if (!store.state.auth.loggedIn) {
-  //   return redirect("/unauthorized");
-  // }
+  if (!store.state.auth.loggedIn) {
+    return redirect("/unauthorized");
+  }
 }
