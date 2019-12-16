@@ -1,0 +1,143 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "IGolf Api",
+        "contact": {
+            "name": "Nathan Latino",
+            "email": "nathan.latino@gmail.com"
+        },
+        "license": {
+            "name": "Unlicense"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "/api"
+        }
+    ],
+    "paths": {
+        "/api": {},
+        "/courses": {
+            "get": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "List courses",
+                "operationId": "App\\Http\\Controllers\\Api\\CourseController::index",
+                "responses": {
+                    "200": {
+                        "description": "List of courses"
+                    },
+                    "default": {
+                        "description": "error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Create new course",
+                "operationId": "App\\Http\\Controllers\\Api\\CourseController::store",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "UUID",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Course"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "A newly-created course"
+                    },
+                    "default": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/courses/{$id}": {
+            "get": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Show a course",
+                "operationId": "App\\Http\\Controllers\\Api\\CourseController::show",
+                "responses": {
+                    "200": {
+                        "description": "An courses"
+                    },
+                    "default": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/courses/{id}": {
+            "post": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Update course",
+                "operationId": "App\\Http\\Controllers\\Api\\CourseController::update",
+                "responses": {
+                    "200": {
+                        "description": "List of courses"
+                    },
+                    "default": {
+                        "description": "error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Courses"
+                ],
+                "summary": "Delete course",
+                "operationId": "App\\Http\\Controllers\\Api\\CourseController::destroy",
+                "responses": {
+                    "204": {
+                        "description": "delete a course"
+                    },
+                    "default": {
+                        "description": "error"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Course": {
+                "properties": {
+                    "minigolf_id": {
+                        "description": "id minigolf",
+                        "type": "integer",
+                        "format": "associated minigolf"
+                    },
+                    "name": {
+                        "description": "Course name",
+                        "type": "string",
+                        "example": "Lava course"
+                    },
+                    "description": {
+                        "description": "Course description",
+                        "type": "string",
+                        "example": "This course is great"
+                    },
+                    "image": {
+                        "description": "Url image",
+                        "type": "string",
+                        "example": "https://valley.jpg"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

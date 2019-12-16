@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nath
- * Date: 15.11.19
- * Time: 11:39
- */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 
 use App\Http\Resources\UserResource;

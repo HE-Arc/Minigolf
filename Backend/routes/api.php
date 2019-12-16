@@ -20,15 +20,15 @@ Route::prefix('users')->group(function () {
 //
 //});
 
-Route::get('games-scores', 'ScoreGameController@index');
-Route::get('games-scores/{id}', 'ScoreGameController@show');
-Route::resource('users', 'UserController');
-Route::resource('courses', 'CourseController');
-Route::resource('minigolfs', 'MinigolfController');
-Route::resource('games', 'GameController');
-Route::resource('holes', 'HoleController');
+Route::get('games-scores', 'Api\ScoreGameController@index');
+Route::get('games-scores/{id}', 'Api\ScoreGameController@show');
+Route::resource('users', 'Api\UserController');
+Route::resource('courses', 'Api\CourseController');
+Route::resource('minigolfs', 'Api\MinigolfController');
+Route::resource('games', 'Api\GameController');
+Route::resource('holes', 'Api\HoleController');
 //Route::resource('players', 'PlayerController');
-Route::resource('scores', 'ScoreController');
+Route::resource('scores', 'Api\ScoreController');
 
 
 // Auth/token

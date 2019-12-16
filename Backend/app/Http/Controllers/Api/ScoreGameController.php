@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Resources\ScoregameResource;
-use Illuminate\Http\Request;
 use App\Game;
 
 class ScoreGameController extends Controller
