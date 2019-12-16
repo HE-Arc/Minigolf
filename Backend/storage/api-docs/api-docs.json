@@ -2,13 +2,6 @@
     "openapi": "3.0.0",
     "info": {
         "title": "IGolf Api",
-        "contact": {
-            "name": "Nathan Latino",
-            "email": "nathan.latino@gmail.com"
-        },
-        "license": {
-            "name": "Unlicense"
-        },
         "version": "1.0"
     },
     "servers": [
@@ -50,15 +43,16 @@
                 ],
                 "summary": "Create new course",
                 "operationId": "App\\Http\\Controllers\\Api\\CourseController::store",
-                "parameters": [
-                    {
-                        "name": "course",
-                        "in": "query",
-                        "schema": {
-                            "$ref": "#/components/schemas/Course"
+                "requestBody": {
+                    "request": "Course",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Course"
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "201": {
                         "description": "A newly-created course",
@@ -142,15 +136,18 @@
                         "in": "path",
                         "description": "Id course",
                         "required": true
-                    },
-                    {
-                        "name": "course",
-                        "in": "query",
-                        "schema": {
-                            "$ref": "#/components/schemas/Course"
-                        }
                     }
                 ],
+                "requestBody": {
+                    "request": "Course",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Course"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "List of courses",

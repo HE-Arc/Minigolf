@@ -19,17 +19,23 @@ class UsersTableSeeder extends Seeder
             'role' => 'admin',
             'email' => 'admin@test.com',
         ]);
+        
+        factory(User::class)->create([
+            'name' => 'staff',
+            'role' => 'staff',
+            'email' => 'staff@test.com',
+        ]);
+
+        factory(User::class)->create([
+            'name' => 'user',
+            'role' => 'user',
+            'email' => 'user@test.com',
+        ]);
 
         factory(User::class)->create([
             'name' => 'nath',
             'role' => 'admin',
             'email' => 'nath@test.com',
-        ]);
-
-        factory(User::class)->create([
-            'name' => 'sol',
-            'role' => 'admin',
-            'email' => 'sol@test.com',
         ]);
 
         factory(User::class)->create([
