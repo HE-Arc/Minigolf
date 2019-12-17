@@ -5,7 +5,6 @@ export const actions = {
 
     if (request.$auth.loggedIn) {
       const role = request.$auth.user.role;
-
       await dispatch("users/fetch");
 
       if (role == "staff" || role == "admin") {

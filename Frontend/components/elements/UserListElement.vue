@@ -16,18 +16,27 @@
         </v-list-item-subtitle>
       </v-list-item-content>
       <div>
-        <admin-actions  v-if="$isStaff()" :entity="user" @dialog="dialog = true">
-          <template v-slot:dialog>
-            <base-dialog
-              icon="mdi-pen"
-              :title="user.name"
-              :modal="dialog"
-              @close="dialog = false"
+        <v-row align="center">
+          <user-actions :entity="user" />
+          <v-col>
+            <admin-actions
+              v-if="$isStaff()"
+              :entity="user"
+              @dialog="dialog = true"
             >
-              <user-form :user="user" @close="dialog = false" />
-            </base-dialog>
-          </template>
-        </admin-actions>
+              <template v-slot:dialog>
+                <base-dialog
+                  icon="mdi-pen"
+                  :title="user.name"
+                  :modal="dialog"
+                  @close="dialog = false"
+                >
+                  <user-form :user="user" @close="dialog = false" />
+                </base-dialog>
+              </template>
+            </admin-actions>
+          </v-col>
+        </v-row>
       </div>
     </v-list-item>
     <v-divider></v-divider>
@@ -38,15 +47,16 @@
 import AdminActions from "./buttons/AdminActions";
 import BaseDialog from "./generics/BaseDialog";
 import UserForm from "./forms/UserForm";
+import UserActions from "./buttons/UserActions";
 export default {
   name: "UserListElement",
-  components: { UserForm, BaseDialog, AdminActions },
+  components: { UserActions, UserForm, BaseDialog, AdminActions },
   props: {
     user: { type: Object }
   },
   data: () => ({
     dialog: false
-  }),
+  })
 };
 </script>
 

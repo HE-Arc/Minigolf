@@ -4,8 +4,6 @@
       <Breadcrumb class="breadcrumb" />
     </v-col>
     <v-col cols="12" xs="12" sm="11" md="10" lg="7">
-      
-      
       <div class="wrapper">
         <v-row v-if="title">
           <v-col class="header">
@@ -21,8 +19,6 @@
         </v-row>
         <slot name="body"></slot>
       </div>
-      
-      
     </v-col>
   </v-row>
 </template>

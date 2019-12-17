@@ -6,7 +6,7 @@ const pages = {
 };
 
 const guest = [pages.minigolfs, pages.about];
-const user = [pages.minigolfs, pages.scores, pages.about];
+const user = [pages.minigolfs, pages.scores, pages.about, pages.users];
 const staff = [pages.minigolfs, pages.scores, pages.about, pages.users];
 
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isAdmin" class="admin-actions">
+    <div class="admin-actions">
       
       <v-tooltip color="blue" top>
         <template v-slot:activator="{ on }">
@@ -43,11 +43,6 @@ export default {
   name: "AdminActions",
   props: {
     entity: { type: Object }
-  },
-  computed: {
-    isAdmin() {
-      return true;
-    }
   },
   methods: {
     deleteEntity() {

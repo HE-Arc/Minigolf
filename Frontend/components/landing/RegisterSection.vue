@@ -1,6 +1,6 @@
 <template>
   <Section :title="title" :subtitle="subtitle" cols="8">
-    <base-form :form="getForm()" confirm-text="Send" @confirm="sendAction" />
+    <base-form :form="getForm()" confirm-text="Send" @confirm="sendAction" @form-initialized="formRef"/>
 
     <v-row justify="center">
       <v-col cols="11" class="ma-0 pa-0">
@@ -8,7 +8,9 @@
           text
           block
           color="green darken-1"
+          :loading="loading"
           :disabled="!getForm().isValid()"
+          @click="sendAction"
         >
           <v-icon class="mr-4">mdi-send</v-icon>
           <span>Send</span>
@@ -29,7 +31,9 @@ export default {
   data: () => ({
     title: "Do you own a venue?",
     subtitle: "Register now and be part of the future",
-    form: null
+    ref: null,
+    form: null,
+    loading: false,
   }),
   methods: {
     getForm() {
@@ -62,8 +66,17 @@ export default {
       this.form = form;
       return form;
     },
+    formRef(e) {
+      this.ref = e;
+    },
     sendAction() {
-      console.log("Send");
+      console.log("ICI");
+      this.loading = true;
+      setTimeout(() => {
+        this.$notifications('success', "Your request have been sent. We'll contact you ASAP !");
+        this.loading = false;
+        this.ref.reset();
+      }, 2500);
     }
   }
 };

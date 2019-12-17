@@ -37,13 +37,14 @@
 </template>
 
 <script>
-import Page from "../../components/Page";
-import UserListElement from "../../components/elements/UserListElement";
-import AdminActionCreate from "../../components/elements/buttons/AdminActionCreate";
-import UserForm from "../../components/elements/forms/UserForm";
+import Page from "../components/Page";
+import UserListElement from "../components/elements/UserListElement";
+import AdminActionCreate from "../components/elements/buttons/AdminActionCreate";
+import UserForm from "../components/elements/forms/UserForm";
 
 export default {
   components: { UserForm, AdminActionCreate, UserListElement, Page },
+  middleware: "user",
   async fetch({ store }) {
     await store.dispatch("users/fetch");
   },
@@ -78,7 +79,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../assets/scss/variables";
+@import "../assets/scss/variables";
 
 .header {
   display: flex;

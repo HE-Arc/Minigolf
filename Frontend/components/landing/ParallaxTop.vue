@@ -7,7 +7,7 @@
       <div class="sub-header white--text subheading mb-3 text-xs-center">
         For you and all your friends
       </div>
-      <v-btn class="blue lighten-2 mt-5" dark large href="#">
+      <v-btn class="blue lighten-2 mt-5" dark large v-scroll-to="'#download'">
         Get Started
       </v-btn>
     </v-layout>
