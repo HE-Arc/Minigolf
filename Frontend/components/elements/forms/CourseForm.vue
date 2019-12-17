@@ -18,6 +18,7 @@ export default {
   props: {
     update: { type: Boolean, default: false },
     minigolf: { type: Object },
+    course: { type: Object },
   },
   data: () => ({
     form: null,
@@ -30,6 +31,10 @@ export default {
       if (this.form != null) return this.form;
       let course = this.course ? this.course : new Course();
       this.form = Course.createForm(course);
+      
+      if (this.update) {
+        this.form.fieldByName("holes").value = this.course.holes.length;
+      }
       return this.form;
     },
     isValid() {
@@ -47,8 +52,6 @@ export default {
       this.close();
     }
   },
-  mounted() {
-  }
 };
 </script>
 

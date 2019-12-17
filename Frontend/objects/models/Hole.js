@@ -8,11 +8,11 @@ export default class Hole extends Model {
     super('holes', data.id);
     this.number = data.number;
 
-    this.best = data.best || randint(1, 3) ;
-    this.worse = data.worse || randint(20, 40);
-    this.average = data.average || randint(3, 20);
-    this.median = data.median || randint(3, 10);
-    this.count = data.count || randint(10, 1000);
+    this.best = data.best || 0;
+    this.worse = data.worse || 0;
+    this.average = data.average || 0;
+    this.median = data.median || 0;
+    this.count = data.count || 0;
 
     this.course = data.course;
     this.minigolf = data.minigolf;
