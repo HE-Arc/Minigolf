@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de
+class ComposerStaticInit215147c48f6a0107ab6d8e4e35d6e32d
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -461,16 +461,16 @@ class ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de
         'App\\Game' => __DIR__ . '/../..' . '/app/Game.php',
         'App\\Hole' => __DIR__ . '/../..' . '/app/Hole.php',
         'App\\Http\\Controllers\\Api\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AuthController.php',
+        'App\\Http\\Controllers\\Api\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Controller.php',
+        'App\\Http\\Controllers\\Api\\CourseController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/CourseController.php',
+        'App\\Http\\Controllers\\Api\\GameController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/GameController.php',
+        'App\\Http\\Controllers\\Api\\HoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/HoleController.php',
+        'App\\Http\\Controllers\\Api\\MinigolfController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/MinigolfController.php',
+        'App\\Http\\Controllers\\Api\\PlayerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/PlayerController.php',
+        'App\\Http\\Controllers\\Api\\ScoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ScoreController.php',
+        'App\\Http\\Controllers\\Api\\ScoreGameController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ScoreGameController.php',
+        'App\\Http\\Controllers\\Api\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/UserController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\CourseController' => __DIR__ . '/../..' . '/app/Http/Controllers/CourseController.php',
-        'App\\Http\\Controllers\\GameController' => __DIR__ . '/../..' . '/app/Http/Controllers/GameController.php',
-        'App\\Http\\Controllers\\HoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/HoleController.php',
-        'App\\Http\\Controllers\\MinigolfController' => __DIR__ . '/../..' . '/app/Http/Controllers/MinigolfController.php',
-        'App\\Http\\Controllers\\PlayerController' => __DIR__ . '/../..' . '/app/Http/Controllers/PlayerController.php',
-        'App\\Http\\Controllers\\SampleController' => __DIR__ . '/../..' . '/app/Http/Controllers/SampleController.php',
-        'App\\Http\\Controllers\\ScoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScoreController.php',
-        'App\\Http\\Controllers\\ScoreGameController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScoreGameController.php',
-        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -4597,10 +4597,10 @@ class ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInita4c95da2e03d263d2ebf0bf716aec7de::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit215147c48f6a0107ab6d8e4e35d6e32d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit215147c48f6a0107ab6d8e4e35d6e32d::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit215147c48f6a0107ab6d8e4e35d6e32d::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit215147c48f6a0107ab6d8e4e35d6e32d::$classMap;
 
         }, null, ClassLoader::class);
     }
