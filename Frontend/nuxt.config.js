@@ -25,13 +25,16 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    "~/assets/scss/global.scss"
+  ],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     "~/plugins/axios.js",
     "~/plugins/vuetify.js",
+    "~/plugins/injections.js",
     "~/plugins/vue-scrollto.js",
     "~/plugins/notifications.js",
     { src: '~/plugins/vue-shortkey.js', mode: 'client' },
@@ -39,6 +42,17 @@ export default {
   axios: {
     // proxyHeaders: false
     baseURL: process.env.API_HOST
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: "auth/login/", method: "post", propertyName: "token" },
+          user: { url: "users/profile", method: "get", propertyName: "" },
+          logout: false
+        }
+      }
+    }
   },
   /*
    ** Nuxt.js dev-modules
@@ -49,7 +63,9 @@ export default {
    */
   modules: [
     "@nuxtjs/axios",
+    "@nuxtjs/auth",
     "nuxt-izitoast",
+    ['nuxt-gmaps', { key: process.env.MAPS_API }]
   ],
   /*
    ** Build configuration

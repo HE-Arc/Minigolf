@@ -14,28 +14,34 @@ class UsersTableSeeder extends Seeder
 
     public function run()
     {
-
-        $faker = \Faker\Factory::create();
-        $password = Hash::make('toptal');
-
-        User::create([
+        factory(User::class)->create([
             'name' => 'admin',
+            'role' => 'admin',
             'email' => 'admin@test.com',
-            'password' => $password,
         ]);
 
-        User::create([
+        factory(User::class)->create([
+            'name' => 'staff',
+            'role' => 'staff',
+            'email' => 'staff@test.com',
+        ]);
+
+        factory(User::class)->create([
+            'name' => 'user',
+            'role' => 'user',
+            'email' => 'user@test.com',
+        ]);
+
+        factory(User::class)->create([
             'name' => 'nath',
+            'role' => 'admin',
             'email' => 'nath@test.com',
-            'password' => $password,
         ]);
 
-        for ($i = 0; $i < 10; $i++) {
-            User::create([
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'password' => $password,
-            ]);
-        }
+        factory(User::class)->create([
+            'name' => 'Pierre',
+            'email' => 'pierre@test.com',
+        ]);
+        factory(User::class, 50)->create();
     }
 }

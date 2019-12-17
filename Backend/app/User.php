@@ -3,47 +3,57 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+
+/**
+ * @OA\Schema(type="object")
+ */
+class User extends Authenticatable implements JWTSubject
 {
+    /**
+     * @OA\Property(property="name",type="string",description="user name",example="Eric Zemmour"),
+     * @OA\Property(property="email",type="string",description="minigolf email",example="eric.zemour@gmail.com"),
+     * @OA\Property(property="role",type="string",description="user role",example="user"),
+     * @OA\Property(property="city",type="string",description="minigolf city",example="Neuchâtel"),
+     * @OA\Property(property="password",type="string",description="user password",example="test1234"),
+     */
     use Notifiable;
+    protected $table = 'users';
+    protected $guarded = ['id',];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'role', 'password', 'city',
     ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'created_at', 'update_at',
     ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function generateToken()
+    public function games()
     {
-        $this->api_token = Str::random(60);
-        $this->save();
+        return $this->hasMany('App\Game');
+    }
 
-        return $this->api_token;
+    public function players()
+    {
+        return $this->belongsToMany('App\Game','players','user_id', 'game_id');
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

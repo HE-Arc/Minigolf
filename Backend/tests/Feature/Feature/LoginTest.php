@@ -13,7 +13,7 @@ class LoginTest extends TestCase
 
     public function testRequiresEmailAndLogin()
     {
-        $this->json('POST', 'api/login')
+        $this->json('POST', 'api/auth/login')
             ->assertStatus(422)
             ->assertJson([
                 'email' => 'The email field is required.',

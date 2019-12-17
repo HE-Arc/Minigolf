@@ -23,8 +23,9 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 ## Pages
 
 * Landing
+* Laderboard
 * Minigolfs (compatibles avec l'app)
-* Mes résultats (on user logged)
+* User
+    * My results (on user logged)
 * Admin (on admin loggedin)
     * CRUD minigolf
-

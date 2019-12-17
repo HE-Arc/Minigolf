@@ -61,3 +61,12 @@ La valeur `1000` (UID) correspond à la valeur que retourne la commande `id $USE
   * `npm run dev` pour lancer le serveur local 
     * tourne sur http://localhost:3000
 
+## Backend
+
+* Dans le folder backend:
+  * `mv .env_example .env`
+  * `docker-compose exec app php artisan key:generate`
+  * `docker-compose exec app compose update`
+  * `docker-compose exec app php artisan jwt:secret`
+  * tourne sur http://localhost:8080 (/api/users)
+

@@ -16,10 +16,21 @@ class CreateMinigolfsTable extends Migration
         Schema::create('minigolfs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('location');
+            $table->text('description');
+            $table->string('city');
+            $table->string('address');
+            $table->string('long');
+            $table->string('lat');
+            $table->string('zipcode');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('image')->nullable();
+
             $table->timestamps();
         });
     }
+
+
 
     /**
      * Reverse the migrations.

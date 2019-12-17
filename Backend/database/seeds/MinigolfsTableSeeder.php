@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Minigolf;
 
 class MinigolfsTableSeeder extends Seeder
 {
@@ -11,6 +12,6 @@ class MinigolfsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Minigolf::class, 30)->create();
     }
 }
