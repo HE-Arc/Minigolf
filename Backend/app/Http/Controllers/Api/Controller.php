@@ -13,7 +13,6 @@ use Illuminate\Routing\Controller as BaseController;
  *      title="IGolf Api",
  *      version="1.0",
  *  ),
- * @OA\PathItem(path="/api", @OA\Response(response="default"))
  */
 class Controller extends BaseController
 {
