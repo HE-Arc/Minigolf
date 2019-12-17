@@ -122,7 +122,6 @@ class GameController extends Controller
     public function update(Request $request, Game $game)
     {
         $game->update($request->all());
-
         return $game;
     }
 

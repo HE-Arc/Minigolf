@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Course;
+use App\Hole;
 use App\Http\Resources\CourseResource;
 use Illuminate\Http\Request;
 
@@ -90,6 +91,10 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $course = Course::create($request->all());
+        for($i = 1; $i <= $request->holes; $i++) {
+            Hole::create(["course_id" => $course->id,"number" => $i]);
+        }
+
         $course = CourseResource::collection(Course::with('holes')
             ->where('id', $course->id)
             ->get())
