@@ -33,6 +33,7 @@
           </v-hover>
 
           <v-card-title class="card-title">
+            
             <v-icon>mdi-golf</v-icon>
             {{ course.holes.length }}
 
