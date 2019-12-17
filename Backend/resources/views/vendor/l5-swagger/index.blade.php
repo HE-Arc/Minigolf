@@ -72,6 +72,7 @@
     window.onload = function () {
         // Build a system
         const ui = SwaggerUIBundle({
+
             onComplete: function () {
                 var schemeSelect = document.querySelector('.scheme-container select');
                 FindReact(schemeSelect).setScheme('https');
@@ -81,6 +82,7 @@
 
 
             url: "{!! $urlToDocs !!}",
+
             operationsSorter: {!! isset($operationsSorter) ? '"' . $operationsSorter . '"' : 'null' !!},
             configUrl: {!! isset($configUrl) ? '"' . $configUrl . '"' : 'null' !!},
             validatorUrl: {!! isset($validatorUrl) ? '"' . $validatorUrl . '"' : 'null' !!},
