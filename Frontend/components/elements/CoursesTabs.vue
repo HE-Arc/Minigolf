@@ -46,10 +46,12 @@
                 <base-dialog
                   icon="mdi-pen"
                   :title="course.name"
-                  :dialog="dialog"
+                  :modal="dialog"
                   @close="dialog = false"
                 >
-                  <minigolf-form :minigolf="course" @close="dialog = false" />
+                  <course-form :course="course" :minigolf="minigolf" update/>
+<!--                  <course-form :minigolf="minigolf" update/>-->
+<!--                  <minigolf-form :minigolf="course" @close="dialog = false" />-->
                 </base-dialog>
               </template>
             </admin-actions>

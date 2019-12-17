@@ -18,6 +18,7 @@ export default {
   props: {
     update: { type: Boolean, default: false },
     minigolf: { type: Object },
+    course: { type: Object },
   },
   data: () => ({
     form: null,
@@ -48,6 +49,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.course)
   }
 };
 </script>
