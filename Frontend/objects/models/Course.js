@@ -17,7 +17,7 @@ export default class Course extends Model {
     let form = new Form(entity.id);
     form.createTextField(Model.nameField(entity.name));
     form.createTextArea(Model.descriptionField(entity.description));
-    form.createTextField(Model.holesField(entity.holes.length));
+    form.createTextField(Model.holesField(entity.holes));
     return form;
   }
 
