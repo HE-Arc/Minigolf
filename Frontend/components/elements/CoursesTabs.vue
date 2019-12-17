@@ -5,7 +5,7 @@
         {{course.name}}
       </v-tab>
       <admin-action-create v-if="$isStaff()" class="mr-4" entity-name="course">
-        <course-form/>
+        <course-form :minigolf="minigolf"/>
       </admin-action-create>
     </v-tabs>
 
@@ -64,8 +64,18 @@
   
   <data-card v-else class="pb-5" title="Courses" height="460">
     <v-card flat>
+    
       <v-card-text>
-        <p>This minigolf doesn't have any course registered.</p>
+        <v-row align="center">
+          <v-col>
+            <p>This minigolf doesn't have any course registered.</p>
+          </v-col>
+          <v-col cols="2">
+            <admin-action-create v-if="$isStaff()" class="ml-auto" entity-name="course">
+              <course-form :minigolf="minigolf"/>
+            </admin-action-create>
+          </v-col>
+        </v-row>
       </v-card-text>
     </v-card>
   </data-card>

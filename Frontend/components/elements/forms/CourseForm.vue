@@ -16,8 +16,8 @@ import Course from "../../../objects/models/Course";
 
 export default {
   props: {
-    course: { type: Object },
-    update: { type: Boolean, default: false }
+    update: { type: Boolean, default: false },
+    minigolf: { type: Object },
   },
   data: () => ({
     form: null,
@@ -41,9 +41,13 @@ export default {
     },
     confirm() {
       let action = `courses/${this.course ? "update" : "create"}`;
-      this.$store.dispatch(action, this.form.getForm());
+      let form = this.form.getForm();
+      form['minigolf_id'] = this.minigolf.id;
+      this.$store.dispatch(action, form);
       this.close();
     }
+  },
+  mounted() {
   }
 };
 </script>

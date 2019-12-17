@@ -61,6 +61,7 @@ export const actions = {
     }
   },
   create({ commit }, data) {
+    console.log(data);
     this.$axios
       .post(Course.endpoint(), data)
       .then(res => commit("CREATE", res.data))
