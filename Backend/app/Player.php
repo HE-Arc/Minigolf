@@ -18,9 +18,9 @@ class Player extends Model
     protected $hidden =  ['created_at', 'updated_at',];
     protected $fillable = ['user_id', 'game_id',];
 
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsTo('App\User');
     }
 
     public function scores()

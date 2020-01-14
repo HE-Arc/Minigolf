@@ -42,7 +42,7 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\Game');
     }
 
-    public function players()
+    public function gamesplayed()
     {
         return $this->belongsToMany('App\Game','players','user_id', 'game_id');
     }

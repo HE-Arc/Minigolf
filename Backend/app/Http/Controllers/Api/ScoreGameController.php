@@ -9,8 +9,8 @@ class ScoreGameController extends Controller
 {
     public function index()
     {
-        return ScoregameResource::collection(Game::with('players.scores.hole')
-                ->get())
+        return Game::with('players.scores.hole')
+                ->get()
                 ->jsonSerialize();
     }
 

@@ -20,6 +20,10 @@ Route::prefix('users')->group(function () {
     Route::get('profile', 'Api\AuthController@profile');
 });
 
+Route::prefix('app')->group(function () {
+    Route::resource('games', 'Api\App\GamesController', ['only' => ['show']]);
+});
+
 Route::prefix('auth')->group(function () {
     Route::post('login', 'Api\AuthController@login');
     Route::post('register', 'Api\AuthController@register');

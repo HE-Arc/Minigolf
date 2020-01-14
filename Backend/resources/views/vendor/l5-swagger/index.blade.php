@@ -81,6 +81,7 @@
             dom_id: '#swagger-ui',
 
 
+
 {{--            url: "{!! $urlToDocs !!}",--}}
             url: "https://swiped.srvz-webapp.he-arc.ch/docs/api-docs.json",
 
