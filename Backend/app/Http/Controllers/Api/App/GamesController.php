@@ -24,6 +24,6 @@ class GamesController extends Controller
 //                'players.game.creator'
                 ->where('id', $id)
                 ->get())
-                ->jsonSerialize()[0];
+                ->jsonSerialize()[0][0];
     }
 }

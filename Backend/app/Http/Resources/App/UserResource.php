@@ -17,12 +17,7 @@ class UserResource extends JsonResource
 //        return parent::toArray($request);
 
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'email'  => $this->email,
-            'role'  => $this->role,
-            'city' => $this->city,
-            'games'  => GameResource::collection($this->gamesplayed),
+            GameResource::collection($this->gamesplayed),
         ];
     }
 }
