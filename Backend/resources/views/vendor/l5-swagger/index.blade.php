@@ -82,7 +82,7 @@
 
 
 {{--            url: "{!! $urlToDocs !!}",--}}
-            url: "http://swiped.srvz-webapp.he-arc.ch/docs/api-docs.json",
+            url: "https://swiped.srvz-webapp.he-arc.ch/docs/api-docs.json",
 
             operationsSorter: {!! isset($operationsSorter) ? '"' . $operationsSorter . '"' : 'null' !!},
             configUrl: {!! isset($configUrl) ? '"' . $configUrl . '"' : 'null' !!},
