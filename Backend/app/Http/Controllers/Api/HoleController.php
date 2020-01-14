@@ -31,7 +31,7 @@ class HoleController extends Controller
      */
     public function index()
     {
-        return HolestatResource::collection(Hole::with('scores.player', 'hole')
+        return HolestatResource::collection(Hole::with('scores.player', 'course')
             ->get())
             ->jsonSerialize();
     }

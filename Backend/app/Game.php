@@ -31,6 +31,11 @@ class Game extends Model
             ->withPivot('id');
     }
 
+    public function creator()
+    {
+        return $this->belongsTo('App\User','user_id');
+    }
+
     public function players()
     {
         return $this->hasMany('App\Player');

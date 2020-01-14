@@ -31,7 +31,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        return GameResource::collection(Game::with('users', 'game')
+        return GameResource::collection(Game::with('users', 'players')
             ->get())
             ->jsonSerialize();
     }
