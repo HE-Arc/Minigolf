@@ -64,7 +64,7 @@ class GameController extends Controller
         return GameResource::collection(Game::with('players')
             ->where('id', $game->id)
             ->get())
-            ->jsonSerialize()[0];
+            ->jsonSerialize();
     }
 
     /**

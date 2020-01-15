@@ -23,7 +23,9 @@ class GameResource extends JsonResource
             'date' => $this->date,
             'course' => $this->course != null ? $this->course->id : null,
             'minigolf' => $this->course != null ? $this->course->minigolf_id : null,
-            'players' => UserResource::collection($this->users),
+//            'players' => UserResource::collection($this->users),
+            'players' =>  IdResource::collection($this->users)
+
         ];
     }
 }
