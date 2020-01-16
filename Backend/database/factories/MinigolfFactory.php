@@ -17,5 +17,8 @@ $factory->define(Minigolf::class, function (Faker $faker) use ($list) {
         'zipcode' => $faker->numberBetween(1500,3000),
         'phone' => $faker->numerify(str_repeat('#',10)),
         'email' => $faker->email,
+        'long' => "6.{$faker->numberBetween(989102, 999679)}",
+        'lat' => "46.{$faker->numberBetween(856612, 953316)}",
+
     ];
 });
