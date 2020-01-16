@@ -33,7 +33,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserResource::collection(User::with('players')
+        return UserResource::collection(User::with('gamesplayed')
             ->with('games')
             ->get())
             ->jsonSerialize();
@@ -63,7 +63,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return UserResource::collection(User::with('players')->with('games')
+        return UserResource::collection(User::with('gamesplayed')->with('games')
             ->where('id', '=', $user->id)
             ->get())
             ->jsonSerialize()[0];
