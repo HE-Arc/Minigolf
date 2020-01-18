@@ -34,7 +34,7 @@ class GamesController extends Controller
     public function store(Request $request)
     {
         $course =  Course::all(['id', 'name'])
-            ->where('name', $request->course)->first();
+            ->where('id', $request->id);
 
         $game = factory(Game::class)->create([
             'user_id' => $request->user_id,
@@ -77,7 +77,8 @@ class GamesController extends Controller
         foreach ($holes as $hole) {
             factory(Score::class)->create([
                 'hole_id' => $hole->id,
-                'player_id' => $player->id
+                'player_id' => $player->id,
+                'score' => 0,
             ]);
         }
 
