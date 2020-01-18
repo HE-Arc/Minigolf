@@ -21,7 +21,10 @@ Route::prefix('users')->group(function () {
 });
 
 Route::prefix('app')->group(function () {
-    Route::resource('games', 'Api\App\GamesController', ['only' => ['show']]);
+    Route::resource('games', 'Api\App\GamesController', ['only' => ['show','store']]);
+    Route::get('game-token/{token}', 'Api\App\GamesController@gameToken');
+    Route::post('join-game', 'Api\App\GamesController@joinGame');
+    Route::resource('minigolfs', 'Api\App\MinigolfsController', ['only' => ['show','index']]);
 });
 
 Route::prefix('auth')->group(function () {
