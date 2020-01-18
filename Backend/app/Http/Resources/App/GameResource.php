@@ -22,7 +22,9 @@ class GameResource extends JsonResource
             'token' => $this->token,
             'date' => $this->date,
             'course' => $this->course != null ? $this->course->name: null,
+            'course_id' => $this->course != null ? $this->course->id: null,
             'minigolf' => $this->course != null ? $this->course->minigolf->name : null,
+            'minigolf_id' => $this->course != null ? $this->course->minigolf->id : null,
             'players' => PlayerResource::collection($this->players),
         ];
     }
