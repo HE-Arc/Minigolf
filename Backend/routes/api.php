@@ -24,6 +24,7 @@ Route::prefix('app')->group(function () {
     Route::resource('games', 'Api\App\GamesController', ['only' => ['show','store']]);
     Route::get('game-token/{token}', 'Api\App\GamesController@gameToken');
     Route::post('join-game', 'Api\App\GamesController@joinGame');
+    Route::post('update-score', 'Api\App\GamesController@updateScore');
     Route::resource('minigolfs', 'Api\App\MinigolfsController', ['only' => ['show','index']]);
 });
 

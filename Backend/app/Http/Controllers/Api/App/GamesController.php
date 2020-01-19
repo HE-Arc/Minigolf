@@ -98,28 +98,11 @@ class GamesController extends Controller
         return response()->json($this->gameToken($game->token), 201);
     }
 
-    public function addScore($request)
+    public function updateScore(Request $request)
     {
-        $game = Game::all(['id', 'token'])
-            ->where('token', $request->token);
+        $score = Score::where('id', $request->id)
+                  ->update(['score' => $request->score]);
 
-        $player = factory(Player::class)->create([
-            'user_id' => $request->user_id,
-            'game_id' => $game->id
-        ]);
-
-        $holes = Hole::all(['id', 'course_id'])
-            ->where('course_id', $game->id)
-            ->toArray();
-
-        foreach ($holes as $hole) {
-            factory(Score::class)->create([
-                'hole_id' => $hole->id,
-                'player_id' => $player->id,
-                'score' => 0,
-            ]);
-        }
-
-        return response()->json($this->gameToken($game->token), 201);
+        return response()->json($score, 201);
     }
 }
