@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Game;
 use App\Score;
+use App\Player;
 use PhpParser\Node\Stmt\Return_;
 
 class GamesController extends Controller
@@ -34,12 +35,14 @@ class GamesController extends Controller
     public function store(Request $request)
     {
         $course =  Course::all(['id', 'name'])
-            ->where('id', $request->id);
+            ->where('id', $request->course_id)->first();
+
 
         $game = factory(Game::class)->create([
             'user_id' => $request->user_id,
             'course_id' => $course->id
         ]);
+
 
         $player = factory(Player::class)->create([
             'user_id' => $request->user_id,
@@ -48,19 +51,50 @@ class GamesController extends Controller
 
         $holes = Hole::all(['id','course_id'])
             ->where('course_id', $course->id)
-            ->toArray();
+            ->flatten();
+
+
 
         foreach ($holes as $hole) {
             factory(Score::class)->create([
                 'hole_id' => $hole->id,
-                'player_id' => $player->id
+                'player_id' => $player->id,
+                'score' => 0
             ]);
         }
 
         return response()->json($this->gameToken($game->token), 201);
     }
 
-    public function joinGame($request)
+    public function joinGame(Request $request)
+    {
+        $game = Game::all(['id', 'token', 'course_id'])
+                        ->where('token', $request->token)->first();
+
+
+        $player = factory(Player::class)->create([
+            'user_id' => $request->user_id,
+            'game_id' => $game->id
+        ]);
+
+        $holes = Hole::all(['id','course_id'])
+                    ->where('course_id', $game->course_id)->flatten();
+
+
+
+        foreach ($holes as $hole) {
+            factory(Score::class)->create([
+                'hole_id' => $hole->id,
+                'player_id' => $player->id,
+                'score' => 0,
+            ]);
+        }
+
+
+        return response()->json($this->gameToken($game->token), 201);
+    }
+
+    public function addScore($request)
     {
         $game = Game::all(['id', 'token'])
                         ->where('token', $request->token);
