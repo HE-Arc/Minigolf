@@ -26,6 +26,6 @@ class GameResource extends JsonResource
             'minigolf' => $this->course != null ? $this->course->minigolf->name : null,
             'id_minigolf' => $this->course != null ? $this->course->minigolf->id : null,
             'players' => PlayerResource::collection($this->players),
-        ])->sortByDesc('date')->all();
+        ])->sortByDesc('date');
     }
 }
