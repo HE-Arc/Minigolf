@@ -30,7 +30,7 @@ class MinigolfsTableSeeder extends Seeder
             'name' => "He-Arc Minigolf",
             'description' => "Minigolf de l'he-arc",
             'city' => "Neuchâtel",
-            'address' => "Sol street",
+            'address' => "Espace de l'Europe 11",
             'zipcode' => "2000",
             'phone' => "0324527627",
             'email' => "ingenierie@he-arc.ch",
