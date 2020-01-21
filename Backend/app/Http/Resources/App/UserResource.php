@@ -3,6 +3,8 @@
 namespace App\Http\Resources\App;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Carbon;
+
 
 class UserResource extends JsonResource
 {
@@ -16,8 +18,10 @@ class UserResource extends JsonResource
     {
 //        return parent::toArray($request);
 
-        return [
+        $collection = collect([
             GameResource::collection($this->gamesplayed),
-        ];
+        ]);
+
+        return $collection;
     }
 }

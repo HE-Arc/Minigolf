@@ -3,6 +3,7 @@
 namespace App\Http\Resources\App;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Carbon;
 
 class GameResource extends JsonResource
 {
@@ -26,6 +27,12 @@ class GameResource extends JsonResource
             'minigolf' => $this->course != null ? $this->course->minigolf->name : null,
             'id_minigolf' => $this->course != null ? $this->course->minigolf->id : null,
             'players' => PlayerResource::collection($this->players),
-        ])->sortBy('date');
+        ]);
+
+        return $collection->sortByDesc(function ($transaction, $key) {
+            return Carbon::parse($transaction['date'])->timestamp;
+        });
+
+
     }
 }

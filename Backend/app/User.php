@@ -44,7 +44,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function gamesplayed()
     {
-        return $this->belongsToMany('App\Game','players','user_id', 'game_id');
+        return $this->belongsToMany('App\Game','players','user_id', 'game_id')->orderByDesc('date');
     }
 
     public function getJWTIdentifier()
