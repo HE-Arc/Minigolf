@@ -45,11 +45,13 @@ class UsersTableSeeder extends Seeder
 
         factory(User::class)->create([
             'name' => 'Sol',
+            'role' => 'admin',
             'email' => 'sol@test.com',
         ]);
 
         factory(User::class)->create([
             'name' => 'David',
+            'role' => 'admin',
             'email' => 'david@test.com',
         ]);
 
