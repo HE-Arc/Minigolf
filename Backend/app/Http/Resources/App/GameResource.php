@@ -15,7 +15,7 @@ class GameResource extends JsonResource
     public function toArray($request)
     {
 //        return parent::toArray($request);
-        return [
+        return collect([
             'id' => $this->id,
             'creator' => $this->creator->name,
             'started' => $this->isStarted,
@@ -26,6 +26,6 @@ class GameResource extends JsonResource
             'minigolf' => $this->course != null ? $this->course->minigolf->name : null,
             'id_minigolf' => $this->course != null ? $this->course->minigolf->id : null,
             'players' => PlayerResource::collection($this->players),
-        ];
+        ])->sortByDesc('date')->all();
     }
 }

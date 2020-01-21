@@ -12,7 +12,6 @@ use App\User;
 use App\Game;
 use App\Score;
 use App\Player;
-use PhpParser\Node\Stmt\Return_;
 
 class GamesController extends Controller
 {
