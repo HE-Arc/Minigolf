@@ -15,7 +15,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.1",
     "node-sass": "^4.13.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "nuxt-gmaps": "^1.1.7",
     "nuxt-izitoast": "^1.0.0",
     "sass-loader": "^8.0.0",
